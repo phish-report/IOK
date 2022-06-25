@@ -1,0 +1,16 @@
+title: testcookie NGINX
+references:
+  - https://github.com/kyprizel/testcookie-nginx-module
+  - https://blog.kwiatkowski.fr/?q=en/testcookie
+
+detection:
+  aes:
+    dom|contains|all: 
+      - "a=toNumbers("
+      - "b=toNumbers("
+      - "c=toNumbers("
+      - "toHex(slowAES.decrypt(c,2,a,b))"
+  condition: aes
+
+tags:
+  - anti-analysis

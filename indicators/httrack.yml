@@ -1,0 +1,11 @@
+title: HTTrack Website Copier
+
+detection:
+  copyrightNotice:
+    dom|contains|all:
+      - "<!-- Mirrored from "
+      - "by HTTrack Website Copier/3.x [XR&CO'2014]"
+  condition: copyrightNotice
+
+tags:
+  - cloning

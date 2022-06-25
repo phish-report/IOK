@@ -1,0 +1,11 @@
+title: Save Page WE website saver
+references:
+  - https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof
+
+detection:
+  cssComment:
+    dom|contains: "/*savepage-url="
+  condition: cssComment
+
+tags:
+  - cloning

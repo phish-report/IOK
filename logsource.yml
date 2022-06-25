@@ -1,0 +1,3 @@
+title: Sigma config for use with the phish.report/IOK library
+backends:
+  - github.com/bradleyjkemp/sigma-go

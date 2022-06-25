@@ -1,0 +1,11 @@
+title: Cazanova phishing kit
+description: // TODO
+
+detection:
+  cazanovaCookie:
+    cookies|contains: "cazanova"
+
+  condition: cazanovaCookie
+
+tags:
+  - threat_actors.cazanova

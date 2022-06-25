@@ -1,0 +1,15 @@
+title: reCAPTCHA
+
+detection:
+  buttonElement:
+    dom|contains|all:
+      - "g-recaptcha"
+      - "data-sitekey"
+
+  programaticInvoke:
+    dom|contains: "grecaptcha.execute('"
+
+  condition: buttonElement or programaticInvoke
+
+tags:
+  - anti-analysis
