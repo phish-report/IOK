@@ -5,7 +5,18 @@ references:
 detection:
   cssComment:
     dom|contains: "/*savepage-url="
-  condition: cssComment
+
+  metaComments:
+    dom|contains:
+      - "<meta name=\"savepage-url\" content=\""
+      - "<meta name=\"savepage-title\" content=\""
+      - "<meta name=\"savepage-pubdate\" content=\""
+      - "<meta name=\"savepage-from\" content=\""
+      - "<meta name=\"savepage-date\" content=\""
+      - "<meta name=\"savepage-state\" content=\""
+      - "<meta name=\"savepage-version\" content=\""
+      - "<meta name=\"savepage-comments\" content=\""
+  condition: cssComment or metaComments
 
 tags:
   - cloning
