@@ -13,7 +13,7 @@ import (
 	iok "phish.report/IOK"
 )
 
-var uuid = flag.String("uuid", "6acb66b2-cdd7-477c-ac57-d7105adc7018", "[required] the urlscan.io result ID to scan for IOKs")
+var uuid = flag.String("uuid", "", "[required] the urlscan.io result ID to scan for IOKs")
 
 func main() {
 	flag.Parse()
