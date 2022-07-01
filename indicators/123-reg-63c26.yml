@@ -12,4 +12,5 @@ detection:
   condition: csrfToken
 
 tags:
+  - kit
   - target.123-reg
