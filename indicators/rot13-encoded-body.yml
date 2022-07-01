@@ -7,7 +7,7 @@ description: |
 
 detection:
   characterRotation:
-    dom|contains: "String.fromCharCode(s.charCodeAt(i)-1)"
+    html|contains: "String.fromCharCode(s.charCodeAt(i)-1)"
 
   condition: characterRotation
 

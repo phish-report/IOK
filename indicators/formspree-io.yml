@@ -8,7 +8,7 @@ related:
 
 detection:
   formAction:
-    dom|contains: "action=\"https://formspree.io/f/"
+    html|contains: "action=\"https://formspree.io/f/"
   condition: formAction
 
 tags:

@@ -4,10 +4,10 @@ references:
 
 detection:
   cssComment:
-    dom|contains: "/*savepage-url="
+    html|contains: "/*savepage-url="
 
   metaComments:
-    dom|contains:
+    html|contains:
       - "<meta name=\"savepage-url\" content=\""
       - "<meta name=\"savepage-title\" content=\""
       - "<meta name=\"savepage-pubdate\" content=\""

@@ -3,7 +3,7 @@ description: // TODO
 
 detection:
   cazanovaCookie:
-    cookies|contains: "cazanova"
+    cookies|startswith: "cazanova="
 
   condition: cazanovaCookie
 

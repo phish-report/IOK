@@ -7,7 +7,7 @@ description: |
 
 detection:
   documentWriteUnescape:
-    dom|contains: "document.write(unescape("
+    html|contains: "document.write(unescape("
 
   condition: documentWriteUnescape
 

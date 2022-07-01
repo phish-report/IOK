@@ -6,7 +6,7 @@ references:
 
 detection:
   csrfToken:
-    dom|contains: '<meta name="csrf-token" content="f7EjwKRXeUkAp9TxjMR9koiEDewrY9iooSlNrJ67DtV7xk3YG670riERA1yG9bWmS7UCMEdN6tdUPOe1dhM3rg">"'
+    html|contains: '<meta name="csrf-token" content="f7EjwKRXeUkAp9TxjMR9koiEDewrY9iooSlNrJ67DtV7xk3YG670riERA1yG9bWmS7UCMEdN6tdUPOe1dhM3rg">"'
 
   condition: csrfToken
 

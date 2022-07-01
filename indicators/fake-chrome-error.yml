@@ -7,7 +7,7 @@ references:
 
 detection:
   chromeHTMLFragments:
-    dom|contains|all:
+    html|contains|all:
       - "<body id=\"t\" class=\"neterror\" style=\"font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 75%\" jstcache=\"0\">"
       - "<div id=\"main-frame-error\" class=\"interstitial-wrapper\" jstcache=\"0\">"
   condition: chromeHTMLFragments

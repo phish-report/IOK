@@ -8,7 +8,7 @@ related:
 
 detection:
   formAction:
-    dom|contains: "action=\"https://nocodeform.io/f/"
+    html|contains: "action=\"https://nocodeform.io/f/"
   condition: formAction
 
 tags:

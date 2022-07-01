@@ -7,7 +7,7 @@ references:
 detection:
   csrfToken:
     # Extracted from <form action="https://www.123-reg.co.uk/order/basket/add" method="post"> <input type="hidden" name="X-CSRF-Token" value="63c2690a6e94180ff183110c4cd9ff7719014722" tabindex="-1">
-    dom|contains: '63c2690a6e94180ff183110c4cd9ff7719014722'
+    html|contains: '63c2690a6e94180ff183110c4cd9ff7719014722'
 
   condition: csrfToken
 

@@ -8,7 +8,7 @@ related:
 
 detection:
   formAction:
-    dom|contains: "action=\"https://getform.io/f/"
+    html|contains: "action=\"https://getform.io/f/"
   condition: formAction
 
 tags:

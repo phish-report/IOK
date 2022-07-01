@@ -2,7 +2,7 @@ title: Fake Not Found page
 
 detection:
   notfoundPageFragments:
-    dom|contains:
+    html|contains:
       - "<title>404 Not Found</title>"
       - "<p>The requested URL was not found on this server.</p>"
   
@@ -10,7 +10,7 @@ detection:
     headers|contains: "X-Powered-By: PHP"
 
   phpCookie:
-    cookies|contains: "PHPSESSID"
+    cookies|startswith: "PHPSESSID="
 
   condition: notfoundPageFragments and (1 of php*)
 

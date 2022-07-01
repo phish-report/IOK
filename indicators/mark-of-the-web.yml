@@ -8,7 +8,7 @@ references:
 
 detection:
   motw:
-    dom|contains: "<!-- saved from url=("
+    html|contains: "<!-- saved from url=("
   condition: motw
 
 tags:

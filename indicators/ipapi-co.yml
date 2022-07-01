@@ -1,10 +1,10 @@
 title: ipapi
 description: |
-  
+
 
 detection:
   ipapiLookup:
-    dom|contains: "https://ipapi.co/"
+    html|contains: "https://ipapi.co/"
 
   condition: ipapiLookup
 

@@ -2,12 +2,12 @@ title: reCAPTCHA
 
 detection:
   buttonElement:
-    dom|contains|all:
+    html|contains|all:
       - "g-recaptcha"
       - "data-sitekey"
 
   programaticInvoke:
-    dom|contains: "grecaptcha.execute('"
+    html|contains: "grecaptcha.execute('"
 
   condition: buttonElement or programaticInvoke
 

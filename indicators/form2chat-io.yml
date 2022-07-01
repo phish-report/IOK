@@ -8,7 +8,7 @@ related:
 
 detection:
   formAction:
-    dom|contains: "https://app.form2chat.io/f/"
+    html|contains: "https://app.form2chat.io/f/"
   condition: formAction
 
 tags:

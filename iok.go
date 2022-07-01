@@ -5,7 +5,6 @@ import (
 	"embed"
 	"fmt"
 	"io/fs"
-	"net/http"
 	"path/filepath"
 	"strings"
 
@@ -22,17 +21,18 @@ var config []byte
 var evaluators []*evaluator.RuleEvaluator
 
 type Input struct {
-	Dom     string
-	Cookies []http.Cookie
+	HTML     string
+	JS       []string
+	CSS      []string
+	Cookies  []string
+	Headers  []string
+	Requests []string
 }
 
 func GetMatches(input Input) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
 	for _, evaluator := range evaluators {
-		result, err := evaluator.Matches(context.Background(), map[string]interface{}{
-			"dom":     input.Dom,
-			"cookies": input.Cookies,
-		})
+		result, err := evaluator.Matches(context.Background(), convertInput(input))
 		if err != nil {
 			return nil, fmt.Errorf("error evaluating %s: %w", evaluator.Title, err)
 		}
@@ -42,6 +42,25 @@ func GetMatches(input Input) ([]sigma.Rule, error) {
 		}
 	}
 	return matches, nil
+}
+
+func convertInput(input Input) evaluator.Event {
+	return map[string]interface{}{
+		"html":     input.HTML,
+		"js":       toInterfaceSlice(input.JS),
+		"css":      toInterfaceSlice(input.CSS),
+		"cookies":  toInterfaceSlice(input.Cookies),
+		"headers":  toInterfaceSlice(input.Headers),
+		"requests": toInterfaceSlice(input.Requests),
+	}
+}
+
+func toInterfaceSlice(s []string) []interface{} {
+	i := make([]interface{}, 0, len(s))
+	for _, str := range s {
+		i = append(i, str)
+	}
+	return i
 }
 
 func init() {

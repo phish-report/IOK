@@ -1,3 +1,10 @@
 title: Sigma config for use with the phish.report/IOK library
 backends:
   - github.com/bradleyjkemp/sigma-go
+
+fieldmappings:
+  js: $.js[*]
+  css: $.css[*]
+  cookies: $.cookies[*]
+  headers: $.headers[*]
+  requests: $.requests[*]

@@ -22,9 +22,31 @@ align="right"
 
 - [Identify fingerprints of known threat actors](https://github.com/phish-report/IOK/blob/main/indicators/cazanova-cookie.yml)
 - [Discover anti-analysis techniques](https://github.com/phish-report/IOK/blob/main/indicators/fake-chrome-error.yml)
-- Classify which specific phishing kit is in use on a page
+- [Classify which specific phishing kit is in use on a page](https://github.com/phish-report/IOK/blob/main/indicators/123-reg-63c26.yml)
 
-## 💭 Comparison to other projects
+## 📝 Creating indicators
+
+IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
+
+| Field name |   Type   | Description                                                                                          |
+|:----------:|:--------:|------------------------------------------------------------------------------------------------------|
+|    html    |  string  | The contents of the page HTML (as returned by the server)                                            |
+|     js     | []string | Contents of JavaScript from the page (includes inline scripts as well as scripts loaded externally)  |
+|    css     | []string | Contents of CSS from the page (includes inline stylesheets as well as externally loaded stylesheets) |
+|  cookies   | []string | Cookies from the page. Each is in the form `cookieName=value`                                        |
+|  headers   | []string | Headers sent by the server. Each is in the form `Header-Name: value`                                 |
+|  requests  | []string | URLs of requests made by the page (and assets loaded by the page)                                    |
+
+We are always looking for contributions—there's far more phishing kits and techniques than a single team can analyse!
+
+To contribute a new rule:
+
+1. Try to make sure it doesn't already exist
+2. Open a pull request, adding your new file in the `indicators/` folder
+3. We'll review it and merge your PR
+4. It'll go live on [phish.report/IOK](https://phish.report/IOK)!
+
+## 💭 Comparison to similar projects
 
 |                                       |          IOK          | [PhishingKit-Yara-Rules] |   [Wappalyzer]    |
 |---------------------------------------|:---------------------:|:------------------------:|:-----------------:|
@@ -40,15 +62,6 @@ align="right"
 [Wappalyzer]: https://www.wappalyzer.com/
 
 ## 🤝 Contributing
-
-We are always looking for contributions—there's far more phishing kits and techniques than a single team can analyse!
-
-To contribute a new rule:
-
-1. Try to make sure it doesn't already exist
-2. Open a pull request, adding your new file in the `indicators/` folder
-3. We'll review it and merge your PR
-4. It'll go live on [phish.report/IOK](https://phish.report/IOK)!
 
 Documentation on how to write a rule is coming soon...
 

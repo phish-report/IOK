@@ -2,7 +2,10 @@ module phish.report/IOK
 
 go 1.17
 
-require github.com/bradleyjkemp/sigma-go v0.3.3
+require (
+	github.com/bradleyjkemp/sigma-go v0.3.3
+	golang.org/x/net v0.0.0-20220630215102-69896b714898
+)
 
 require (
 	github.com/PaesslerAG/gval v1.0.0 // indirect

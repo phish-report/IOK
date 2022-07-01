@@ -5,7 +5,7 @@ references:
 
 detection:
   aes:
-    dom|contains|all: 
+    html|contains|all:
       - "a=toNumbers("
       - "b=toNumbers("
       - "c=toNumbers("
