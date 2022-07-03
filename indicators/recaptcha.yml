@@ -1,4 +1,6 @@
 title: reCAPTCHA
+references:
+  - https://developers.google.com/recaptcha/docs/display
 
 detection:
   buttonElement:
@@ -6,10 +8,12 @@ detection:
       - "g-recaptcha"
       - "data-sitekey"
 
-  programaticInvoke:
-    html|contains: "grecaptcha.execute('"
+  programmaticInvoke:
+    js|contains:
+      - "grecaptcha.execute("
+      - "grecaptcha.render("
 
-  condition: buttonElement or programaticInvoke
+  condition: buttonElement or programmaticInvoke
 
 tags:
   - anti-analysis
