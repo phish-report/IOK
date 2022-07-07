@@ -6,11 +6,10 @@ references:
   - https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en
 
 detection:
-  copyrightNotice:
-    html|contains|all:
+  singlefileComment:
+    html|contains:
       - "Page saved with SingleFile"
-      - "saved date: "
-  condition: copyrightNotice
+  condition: singlefileComment
 
 tags:
   - cloning
