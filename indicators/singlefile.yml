@@ -1,0 +1,16 @@
+title: SingleFile website cloner
+description: |
+  SingleFile is a Chrome extension allowing you to save a complete webpage (HTML, CSS, JS, etc.) into a single file. 
+
+references:
+  - https://chrome.google.com/webstore/detail/singlefile/mpiodijhokgodhhofbcjdecpffjipkle?hl=en
+
+detection:
+  copyrightNotice:
+    html|contains|all:
+      - "Page saved with SingleFile"
+      - "saved date: "
+  condition: copyrightNotice
+
+tags:
+  - cloning
