@@ -1,0 +1,17 @@
+title: url encoded body
+references: 
+  - https://urlscan.io/result/f2a2ec99-edfd-4ab6-86b3-c6f73b8e0bb6
+  - https://urlscan.io/search/#hash%3Aa5e59c7da03688f807b87bc781896a51b66827f5fbd4571e9f5b1f70cf9c1c1d
+  
+description: |
+  To evade static analysis, the document body can be encoded using url encoding.
+  This technique has been used in Discord phishing pages.
+  
+detection:
+  urlEncoding:
+    html|contains: "<script language=javascript>document.write(unescape("
+
+  condition: urlEncoding
+
+tags:
+  - anti-analysis
