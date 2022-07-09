@@ -11,7 +11,7 @@ detection:
   developerSignature:
     html|contains: '<!---By strolly#9548-->'
   nonceCSP:
-    html|contains: 'MjE2LDE0MCwxNzgsMTgwLDY1LDEwOCwxNCwyMjQ='
+    html|contains: 'nonce="MjE2LDE0MCwxNzgsMTgwLDY1LDEwOCwxNCwyMjQ="'
 
   
   condition: developerSignature and nonceCSP
