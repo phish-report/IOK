@@ -10,9 +10,8 @@ references:
 detection:
   developerSignature:
     html|contains: '<!---By strolly#9548-->'
-  humanImage:
-    html|contains: '<img class="human-image" src="assets/human.png">'
-  boyImage:
-    html|contains: '<img class="boy-image" src="assets/boy.png">'
+  nonceCSP:
+    html|contains: 'MjE2LDE0MCwxNzgsMTgwLDY1LDEwOCwxNCwyMjQ='
+
   
-  condition: developerSignature and humanImage and boyImage
+  condition: developerSignature and nonceCSP
