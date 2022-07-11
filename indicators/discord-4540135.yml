@@ -1,0 +1,10 @@
+title: Discord phishing kit 4540135
+description: |
+  Discord phishing kit containing an image (sha256: 8c89c4f3023d02b04197a30ca20f42ca7eb2634e1432ffff7b9d641a1f71a066) 
+  that only appears in phishing pages.
+references:
+  - https://urlscan.io/search/#hash%3A8c89c4f3023d02b04197a30ca20f42ca7eb2634e1432ffff7b9d641a1f71a066
+detection:
+  image:
+    html|contains: 'https://cdn.discordapp.com/attachments/454013565381115916/938124584446754846/nitro.png'
+  condition: image
