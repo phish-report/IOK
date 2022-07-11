@@ -6,5 +6,5 @@ references:
 detection:
   originTrialToken:
     html|contains: 'A7dYd5kJpPZNPkzPzk/uHFiBHh1Vy63H7igyI2Dq4m+1d0no9YKaNYQNfAFW3Us09f1k/SiOQW/LKTSjGuLAXg0AAAB+eyJvcmlnaW4iOiJodHRwczovL3RlYWRzLnR2OjQ0MyIsImZlYXR1cmUiOiJDb252ZXJzaW9uTWVhc3VyZW1lbnQiLCJleHBpcnkiOjE2NDMxNTUxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9'
-  condition: originTrailToken
+  condition: originTrialToken
 
