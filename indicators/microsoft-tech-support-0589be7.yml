@@ -1,0 +1,14 @@
+title: Tech support scam kit 
+description: |
+  Tech support scam kit containing an audio file used across many different domains.
+  As well as a JS function that is used to get the phone number from the URL parameters.
+references:
+  - https://urlscan.io/search/#hash%3A0589be7715d2320e559eae6bd26f3528e97450c70293da2e1e8ce45f77f99ab1
+  - https://urlscan.io/result/810e4051-a6bf-4853-808b-8cb9283a36fe
+detection:
+  audioFileName:
+    html|contains: '0wa0rni0ng0.mp3'
+  getPhoneNumberFunction:
+    html|contains: 'getVariableFromURl(\'phone\');'
+    
+  condition: audioFileName and getPhoneNumberFunction
