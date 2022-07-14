@@ -9,6 +9,6 @@ detection:
   audioFileName:
     js|contains: 'wa0lDErtm0s.mp3'
   getPhoneNumberFunction:
-    html|contains: 'getVariableFromURl(\'phone\');'
+    html|contains: "getVariableFromURl('phone');"
     
   condition: audioFileName and getPhoneNumberFunction
