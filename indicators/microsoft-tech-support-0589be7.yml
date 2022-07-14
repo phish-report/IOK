@@ -7,8 +7,8 @@ references:
   - https://urlscan.io/result/810e4051-a6bf-4853-808b-8cb9283a36fe
 detection:
   audioFileName:
-    html|contains: '0wa0rni0ng0.mp3'
+    js|contains: 'wa0lDErtm0s.mp3'
   getPhoneNumberFunction:
-    html|contains: 'getVariableFromURl(\'phone\');'
+    html|contains: "getVariableFromURl('phone');"
     
   condition: audioFileName and getPhoneNumberFunction
