@@ -1,4 +1,4 @@
-title: Metmask Phishing Kit 604ec65
+title: Metamask Phishing Kit 604ec65
 description: |
   Metamask Phishing kit that uses WebFlow.
   Allowing us to flag it due to it having the same WebFlow site key for each phish.
