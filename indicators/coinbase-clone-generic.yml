@@ -1,8 +1,8 @@
-title: Coinbase phishing kit 132e62b
+title: Coinbase clone generic
 description: |
-    Detects a Coinbase phishing kit that uses the same amplitude.js 
-    API key across various domains as well as the same Google Site 
-    Verification keys.
+    Detects a cloned version of the Coinbase website from the past 
+    that uses the same amplitude.js API key as well as the same 
+    Google Site Verification keys, they used to use.
     
 references:
   - https://urlscan.io/result/cf711368-757f-4ed2-b45b-47849e93c2c7
