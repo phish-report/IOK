@@ -1,6 +1,6 @@
 title: Luno crypto exchange phishing kit beb8d53
 description: |
-  Luno crypto exchange phishing kit that has a high entropy string set as the origin-trial value
+  Luno crypto exchange phishing kit that has a high entropy string set as the `origin-trial` value
 references:
   - https://urlscan.io/search/#hash%3Abeb8d53d9303a2e0a48b25798b83c677de595397e0e82b06ca43b89ed503c845
 detection:
