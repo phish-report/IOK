@@ -1,0 +1,12 @@
+title: USPS Phishing Kit fe63861b
+description: |
+  Detects a USPS phishing kit that calls out to Google's `optimize.js` library
+  with a specific Google Tag Manager ID, used across several domains.
+references:
+  - https://urlscan.io/result/eb515c96-1e02-4d48-a07f-6fe1d1590059
+  - https://urlscan.io/search/#hash%3Afe63861bd7405b1e4fcf585e9f0caf907f21116979d4d366384cb06606136216
+detection:
+  gtmID:
+    requests|contains: 'optimize.js?id=GTM-T35N9RL'
+
+  condition: gtmID
