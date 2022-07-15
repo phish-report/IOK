@@ -18,3 +18,5 @@ detection:
 
   amplitudeJSKey:
     js|contains: '132e62b5953ce8d568137d5887b6b7ab'
+    
+  condition: googleSiteVerificationKeyOne and googleSiteVerificationKeyTwo and amplitudeJSKey
