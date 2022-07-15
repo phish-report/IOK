@@ -63,6 +63,9 @@ func toInterfaceSlice(s []string) []interface{} {
 	return i
 }
 
+var Rules = map[string]sigma.Rule{}
+var RawRules = map[string][]byte{}
+
 func init() {
 	config, err := sigma.ParseConfig(config)
 	if err != nil {
@@ -81,6 +84,10 @@ func init() {
 		if rule.ID == "" {
 			rule.ID, _, _ = strings.Cut(filepath.Base(path), ".")
 		}
+
+		Rules[rule.ID] = rule
+		RawRules[rule.ID] = contents
+
 		evaluators = append(evaluators, evaluator.ForRule(rule, evaluator.WithConfig(config)))
 		return nil
 	})
