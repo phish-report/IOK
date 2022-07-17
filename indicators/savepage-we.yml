@@ -1,6 +1,14 @@
 title: Save Page WE website saver
+description: |
+  Save Page WE is a chrome extension used by phishers to clone a target website and save it as a single HTML file.
+  
+  Unlike HTTrack (another commonly used tool):
+  * It's a browser extension so doesn't require any additional tools to be installed.
+  * It saves pages as a single HTML file (with all assets embedded in it) which makes the resulting kit more portable and easier to deploy.
 references:
   - https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof
+related:
+  - httrack
 
 detection:
   cssComment:

@@ -1,5 +1,9 @@
 title: Cazanova phishing kit
-description: // TODO
+description: |
+  Cazanova is the alias of a prolific phishing kit creator.
+  Lucky for us, they like to sign their work by using `cazanova` for their cookie name rather than the default `PHPSESSID`, which makes it simple to identify their work.
+references:
+  - https://www.wmcglobal.com/blog/cazanova-morphine-kit-deep-dive
 
 detection:
   cazanovaCookie:

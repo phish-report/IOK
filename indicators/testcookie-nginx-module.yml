@@ -1,4 +1,6 @@
-title: testcookie NGINX
+title: testcookie NGINX anti-bot
+description: |
+  `testcookie-nginx-module` is a basic anti-bot mechanism using a JavaScript-based challenge to defeat simple analysis by sandboxes which don't evaluate JavaScript.
 references:
   - https://github.com/kyprizel/testcookie-nginx-module
   - https://blog.kwiatkowski.fr/?q=en/testcookie
