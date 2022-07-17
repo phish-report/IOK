@@ -1,0 +1,17 @@
+title: USPS Phishing Kit 9514901
+description: |
+  Detects a USPS phishing kit that uses the same fake tracking ID
+  on every phish.
+references:
+  - https://urlscan.io/result/eb515c96-1e02-4d48-a07f-6fe1d1590059
+  - https://urlscan.io/result/6f9262b2-7809-4000-b5d1-d89c90bd16ff
+  - https://urlscan.io/result/532bc1f5-319e-4b1d-abbb-d35057788e7a
+detection:
+
+  fakeTrackingID:
+    html|contains: '<span class="tracking-number"> US9514901185421</span>'
+
+  condition: fakeTrackingID
+
+tags:
+  - target.usps
