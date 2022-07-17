@@ -7,3 +7,5 @@ detection:
   image:
     html|contains: 'https://cdn.discordapp.com/attachments/818120722869911602/883999740071657542/nitro.png'
   condition: image
+tags:
+  - target.discord
