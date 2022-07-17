@@ -5,8 +5,8 @@ description: |
 detection:
   ogTags:
     html|contains:
-      - '<meta property="og:title" content="Testing Proves Its Worth With Successful Mars Parachute Deployment" />'
-      - '<meta property="og:description" content="Testing Proves Its Worth With Successful Mars Parachute Deployment" />'
+      - <meta property="og:title" content="Testing Proves Its Worth With Successful Mars Parachute Deployment">
+      - <meta property="og:description" content="Testing Proves Its Worth With Successful Mars Parachute Deployment" />
 
   newsArticle: # the HTML tags are also present on the original page so exclude some text from that article
     html|contains:
