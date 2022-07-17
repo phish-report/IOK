@@ -69,7 +69,7 @@ var RawRules = map[string][]byte{}
 func init() {
 	config, err := sigma.ParseConfig(config)
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to parse config: %w", err))
 	}
 
 	err = fs.WalkDir(indicators, ".", func(path string, d fs.DirEntry, err error) error {
@@ -79,7 +79,8 @@ func init() {
 		contents, _ := indicators.ReadFile(path)
 		rule, err := sigma.ParseRule(contents)
 		if err != nil {
-			panic(err)
+			panic(fmt.Errorf("failed to parse rule %s: %w", path, err))
+
 		}
 		if rule.ID == "" {
 			rule.ID, _, _ = strings.Cut(filepath.Base(path), ".")
