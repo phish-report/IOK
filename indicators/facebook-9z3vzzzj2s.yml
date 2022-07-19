@@ -1,0 +1,18 @@
+title: Facebook phishing kit displaying a faked post
+description: |
+  A Facebook phishing kit displaying a faked post
+references:
+  - https://urlscan.io/result/a6819830-5d19-427e-a366-f1f6a5121e06/
+
+detection:
+  analytics:
+    html|contains: 'G-9Z3VZZZJ2S'
+  authForm:
+    html|contains: '<form action="/auth/facebook" method="post" id="formm">'
+  passwordField:
+    html|contains: '<input id="pass-input" type="password" name="pass" placeholder="Hasło">'
+    
+  condition: analytics and authForm and passwordField
+
+tags:
+  - target.facebook
