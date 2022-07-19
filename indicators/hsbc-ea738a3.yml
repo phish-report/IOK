@@ -1,0 +1,20 @@
+title: HSBC phishing kit ea738a3
+
+description: |
+    HSBC phishing kit which uses the same fake login detected
+    HTML element across various domains.
+
+references:
+    - https://urlscan.io/result/ae98e500-1ff5-46f8-9cdc-3f433466bb2c/
+    - https://urlscan.io/result/aa72b513-8260-46e6-a431-0d6e496fc4e3/
+    - https://urlscan.io/result/ff7ef587-fa1c-4ad8-8258-caea477723b4/
+
+detection:
+
+    fakeLoginElement:
+      html|contains: '<p style="margin-top:15px;"> A login attempt was made in:<br>	Location: Bangkok, Thailand<br>	IP : 290.630.232.85 <br> If this was NOT your please verify your credentials.</p>'
+
+    condition: fakeLoginElement
+
+tags:
+  - target.hsbc
