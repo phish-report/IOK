@@ -12,7 +12,11 @@ references:
 detection:
 
     fakeLoginElement:
-      html|contains: '<p style="margin-top:15px;"> A login attempt was made in:<br>	Location: Bangkok, Thailand<br>	IP : 290.630.232.85 <br> If this was NOT your please verify your credentials.</p>'
+      html|contains|all:
+      - "A login attempt was made in:"
+      - "Location: Bangkok, Thailand"
+      - "IP : 290.630.232.85"
+      - "If this was NOT your please verify your credentials."
 
     condition: fakeLoginElement
 
