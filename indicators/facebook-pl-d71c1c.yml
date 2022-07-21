@@ -1,0 +1,32 @@
+title: Facebook Phishing Kit 7d71c1c
+description: |
+    Detects a Facebook phishing kit targetting 
+    Polish speaking users. Using the same login
+    form structure across all domains as well 
+    as using the same name for the logo file.
+    
+references:
+    - https://urlscan.io/result/4467573b-d13a-4f2c-85df-5dbce3de9eda
+    - https://urlscan.io/result/7d71c1c0-da74-41bf-b4c7-25e9ba421f1e
+    - https://urlscan.io/result/d4890e94-a7e6-4b9a-b4b2-fab8eaa3ccc3
+    - https://urlscan.io/result/dc6ff99f-d94c-4a7a-9337-af606fd6be21
+
+
+detection:
+
+    logo:
+      requests|contains: 'fb4.png'
+
+    loginElement:
+      html|contains|all:
+        - '<div class="loginbox">'
+        - '<input type="text" name="email" placeholder="Numer telefonu komÃ³rkowego lub adres e-mail"> <br>'
+				- '<input type="password" name="pass" placeholder="HasÅ‚o"> <br>'
+				- '<input type="submit" name="get" value="Zaloguj siÄ™"> <br>'
+   
+    condition: logo and loginElement
+
+tags:
+  - target.facebook
+  - target_country.poland
+
