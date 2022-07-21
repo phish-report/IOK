@@ -21,8 +21,8 @@ detection:
       html|contains|all:
         - '<div class="loginbox">'
         - '<input type="text" name="email" placeholder="Numer telefonu komÃ³rkowego lub adres e-mail"> <br>'
-	- '<input type="password" name="pass" placeholder="HasÅ‚o"> <br>'
-	- '<input type="submit" name="get" value="Zaloguj siÄ™"> <br>'
+        - '<input type="password" name="pass" placeholder="HasÅ‚o"> <br>'
+        - '<input type="submit" name="get" value="Zaloguj siÄ™"> <br>'
    
     condition: logo and loginElement
 
