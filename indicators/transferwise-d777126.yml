@@ -1,6 +1,7 @@
 title: Transferwise Phishing Kit d777126
 description: |
-    Transferwise phishing kit which uses the same sentry.io
+    Wise phishing kit which uses the same sentry.io
+
     API key across various domains.
 
 references:
