@@ -4,7 +4,8 @@ description: |
   JavaScript functions such as `decodeURIComponent` and `atob` in order
   to evade analysis.
   This helps defeat simple scanners which don't evaluate JavaScript.
-  
+related:
+  - hex-encoded-body
 references:
   - https://urlscan.io/result/f6387380-2258-4113-8375-0195ecd1e268
   
