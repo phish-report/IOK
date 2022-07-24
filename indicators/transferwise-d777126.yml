@@ -17,4 +17,5 @@ detection:
     condition: sentryAPICall
 
 tags:
-  - target.transferwise
+  - target.wise
+
