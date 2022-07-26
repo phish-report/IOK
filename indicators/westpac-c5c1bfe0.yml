@@ -12,18 +12,15 @@ references:
 detection:
 
     stylesheet:
-    requests|contains: '/front_end/front_end_files/000-000-0001combined.css.1a6232cd07874834478c928fa1f30b79eea8fe08.css'
-
-    stylesheet2:
-    requests|contains: '/front_end/front_end_files/000-0001combined.css.ad465e8be579042cb5c8ec3d4ebc745fbe87f2b4.css'
-
-    stylesheet3:
-    requests|contains: '/front_end/front_end_files/000-0001combined.css.b0cf37060ddf80c0f0adf1583668a8d44dfb5143.css'
+    requests|contains|all: 
+    - '/front_end/front_end_files/000-000-0001combined.css.1a6232cd07874834478c928fa1f30b79eea8fe08.css'
+    - '/front_end/front_end_files/000-0001combined.css.ad465e8be579042cb5c8ec3d4ebc745fbe87f2b4.css'
+    - '/front_end/front_end_files/000-0001combined.css.b0cf37060ddf80c0f0adf1583668a8d44dfb5143.css'
 
     shortcutIcon:
     html|contains: '/wbc/banking/Themes/Default/Desktop/WBC/Images/favicon.ico.23fb3f626712cf243b43f34a3e3a8e887b8e8250.ico'
 
-    condition: stylesheet and stylesheet2 and stylesheet3 and shortcutIcon
+    condition: stylesheet and shortcutIcon
 
 tags:
   - target.westpac
