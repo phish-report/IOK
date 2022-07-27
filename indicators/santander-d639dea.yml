@@ -1,0 +1,24 @@
+title: Santander Phishing Kit d639dea
+description: |
+    Detects a Santander phishing kit using the same stylesheet 
+    filename on each domain, also includes an indicator referring 
+    to a `div` element's `id` attribute as "shittymodal".
+    
+references:
+  - https://urlscan.io/result/9809712b-e35c-4f50-b972-79379c77ca22
+  - https://urlscan.io/result/214ae9cf-42b7-49a3-9cc7-5cf62b82cef0
+  - https://urlscan.io/result/1990ca0a-02a3-4f3f-8862-5945e4ec68ed
+  - https://urlscan.io/search/#hash%3Aaea43c26eb89854384a3eebecc68f997caa852529e1a55eeea466e9d0692a880
+  
+detection:
+
+  modalID:
+    html|contains: 'id="shittymodal"'
+
+  stylesheetName:
+    requests|contains: 'styles.d639dea2316e6d785b32.css'
+
+  condition: modalID and stylesheetName
+
+tags:
+  - target.santander
