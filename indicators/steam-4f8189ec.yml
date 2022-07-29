@@ -10,12 +10,12 @@ references:
 
 detection:
 
-  htmlContent:
-    html|contains|all: 
-      - '<p class="text">*Log in through the Steam service</p>'
-      - '<p class="sub">*mailguard accounts cannot participate in our games</p>'
+    htmlContent:
+      html|contains|all: 
+        - '<p class="text">*Log in through the Steam service</p>'
+        - '<p class="sub">*mailguard accounts cannot participate in our games</p>'
 
-  condition: htmlContent
+    condition: htmlContent
 
 tags:
   - target.steam
