@@ -11,15 +11,15 @@ references:
 
 detection:
 
-    stylesheet:
-      html|contains: "<link rel="stylesheet" href="styles.d234598b30cf55ae.css" media="all" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.d234598b30cf55ae.css"></noscript>"
+  stylesheet:
+    html|contains: '<noscript><link rel="stylesheet" href="styles.d234598b30cf55ae.css"></noscript>'
 
-    scriptContent:
-      html|contains|all:
-        - "<script src="runtime.b6fbf617c2a6ed40.js" type="module"></script>"
-        - "<script src="polyfills.ba7d2613d9af8d48.js" type="module"></script>"
+  scriptContent:
+    html|contains|all:
+      - '<script src="runtime.b6fbf617c2a6ed40.js" type="module"></script>'
+      - '<script src="polyfills.ba7d2613d9af8d48.js" type="module"></script>'
 
-    condition: stylesheet and scriptContent
+  condition: stylesheet and scriptContent
 
 tags:
   - target.bancosantafe
