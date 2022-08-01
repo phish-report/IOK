@@ -1,10 +1,9 @@
 title: UPS Phishing Kit 69b689e
 description: |
-    Detects a UPS phishing kit a fake parcel ID to lure victims in, 
-    additionally has a high entropy string that does not change
-    assigned as the `data-upstoken` attribute of a HTML element 
-    within the page, possibly left behind when the original UPS 
-    page was cloned. 
+    Detects a UPS phishing kit using a fake parcel ID to lure victims in, 
+    additionally has a high entropy string that does not change assigned 
+    as the `data-upstoken` attribute of a HTML element within the page, 
+    possibly left behind when the original UPS page was cloned. 
     
 references:
     - https://urlscan.io/result/24ecab33-02be-4213-9e94-e362f12f9357
