@@ -1,6 +1,6 @@
 title: Santander Phishing Kit 5d1468e
 description: |
-    Detects a Santander phishing kit targetting Polish victims,
+    Detects a Santander phishing kit targeting Polish victims,
     this kit uses the website cloner browser extension known as 
     [WebScrapBook](https://chrome.google.com/webstore/detail/webscrapbook/oegnpmiddfljlloiklpkeelagaeejfai?hl=en) in order to clone the original page.
     
