@@ -1,6 +1,6 @@
 title: Microsoft Tech Support Kit d94c3cf
 description: |
-    Detects a Microsoft tech support kit targetting 
+    Detects a Microsoft tech support kit targeting 
     Japanese speaking users. Using the same name for the warning
     audio file as well as the same class `name` attribute for the 
     banner elements.
