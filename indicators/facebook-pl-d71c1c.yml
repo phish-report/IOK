@@ -1,6 +1,6 @@
 title: Facebook Phishing Kit 7d71c1c
 description: |
-    Detects a Facebook phishing kit targetting 
+    Detects a Facebook phishing kit targeting 
     Polish speaking users. Using the same login
     form structure across all domains as well 
     as using the same name for the logo file.
