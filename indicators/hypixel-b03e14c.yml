@@ -19,7 +19,7 @@ detection:
       html|contains: 'checkout/update'
 
     craftAvatar:
-      request|contains: '7fe0e705f09c468784da02275aefab43?overlay'
+      requests|contains: '7fe0e705f09c468784da02275aefab43?overlay'
       
     condition: jsFile and checkoutUpdate and craftAvatar
 
