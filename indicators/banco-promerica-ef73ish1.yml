@@ -10,7 +10,7 @@ detection:
 
   images:
     html|contains|all:
-      - <div class="logo" ><img src="im/logoa.png" width="100%"  ></div>
+      - <div class="logo" ><img src="im/logoa.png" width="100%"   ></div>
       - <div class="desa"><img src="im/logob.png" width="100%" ></div>
       - <div class="fo"><img src="im/logoc.png" width="100%"   ></div>
 
