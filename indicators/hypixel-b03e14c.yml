@@ -1,0 +1,24 @@
+title: Hypixel Phishing Kit b03e14c
+description: |
+    Detects a Hypixel phishing kit being pushed in-game
+    as well as across Discord.
+    
+references:
+    - https://urlscan.io/result/c270c37c-89c1-41ab-9eed-1d974f92fdf0
+    - https://urlscan.io/result/ad5abd78-6d07-474e-b570-d64b739de56d
+
+detection:
+
+    jsFile:
+      requests|contains: 'assets/js/discord.js'
+    
+    checkoutUpdate:
+      html|contains: 'checkout/update'
+
+    hypixelAPIKey:
+      js|contains: 'b03e14ca-c771-40be-8451-8671fa3746cf'
+      
+    condition: jsFile and checkoutUpdate and hypixelAPIKey
+
+tags:
+  - target.hypixel
