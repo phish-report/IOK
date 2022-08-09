@@ -5,19 +5,25 @@ description: |
 references:
     - https://urlscan.io/result/31fcc1b0-fb7e-4947-94d3-1a4de1700954
     - https://urlscan.io/result/a4edc336-5315-471b-b1d6-4c2486a293fd
-
+    - https://urlscan.io/result/9fad07e2-cb91-4cef-b047-bb5f794eb8c2
+    - https://urlscan.io/result/c5c7ff3c-fa7c-47d9-a976-e00ea96b2a1c
+    - https://urlscan.io/result/62ccd072-f825-49a8-bb6e-74d74dd7f6c0
+    
 detection:
 
-    formID:
-      html|contains: 'id="formulario"'
+    dropDownDividerID:
+      html|contains: 'id="dropDownSelect1"'
 
     validationFunction:
       html|contains: 'soloNumeros'
 
     fakeSessionID:
-      html|contains: '#544eva7749D2SNGzC9GHcrUUaqinbv3Z2PLFKvxxmFNNsY6aQG72DmW'
+      html|contains: '#544eva77'
+    
+    fakeCompanyName:
+      html|contains: 'Teamsoft Soluciones'
 
-    condition: formID and validationFunction and fakeSessionID
+    condition: dropDownDividerID and validationFunction and fakeSessionID and fakeCompanyName
     
 tags:
   - target.microsoft
