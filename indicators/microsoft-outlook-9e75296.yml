@@ -9,7 +9,7 @@ references:
 detection:
 
     jsFunction:
-      requests|contains: 'soloNumeros'
+      html|contains: 'soloNumeros'
       
     logoFileName:
       html|contains: 'fond.png'
