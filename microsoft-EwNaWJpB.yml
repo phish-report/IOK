@@ -1,0 +1,25 @@
+title: Microsoft Phishing Kit EwNaWJpB
+description: |
+    Detects a Microsoft phishing kit in Spanish, targeting the citizens of Argentina.
+    
+references:
+    - https://urlscan.io/result/8024516d-703a-4a4c-93c2-611549bde820/
+
+detection:
+
+    form:
+      html|contains|all:
+        - <form action="sasas.php" method="POST">
+        - type="email" name="emil"
+        - id="clave" type="password" name="pss"
+        - img src="siii.jpg"
+
+    logo:
+      html|contains:
+        - src="222hotmail.jpg"
+
+    condition: form and logo
+
+tags:
+  - target.microsoft
+  - target_country.argentina
