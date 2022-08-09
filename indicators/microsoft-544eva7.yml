@@ -1,0 +1,23 @@
+title: Microsoft Phishing Kit 544eva7
+description: |
+    Detects a Microsoft phishing kit targeting Spanish speaking users.
+    
+references:
+    - https://urlscan.io/result/31fcc1b0-fb7e-4947-94d3-1a4de1700954
+    - https://urlscan.io/result/a4edc336-5315-471b-b1d6-4c2486a293fd
+
+detection:
+
+    formID:
+      html|contains: 'id="formulario"'
+
+    validationFunction:
+      html|contains: 'soloNumeros'
+
+    fakeSessionID:
+      html|contains: '#544eva7749D2SNGzC9GHcrUUaqinbv3Z2PLFKvxxmFNNsY6aQG72DmW'
+
+    condition: formID and validationFunction and fakeSessionID
+    
+tags:
+  - target.microsoft
