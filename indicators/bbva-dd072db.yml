@@ -1,6 +1,6 @@
 title: BBVA Phishing Kit dd072db
 description: |
-    Detects a Banco Bilbao Vizcaya Argentaria (BBVA) phishing kit targeting Spanish speaking users.
+    Detects a Banco Bilbao Vizcaya Argentaria (BBVA) phishing kit targeting Argentinian users.
     
 references:
     - https://urlscan.io/result/dec43513-7a12-4cfa-84c1-1a73b9fba8d5
@@ -19,3 +19,4 @@ detection:
 
 tags:
   - target.bbva
+  - target_country.argentina
