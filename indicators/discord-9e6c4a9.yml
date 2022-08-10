@@ -1,7 +1,8 @@
 title: Discord Hypesquad phishing kit strolly
 description: |
   Discord Hypesquad phishing kit containing a comment left behind by the supposed developer of the kit.
-  As well as generic images used across different versions of the kit.
+  As well as a unique nonce value that is present.
+  
 references:
   - https://urlscan.io/search/#hash%3Ae6054519e1271faf9134d92dc22e29fbba341275641596a9c32ed37a3c73905f
   - https://urlscan.io/search/#hash%3A5ee7eb3becab8cd3bf3cf095211f4d35041e9009bb1755771a3fa66aa3a75897
@@ -15,8 +16,9 @@ detection:
     
   nonceCSP:
     html|contains: 'nonce="MjE2LDE0MCwxNzgsMTgwLDY1LDEwOCwxNCwyMjQ="'
+    
   condition: developerSignature and nonceCSP
   
 tags:
   - target.discord
-  - threat_actor.strolly
+  - threatactor.strolly
