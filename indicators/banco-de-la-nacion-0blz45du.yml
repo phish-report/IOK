@@ -1,7 +1,7 @@
 title: Banco de la Nación Phishing Kit 0blz45du
 description: |
     Detects a Banco de la Nación phishing kit using a form action URL and a button ID that only appear in this kit.
-    Deployed often on replit.com.
+    Deployed often on `replit.com`.
 references:
   - https://urlscan.io/result/3d822399-1fe2-49fb-b989-7d3d976c7af9/
   - https://hb.redlink.com.ar/bna/login.htm
