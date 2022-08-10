@@ -11,11 +11,8 @@ detection:
     cloneTimestamp:
       requests|contains: '?v=1655293257536'
       
-    usernameLabelID:
-      html|contains: '47563B2825160654ADB2CC97CE152AF3'
-      
-    passwordLabelID:
-      html|contains: '951D27D1CD8413E25C1D61149F928D85'
+    passwordFieldName:
+      html|contains: 'name="senha"'
       
     exfilDestination:
       html|contains: '/atualiza'
