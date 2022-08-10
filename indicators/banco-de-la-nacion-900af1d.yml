@@ -1,0 +1,27 @@
+title: Banco de la República Phishing Kit 900af1d
+description: |
+    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on replit.com.
+    
+references:
+    - https://urlscan.io/result/900af1d9-a577-4041-90d3-3496ff4b3c41
+    - https://urlscan.io/result/496e059b-8dc4-43e9-b244-bfbf78612453
+    - https://urlscan.io/result/8daa21e0-c2af-4061-a0d9-22300100b1cc
+
+detection:
+
+    cssFiles:
+      html|contains|all:
+        - '2.d18bb301.chunk.css'
+        - 'main.8d29879f.chunk.css'
+
+    imageFileName:
+      requests|contains: 'selectArrowDown.b3a49a7d.svg'
+ 
+    exfilScript:
+      html|contains: 'action="index2.php"'
+   
+    condition: cssFiles and imageFileName and exfilScript
+
+tags:
+  - target.bancodelarepublica
+  - target_country.uruguay
