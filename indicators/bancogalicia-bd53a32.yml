@@ -1,7 +1,6 @@
 title: Banco Galicia Phishing Kit bd53a32
 description: |
-    Detects a Banco Galicia phishing kit deployed quite
-    oftenly on replit.com
+    Detects a Banco Galicia phishing kit deployed quite oftenly on `replit.com`.
     
 references:
     - https://urlscan.io/result/bd53a324-fc80-4bd5-801e-e9b3f10f3564
