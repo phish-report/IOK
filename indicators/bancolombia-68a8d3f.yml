@@ -1,7 +1,7 @@
 title: Bancolombia Phishing Kit 68a8d3f
 description: |
     Detects a Bancolombia phishing kit targeting Spanish speaking users.
-    Commonly deployed on replit.com.
+    Commonly deployed on `replit.com`.
     
 references:
     - https://urlscan.io/result/68a8d3f3-ecaa-4fec-a4bc-95ce3a1c1859
