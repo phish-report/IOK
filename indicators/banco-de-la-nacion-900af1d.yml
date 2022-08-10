@@ -1,6 +1,6 @@
 title: Banco de la República Phishing Kit 900af1d
 description: |
-    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on replit.com.
+    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on `replit.com`.
     
 references:
     - https://urlscan.io/result/900af1d9-a577-4041-90d3-3496ff4b3c41
