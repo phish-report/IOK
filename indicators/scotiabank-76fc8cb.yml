@@ -1,7 +1,7 @@
 title: Scotiabank Phishing Kit 76fc8cb
 description: |
     Detects a Bank of Nova Scotia (Scotiabank) phishing kit targeting Spanish speaking users.
-    Commonly deployed on replit.com.
+    Commonly deployed on `replit.com`.
     
 
 references:
