@@ -1,0 +1,27 @@
+title: Santander Phishing Kit 951d27d
+description: |
+    Detects a Santander phishing kit targeting Spanish speaking users.
+    
+references:
+    - https://urlscan.io/result/d7f3f389-d10b-4b83-a45c-ba7f8ec54035
+    - https://urlscan.io/result/1c849740-38f2-4442-94f8-bf2147cc587e
+    
+detection:
+
+    cloneTimestamp:
+      requests|contains: '?v=1655293257536'
+      
+    usernameLabelID:
+      html|contains: '47563B2825160654ADB2CC97CE152AF3'
+      
+    passwordLabelID:
+      html|contains: '951D27D1CD8413E25C1D61149F928D85'
+      
+    exfilDestination:
+      html|contains: '/atualiza'
+   
+
+    condition: cloneTimestamp and usernameLabelID and passwordLabelID and exfilDestination
+
+tags:
+  - target.santander
