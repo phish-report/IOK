@@ -1,6 +1,6 @@
 title: Bancolombia Phishing Kit aUwvKPIV
 description: |
-    Detects a phishing kit targetting Bancolombia, which is often deployed on replit.com. Usees api.ipify.org to fetch the victim's IP.
+    Detects a phishing kit targetting Bancolombia, which is often deployed on replit.com. Uses api.ipify.org to fetch the victim's IP.
     Harvested credentials are delivered into the scammer's Telegram channel.
     
 references:
