@@ -1,6 +1,6 @@
 title: Banco de la República Phishing Kit eec45a8
 description: |
-    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on replit.com. It uses `api.ipify.org` to fetch the victim's IP.
+    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on `replit.com`. It uses `api.ipify.org` to fetch the victim's IP.
     Harvested credentials are delivered into the scammer's Telegram channel.
     
 references:
