@@ -1,6 +1,6 @@
 title: Banco Promerica Phishing Kit ef73ish1
 description: |
-    Detects a Banco Promerica phishing kit with images and form action URL that only appears in this kit.
+    Detects a Banco Promerica phishing kit with images and form action URL that only appear in this kit.
     Deployed often on replit.com.
 references:
   - https://urlscan.io/result/cb8dedfa-8a9d-4da9-944f-e93edea6c38c/
