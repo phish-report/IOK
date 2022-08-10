@@ -1,6 +1,6 @@
 title: Banco de Galicia Phishing Kit vyk7k7oo
 description: |
-    Detects a different Banco de Galicia phishing kit deployed often on replit.com.
+    Detects a different Banco de Galicia phishing kit deployed often on `replit.com`.
     This kit uses JavaScript to dynamically load the login form HTML after you click on a SVG.
     
 references:
