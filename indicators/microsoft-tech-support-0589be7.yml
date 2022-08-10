@@ -11,10 +11,13 @@ detection:
   audioFileName:
     js|contains: 'wa0lDErtm0s.mp3'
     
+  otherAudioFileName:
+    html|contains: '0wa0rni0ng0.mp3'
+    
   getPhoneNumberFunction:
     html|contains: "getVariableFromURl('phone');"
     
-  condition: audioFileName and getPhoneNumberFunction
+  condition: (audioFileName and getPhoneNumberFunction) or (otherAudioFileName and getPhoneNumberFunction)
   
 tags:
   - target.microsoft
