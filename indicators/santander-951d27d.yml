@@ -18,7 +18,7 @@ detection:
       html|contains: '/atualiza'
    
 
-    condition: cloneTimestamp and usernameLabelID and passwordLabelID and exfilDestination
+    condition: cloneTimestamp and passwordFieldName and exfilDestination
 
 tags:
   - target.santander
