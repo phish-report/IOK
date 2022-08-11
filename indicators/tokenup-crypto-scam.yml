@@ -25,7 +25,7 @@ detection:
     blockchainIdentifier:
       html|contains: 'solana'
       
-    condition: (tokenupJsFile and settingsJsFile) or (tokenupJsFile and mintNumber) or (tokenupJsFile and blockchainIdentifier)
+    condition: tokenupJsFile and (settingsJsFile or mintNumber or blockchainIdentifier)
 
 tags:
   - cryptocurrency
