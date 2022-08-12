@@ -20,7 +20,7 @@ detection:
       - 2.d18bb301.chunk.css
       - main.8d29879f.chunk.css
 
-  condition: form and css and image
+  condition: (form and css and image) or (form and css)
 
 tags:
   - kit
