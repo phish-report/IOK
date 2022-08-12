@@ -11,6 +11,9 @@ detection:
   form:
     html|contains:
       - action="index2.php"
+      
+  image:
+    requests|contains: 'selectArrowDown.b3a49a7d.svg'
 
   css:
     html|contains|all:
