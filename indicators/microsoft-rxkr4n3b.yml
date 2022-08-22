@@ -29,7 +29,7 @@ detection:
 
     img:
       html|contains:
-        - img style="width: 101px;" src="imagen.jpg"
+        - 'img style="width: 101px;" src="imagen.jpg"'
 
     condition: title and css and form and input and img
 
