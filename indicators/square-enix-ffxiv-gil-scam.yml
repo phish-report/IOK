@@ -19,8 +19,11 @@ detection:
 
   loginPage:
     html|contains|all:
-      - 'FINAL FANTASY XIV, The Lodestone'
-      - 'action=\"[a-zA-Z0-9]{80}\.php\"'
+      - '.php" method="post"'
+      - 'Square Enix ID'
+      - 'Square Enix Password'
+      - 'One-Time Password'
+      - 'name="key_value"'
 
   condition: forumScam or loginPage
 
