@@ -12,19 +12,17 @@ references:
 
 detection:
 
-  originalThread:
-    html|contains: 'threads/429347-Healers-and-6.0-What-we-can-learn-from-AST-and-what-I-d-like-to-see-going-forward'
+  forumScam:
+    html|contains|all:
+      - 'threads/429347-Healers-and-6.0-What-we-can-learn-from-AST-and-what-I-d-like-to-see-going-forward'
+      - '300M Gil Raffle'
 
-  scamTitle:
-    html|contains: '300M Gil Raffle'
+  loginPage:
+    html|contains|all:
+      - 'FINAL FANTASY XIV, The Lodestone'
+      - 'action=\"[a-zA-Z0-9]{80}\.php\"'
 
-  loginTitle:
-    html|contains: 'FINAL FANTASY XIV, The Lodestone'
-
-  loginFormAction:
-    html|contains: 'action=\"[a-zA-Z0-9]{80}\.php\"'
-
-  condition: (originalThread and scamTitle) or (loginTitle and loginFormAction)
+  condition: forumScam or loginPage
 
 tags:
   - kit
