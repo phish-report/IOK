@@ -44,7 +44,7 @@ detection:
         - img src="ff/LOGO_ita.png" style="width:120px;"
         - img src="ff/lita.png" style="width:120px;"
 
-    condition: title and css and (form and inputs) and placeholders and logo
+    condition: all of them
 
 tags:
   - target.itauunibanco
