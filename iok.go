@@ -63,33 +63,37 @@ func toInterfaceSlice(s []string) []interface{} {
 	return i
 }
 
-var Rules = map[string]sigma.Rule{}
+var Rules = map[string]*evaluator.RuleEvaluator{}
 var RawRules = map[string][]byte{}
 
-func init() {
+func ParseRule(path string, contents []byte) (*evaluator.RuleEvaluator, error) {
 	config, err := sigma.ParseConfig(config)
 	if err != nil {
-		panic(fmt.Errorf("failed to parse config: %w", err))
+		return nil, fmt.Errorf("failed to parse config: %w", err)
+	}
+	rule, err := sigma.ParseRule(contents)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse rule %s: %w", path, err)
+	}
+	if rule.ID == "" {
+		rule.ID, _, _ = strings.Cut(filepath.Base(path), ".")
 	}
 
-	err = fs.WalkDir(indicators, ".", func(path string, d fs.DirEntry, err error) error {
+	return evaluator.ForRule(rule, evaluator.WithConfig(config)), nil
+}
+
+func init() {
+	err := fs.WalkDir(indicators, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d.IsDir() {
 			return err
 		}
 		contents, _ := indicators.ReadFile(path)
-		rule, err := sigma.ParseRule(contents)
-		if err != nil {
-			panic(fmt.Errorf("failed to parse rule %s: %w", path, err))
 
-		}
-		if rule.ID == "" {
-			rule.ID, _, _ = strings.Cut(filepath.Base(path), ".")
-		}
-
+		rule, err := ParseRule(path, contents)
 		Rules[rule.ID] = rule
 		RawRules[rule.ID] = contents
 
-		evaluators = append(evaluators, evaluator.ForRule(rule, evaluator.WithConfig(config)))
+		evaluators = append(evaluators, rule)
 		return nil
 	})
 	if err != nil {
