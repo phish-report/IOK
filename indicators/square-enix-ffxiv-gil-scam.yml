@@ -19,11 +19,9 @@ detection:
 
   loginPage:
     html|contains|all:
-      - '.php" method="post"'
+      - '.php"'
       - 'Square Enix ID'
       - 'Square Enix Password'
-      - 'One-Time Password'
-      - 'name="key_value"'
 
   condition: forumScam or loginPage
 
