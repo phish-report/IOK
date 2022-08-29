@@ -1,6 +1,7 @@
-title: Okta ("0ktapus") phishing kit
+title: Okta ("0ktapus"/"Scatter Swine") phishing kit
 references:
   - https://blog.group-ib.com/0ktapus
+  - https://sec.okta.com/scatterswine
   - https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise/
 description: |
   Okta is a Single Sign-On (SSO) provider used by many enterprises and this phishing kit targets those enterprises.
