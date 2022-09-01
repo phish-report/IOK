@@ -1,0 +1,26 @@
+title: Banco Atlántida Phishing Kit dxde4jyt
+description: |
+    Detects a Banco Atlántida phishing kit deployed often on replit.com.
+    
+references:
+    - https://urlscan.io/result/8d1ab6fe-25f5-4418-8afb-ea7cb29c293b
+    - https://urlscan.io/result/ed00d101-e91d-4013-bbc5-636f793c3168
+
+detection:
+
+    form:
+      html|contains|all:
+        - form class="sapUiForm sapUiFormEdit sapUiFormEdit-CTX sapUiFormLblColon sapUiFormM"
+        - action="load.php"
+
+    img:
+      html|contains|all:
+        - src="./ifs/logo_banco_single_red_gradient.svg"
+        - src="./ifs/logo002.svg"
+        - src="./ifs/logo_banco_single_white.svg"
+
+    condition: form and img
+
+tags:
+  - target.bancoatlantida
+  - target_country.honduras
