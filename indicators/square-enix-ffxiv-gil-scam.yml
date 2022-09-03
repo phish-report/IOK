@@ -17,13 +17,22 @@ detection:
       - 'threads/429347-Healers-and-6.0-What-we-can-learn-from-AST-and-what-I-d-like-to-see-going-forward'
       - '300M Gil Raffle'
 
-  loginPage:
+  loginPage1:
     html|contains|all:
-      - '.php"'
+      - '.php" method="post"'
+      - 'Square Enix ID'
+      - 'Square Enix Password'
+      - 'One-Time Password'
+      - 'name="key_value"'
+
+  loginPage2:
+    html|contains|all:
+      - '<form id="loginForm" name="login" method="post" action="'
+      - '.php">'
       - 'Square Enix ID'
       - 'Square Enix Password'
 
-  condition: forumScam or loginPage
+  condition: forumScam or loginPage1 or loginPage2
 
 tags:
   - kit
