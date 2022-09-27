@@ -1,0 +1,20 @@
+title: GOVUK Phishing Kit ea8f67e
+description: |
+    Detects a GOVUK phishing kit targeting citizens of the UK.
+    
+references:
+  - https://urlscan.io/result/ea8f67e9-d22b-4f14-b8f8-7f44a019100d
+    
+detection:
+
+  fakeMessage:
+    html|contains: 'You are eligible to receive a £400 non-repayable discount under the Energy Bills Support Scheme.'
+
+  antiVMScript:
+    requests|contains: 'm3d.js'
+
+  condition: fakeMessage and antiVMScript
+
+tags:
+  - target_country.unitedkingdom
+  - target.govuk
