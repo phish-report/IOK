@@ -19,11 +19,8 @@ detection:
 
     fakeSessionID:
       html|contains: '#544eva77'
-    
-    fakeCompanyName:
-      html|contains: 'Teamsoft'
 
-    condition: dropDownDividerID and validationFunction and fakeSessionID and fakeCompanyName
+    condition: dropDownDividerID and validationFunction and fakeSessionID
     
 tags:
   - target.microsoft
