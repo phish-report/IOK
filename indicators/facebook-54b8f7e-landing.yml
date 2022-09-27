@@ -12,7 +12,7 @@ detection:
   textContent: 
     html|contains|all:
       - 'Please Confirm Your Identity'
-      - 'Recent activity may have affected your account\'s security, so we\'ve locked it. we\'ll walk you through a few steps to confirm your identity and help you access your account.'
+      - "Recent activity may have affected your account's security, so we've locked it. we'll walk you through a few steps to confirm your identity and help you access your account."
 
   logoImage:
     requests|contains: 'okee.png'
