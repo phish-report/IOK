@@ -21,7 +21,7 @@ detection:
       html|contains: '#544eva77'
     
     fakeCompanyName:
-      html|contains: 'Teamsoft Soluciones'
+      html|contains: 'Teamsoft'
 
     condition: dropDownDividerID and validationFunction and fakeSessionID and fakeCompanyName
     
