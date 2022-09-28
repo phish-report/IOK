@@ -1,0 +1,33 @@
+title: Ethereum Wallet Drainer ea8f67e
+description: |
+    Detects a kit that drains a user's Ethereum Wallet by
+    using a fake NFT mint as the lure.
+    
+references:
+  - https://urlscan.io/result/ea8f67e9-d22b-4f14-b8f8-7f44a019100d
+    
+detection:
+  
+  imgSrc:
+    html|contains: 'src="//machinanft.first-presale.com/pic.jpg"'
+
+  fakeTimeElement:
+    html|contains: '<span id="timess">'
+
+  drainerSettings:
+    js|contains|all:
+        - 'const collectionInfo = {'
+        - 'socialMedia: {'
+   
+  drainerCollectionAddress:
+    js|contains: '0xB42E42c80f6af7b6Afd8877f4853f0bbC0eb3A43'
+   
+  alternateDrainerCollectionAddress:
+    js|contains: '0xf78Bf349211877E3B186f284E05a3b54D1DAF764'
+
+  condition: imgSrc and fakeTimeElement and drainerSettings and (drainerCollectionAddress or alternateDrainerCollectionAddress)
+
+tags:
+  - cryptodrainer
+  - cryptocurrency
+  - cryptocurrency.ethereum
