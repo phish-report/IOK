@@ -18,15 +18,9 @@ detection:
     js|contains|all:
         - 'const collectionInfo = {'
         - 'socialMedia: {'
-   
-  drainerCollectionAddress:
-    js|contains: '0xB42E42c80f6af7b6Afd8877f4853f0bbC0eb3A43'
-   
-  alternateDrainerCollectionAddress:
-    js|contains: '0xf78Bf349211877E3B186f284E05a3b54D1DAF764'
 
-  condition: imgSrc and fakeTimeElement and drainerSettings and (drainerCollectionAddress or alternateDrainerCollectionAddress)
-
+  condition: imgSrc and fakeTimeElement and drainerSettings
+  
 tags:
   - cryptodrainer
   - cryptocurrency
