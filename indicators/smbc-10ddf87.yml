@@ -10,7 +10,7 @@ references:
 detection:
 
   hiddenToken: 
-    html|contains: '
+    html|contains: 
         - 'name="_TOKEN"' 
         - 'value="224727341138306"'
 
