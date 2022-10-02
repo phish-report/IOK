@@ -1,6 +1,6 @@
-title: Daviplata Phishing Kit 067fef0
+title: Banco Davivienda Phishing Kit 067fef0
 description: |
-    Detects a Daviplata phishing kit.
+    Detects a Banco Davivienda phishing kit deployed often on replit.com.
 
 references:
   - https://urlscan.io/result/067fef0d-b8b5-4281-89d8-463fcf2dcc13
@@ -21,4 +21,5 @@ detection:
   condition: fakeLogo and otherFakeLogo and backlinkReference
 
 tags:
-  - target.daviplata
+  - target.bancodavivienda
+  - target_country.colombia
