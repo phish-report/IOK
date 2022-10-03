@@ -11,7 +11,7 @@ references:
 detection:
 
   verifyAPI:
-    html|contains: 'https://agvaggdgdgdgdfsgdsaf.herokuapp.com/verify.php?key='
+    html|contains: 'verify.php?key='
 
   divElement:
     html|contains: 'id="div-gpt-ad-1559171339966-0"'
