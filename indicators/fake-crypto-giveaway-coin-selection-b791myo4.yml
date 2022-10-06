@@ -1,0 +1,42 @@
+title: Fake crypto giveaway coin selection b791myo4
+description: |
+    Detects a scam giveaway landing page which claims to host a large cryptocurrency event.
+    Sometimes the scammer will pick a specific cryptocurrency to target, but in this case they decided to add a menu where the user can select a specific coin.
+
+references:
+    - https://urlscan.io/result/2d36df23-6af6-4315-b4fa-7540f59e37a0/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Choose a coin</title>
+
+    cssUrlencoded:
+      html|contains|all:
+        - link rel="stylesheet" href="Choose%20a%20coin_files/font.css"
+        - link rel="stylesheet" href="Choose%20a%20coin_files/style_v_12.css"
+
+    css:
+      html|contains|all:
+        - link rel="stylesheet" href="./Choose a coin_files/font.css"
+        - link rel="stylesheet" href="./Choose a coin_files/style_v_12.css"
+
+    classes:
+      html|contains|all:
+        - class="join-title"
+        - class="join-subtitle"
+        - class="join-buttons"
+        - class="join-button"
+
+    icon:
+      requests|contains:
+        - link rel="icon" type="image/png" href="images/fav.png"
+
+    condition: title and (cssUrlencoded or css) and classes and icon
+
+tags:
+  - cryptocurrency
+  - cryptocurrency.bitcoin
+  - cryptocurrency.ethereum
+  - cryptocurrency.doge
