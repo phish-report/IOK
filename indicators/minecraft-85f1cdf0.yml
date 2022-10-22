@@ -1,0 +1,27 @@
+title: Minecraft Phishing Kit 85f1cdf0
+description: |
+    Detects a Minecraft phishing kit that's being spread through Discord
+    
+references:
+    - https://urlscan.io/result/85f1cdf0-5a35-4162-a32f-605b527c1422
+    - https://urlscan.io/result/8a1cfa2f-d443-413f-97b4-d6265bb48abc
+     
+detection:
+
+    jsFile:
+      js|contains:
+        - 'xsts?userhash='
+        - '&xsts='
+        - '&xbl='
+        - '&accessToken=' # Query params that send data
+    
+    discordBackground:
+      requests|contains: 'https://cdn.mos.cms.futurecdn.net/my8AUCgUhKERqBBwdPQuXG.jpg'
+    
+    fakeCaptchaButton:
+      html|contains: '<button class="svelte-1ca0u07">I''m not a Robot</button>'
+
+    condition: jsFile and discordBackground and fakeCaptchaButton
+
+tags:
+  - target.minecraft
