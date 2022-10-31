@@ -90,6 +90,9 @@ func init() {
 		contents, _ := indicators.ReadFile(path)
 
 		rule, err := ParseRule(path, contents)
+		if err != nil {
+			return err
+		}
 		Rules[rule.ID] = rule
 		RawRules[rule.ID] = contents
 
