@@ -1,0 +1,29 @@
+title: Discord Bookmarklet Dyno 8ugjha6
+description: |
+    Detects a Discord verification phishing page which looks like the Dyno Discord bot. The page contains a bookmarklet which is a token grabber.
+    
+references:
+  - https://urlscan.io/search/#hash%3A086be06c3204b3a1183de6f43041da5fcaf2c556e8720e79e504038b697e2891
+  - https://urlscan.io/result/784796bd-e672-4c83-b4c6-c055041e027e/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Dyno</title>
+
+    header:
+      html|contains:
+        - Discord Verification
+
+    message:
+      html|contains|all:
+        - To gain access to this Discord server, drag the verify function to your bookmark
+        - Once there proceed to the Discord server which you want to verify in and click on
+        - verify function while on it, make sure you are using discord browser while doing
+        - To enable your bookmark bar press (CTRL+SHIFT+B)
+
+    condition: all of them
+
+tags:
+  - target.discord
