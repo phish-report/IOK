@@ -1,7 +1,10 @@
-title: Banco de la República Phishing Kit eec45a8
+title: Generic Latin America Bank Phishing Kit c419e0d
 description: |
-    Detects a phishing kit targeting Banco de la República (eBROU), which is often deployed on `replit.com`. It uses `api.ipify.org` to fetch the victim's IP.
-    Harvested credentials are delivered into the scammer's Telegram channel.
+    Detects a phishing kit targeting banks for Latin America, 
+    these kits are often deployed on `replit.com`. 
+    It uses `api.ipify.org` to fetch the victim's IP.
+    Harvested credentials are delivered into the scammer's Telegram channel
+    through the use of the `sax.js` script file.
     
 references:
     - https://urlscan.io/result/eec45a86-7b2e-4924-9d2a-70164653692e/
@@ -14,9 +17,6 @@ detection:
         - '$("#ip")'
         - 'id="gfg"'
         - 'id="address"'
-
-    imageFileName:
-      requests|contains: 'selectArrowDown.b3a49a7d.svg'
  
     formFunction:
       html|contains: 'onsubmit="return sender()"'
@@ -24,8 +24,4 @@ detection:
     scriptFile:
       html|contains: 'src="js/sax.js"'
    
-    condition: ipDisplay and imageFileName and formFunction and scriptFile
-
-tags:
-  - target.bancodelarepublica
-  - target_country.uruguay
+    condition: ipDisplay and formFunction and scriptFile
