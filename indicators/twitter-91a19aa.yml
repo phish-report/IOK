@@ -17,4 +17,6 @@ detection:
         - 'action="login.php"'
 
     condition: pageFavicon and formDefinition
-    
+   
+tags:
+  - target.twitter
