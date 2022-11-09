@@ -14,3 +14,6 @@ detection:
       js|contains: 'urcheckacstate'
 
     condition: jsCode and localStorageItem
+
+tags:
+  - target.etherscan
