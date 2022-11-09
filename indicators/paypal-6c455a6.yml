@@ -1,0 +1,22 @@
+title: Paypal Phishing Kit 6c455a6
+description: |
+    Detects a Paypal phishing kit.
+    
+references:
+    - https://urlscan.io/result/6c455a62-1533-49d8-ae6d-db0905cc779f
+    
+detection:
+
+    exfilPHPScript:
+      html|contains: 'login.php'
+
+    csrfToken:
+      html|contains: 'p02PG7qTPOzRbBlVOVYcIZp207FMD847ffoS0='
+     
+    clonedNonce:
+      html|contains: 'OdHJON702gbbVy4cAFWxaboMpVOk5muI1jhED3XwaB6eOIPN'
+
+    condition: exfilPHPScript and csrfToken and clonedNonce
+
+tags:
+  - target.paypal
