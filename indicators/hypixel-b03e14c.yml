@@ -9,23 +9,26 @@ references:
     - https://urlscan.io/result/3da7d344-595b-4c13-8db8-07e1b61ea387
     - https://urlscan.io/result/16296181-11c8-4017-ad47-c2afcb97a647
     - https://urlscan.io/result/e71459d6-a20b-4a40-bf1a-aa4d877d385d
+    - https://urlscan.io/result/620c191f-428f-4751-a4c9-eb6c722e4a49
+    - https://urlscan.io/result/02c0be5f-aa80-4ca7-ae73-f26ce153b0cc
+    - https://urlscan.io/result/65956318-75be-4f19-8493-6b94e51c4925
      
 detection:
 
-    jsFile:
-      requests|contains: 'parseurl.js'
-    
-    checkoutUpdate:
-      html|contains: 'checkout/update'
+    formStructure:
+      html|contains|all:
+        - '<div class="username-container">'
+        - '<input id="inputBoxID" type="text" placeholder="Username" name="ign" class="username-input" autocorrect="off" autocapitalize="off" spellcheck="false">'
+        - '<div class="username-button">'
+        - '<input id="continueButton" type="submit" value="Continue" class="btn btn-large btn-success">'
+        - '<div class="clearfix"></div>'
+        
+    quantityElement:
+      html|contains: '<td style="width:10%;"><input type="text" name="quantity[2755361]" value="1" class="quantity" disabled="disabled"></td>'
+     
+    alternateQuantityElement:
+      html|contains: '<td style="width:10%;"><input type="text" name="quantity[540085]" value="1" class="quantity" disabled="disabled"></td>'
 
-    craftAvatar:
-      requests|contains: '7fe0e705f09c468784da02275aefab43?overlay'
-    
-    nullMinecraftDataRequests:
-      requests|contains: 'api.minetools.eu/uuid/null'
-      requests|contains: 'minotar.net/avatar/null'
-
-    condition: jsFile and checkoutUpdate and (craftAvatar or nullMinecraftDataRequests)
-
+    condition: formStructure or quantityElement or alternateQuantityElement
 tags:
   - target.hypixel
