@@ -20,3 +20,6 @@ detection:
       js|contains: 'tanggallengkap'
 
     condition: fakeCaseNumber and exfilPHPScript and fullDateJSVariable
+
+tags:
+  - target.facebook
