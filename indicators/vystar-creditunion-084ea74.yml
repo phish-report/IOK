@@ -18,3 +18,6 @@ detection:
       html|contains: 'footer.copyright'
 
     condition: fakeRoutingID and pageTitle and footerCopyright
+
+tags:
+  - target.vystarcu
