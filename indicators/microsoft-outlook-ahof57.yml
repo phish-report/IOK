@@ -1,4 +1,4 @@
-title: Microsoft Outlook ahoF57
+title: Microsoft Outlook Phishing Kit ahoF57
 description: |
     Detects a phishing kit targeting Microsoft Outlook. Users are being tricked into entering their Microsoft credentials into a fake form. This kit targets Spanish speaking users.
     Found as a result of this kit being deployed on Replit.
