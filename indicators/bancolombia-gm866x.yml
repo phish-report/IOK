@@ -1,4 +1,4 @@
-title: bancolombia GM866x
+title: Bancolombia GM866x
 description: |
     Detects a phishing kit targeting Bancolombia with a simple centered login form.
     This was detected as a result of this kit being deployed on Replit.
