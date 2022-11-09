@@ -23,5 +23,6 @@ detection:
     condition:  Bip39JsFile and Bip39FormSubmit and walletIdentifier
 
 tags:
-  - cryptocurrency
-  - cryptocurrency.exodus
+  - kit
+  - target.exodus
+  - target_type.cryptocurrency
