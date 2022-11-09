@@ -1,0 +1,34 @@
+title: Microsoft Outlook ahoF57
+description: |
+    Detects a phishing kit targeting Microsoft Outlook. Users are being tricked into entering their Microsoft credentials into a fake form. This kit targets Spanish speaking users.
+    Found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/142e470f-9579-4190-a4a0-9cae5f61df9f/
+
+detection:
+
+    img:
+      html|contains:
+        - img src="imagen.jpg"
+
+    css:
+      html|contains:
+        - link rel="stylesheet" type="text/css" href="forma.css"
+
+    form:
+      html|contains:
+        - form action="conexion.php" method="post"
+
+    submitButton:
+      html|contains:
+        - input class="boton" type="submit" value="Siguiente"
+
+
+    condition: img and css and form and submitButton
+
+tags:
+  - kit
+  - target.microsoft
+  - target.microsoft_outlook
