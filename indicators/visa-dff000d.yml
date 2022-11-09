@@ -19,3 +19,7 @@ detection:
       html|contains: 'vP5T9ujrM8fAffJstc4FNoZGFOZ0'
 
     condition: hiddenFormCredentialID and hiddenFormIssuerID and hiddenTransactionID
+
+tags:
+  - target.visa
+  - target_country.uae
