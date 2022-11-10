@@ -5,6 +5,8 @@ description: |
 references:
     - https://urlscan.io/result/8d1ab6fe-25f5-4418-8afb-ea7cb29c293b
     - https://urlscan.io/result/ed00d101-e91d-4013-bbc5-636f793c3168
+    - https://urlscan.io/result/ebcc8d44-337f-4648-964a-d957d9c4acba
+    - https://urlscan.io/result/d9673b15-1867-4c76-8769-da48ed3c2c33
 
 detection:
 
@@ -15,9 +17,9 @@ detection:
 
     img:
       html|contains|all:
-        - src="./ifs/logo_banco_single_red_gradient.svg"
-        - src="./ifs/logo002.svg"
-        - src="./ifs/logo_banco_single_white.svg"
+        - logo_banco_single_red_gradient.svg"
+        - logo002.svg
+        - logo_banco_single_white.svg
 
     condition: form and img
 
