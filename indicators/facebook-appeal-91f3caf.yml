@@ -13,7 +13,7 @@ detection:
   exfilCode:
     js|contains|all: 
         - 'desk-meta'
-        - '/api/activity/2'
+        - '/api/activity'
         - 'mpassword.php'
         - 'Rahmetli i ri'
 
