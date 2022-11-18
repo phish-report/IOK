@@ -1,0 +1,47 @@
+title: Microsoft Phishing Kit ZE3RNX
+description: |
+    Detects a phishing kit targeting Microsoft. The page has a simple form that is different from Microsoft's in order to prevent getting easily detected. It's in Spanish and asks for your credentials and PIN code, after which you are redirected to Outlook.
+    This was found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/62d03c4b-3678-461b-8427-eabb920eff1f/
+    - https://urlscan.io/result/cb72d5d4-926e-4ff5-ad56-aebad17f0739/
+    - https://urlscan.io/result/08d76348-c121-479d-bda7-264fe090a66d/
+    - https://urlscan.io/result/e368314f-ce52-4949-adaf-2db945778a04/
+    - https://urlscan.io/result/b5dede6d-458e-4479-8929-3523babcd562/
+    - https://urlscan.io/result/8fe6cdd5-7ccd-4f03-b11e-2080d64847e6/
+    - https://urlscan.io/result/29a61b4d-8d44-4bee-a344-488cce9f616e/
+    - https://urlscan.io/result/04ada987-3457-43b6-8648-33fbe56ab575/
+    - https://urlscan.io/result/5fced3f7-d1eb-47a2-b2b5-e75f51b91e08/
+    - https://urlscan.io/result/7a61fb9a-d8e1-4fc0-9f74-d789b9d4ce86/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Inicio</title>
+
+    css:
+      html|contains|all:
+        - styles.css">
+        - min.css">
+
+    img:
+      html|contains:
+        - tlo.png" alt="">
+
+    form:
+      html|contains:
+        - id="contenido1" method="post" class="contact-form"
+
+    submit:
+      html|contains:
+        - button id="bnts" type="submit">Iniciar Sesión</button
+
+
+    condition: title and css and img and form and submit
+
+tags:
+  - kit
+  - target.microsoft
