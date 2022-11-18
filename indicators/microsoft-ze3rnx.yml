@@ -33,7 +33,7 @@ detection:
 
     form:
       html|contains:
-        - id="contenido1" method="post" class="contact-form"
+        - method="post" class="contact-form"
 
     submit:
       html|contains:
