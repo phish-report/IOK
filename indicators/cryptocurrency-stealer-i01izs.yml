@@ -1,0 +1,29 @@
+title: Cryptocurrency Stealer i01Izs
+description: |
+    Detects a poorly designed cryptocurrency stealer phishing kit.
+
+
+references:
+    - https://urlscan.io/result/e7af4d11-8a41-4a9d-b04f-55da0bf77b44/
+    - https://urlscan.io/result/e7af4d11-8a41-4a9d-b04f-55da0bf77b44/
+    - https://urlscan.io/result/b17bb7c3-b967-4fed-868a-95ee7b135b49/
+    - https://urlscan.io/result/be6765ee-29ee-452e-838f-0f6bef2e0f07/
+    - https://urlscan.io/result/df207f32-6bef-4bcd-bc00-625d04b5ac2b/
+    - https://urlscan.io/result/ca20ce05-17e3-4418-9401-3972e403725d/
+
+detection:
+
+    title:
+      html|contains:
+        - <title> Smart fix for easy wallet procedures</title>
+
+    favicon:
+      html|contains:
+        - link rel="shortcut icon" type="image/x-icon" href="../walletsconnectvalidator.net/images/walletconnect-logo.png"
+
+
+    condition: title and favicon
+
+tags:
+  - kit
+  - cryptocurrency
