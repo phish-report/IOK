@@ -1,0 +1,31 @@
+title: Banco Agrario de Colombia Phishing Kit dWzjXc
+description: |
+    Detects a phishing kit targeting Banco Agrario de Colombia.
+    This was found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://ebanking.bancoagrario.gov.co/BA.ICBanking.WebUI/
+    - https://urlscan.io/result/e157f0ff-a6fe-45aa-8900-a0c8730d3272/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Banco Agrario de Colombia</title>
+
+    form:
+      html|contains:
+        - form method="post" action="index2.php" onsubmit="javascript:return WebForm_OnSubmit();" id="ctl01"
+
+    css:
+      html|contains:
+        - link rel="stylesheet" type="text/css" href="https://digital.bancoagrario.gov.co:443/sdk/stylesheets/prismaWeb.css?v=7.0.995&amp;_=1640181081"
+
+
+    condition: title and form and css
+
+tags:
+  - kit
+  - target.banco_agrario_de_colombia
+  - target_country.colombia
