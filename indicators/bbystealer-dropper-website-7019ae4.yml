@@ -1,6 +1,15 @@
 title: BbyStealer Dropper Website 7019ae4
 description: |
     Detects a BbyStealer dropper website.
+    
+    BbyStealer is a JavaScript-based information 
+    stealer created by a threat actor called 'brunxkd'.
+    
+    It usually comes packed as an executable or archive file
+    on fake video game websites (which this rule should detect), 
+    these URLs are spread by users of this stealer (or compromised accounts) 
+    via Discord messages asking victims to 'test' their game for them, 
+    as they masquerade as a 'game developer'.
 
 references:
     - https://urlscan.io/result/7019ae4a-afdd-48c3-bd08-40027c092910
