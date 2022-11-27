@@ -1,6 +1,6 @@
 title: BbyStealer Dropper Website aeed70a
 description: |
-    Detects a BbyStealer Dropper website.
+    Detects a BbyStealer dropper website.
 
 references:
     - https://urlscan.io/result/aeed70a9-ed4e-4577-8a88-e0d679411c6f
