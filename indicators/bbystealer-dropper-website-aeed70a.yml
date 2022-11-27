@@ -5,7 +5,7 @@ description: |
     BbyStealer is a JavaScript-based information 
     stealer created by a threat actor called 'brunxkd'.
     
-    It usually comes packed as an executable or archive file
+    It usually comes packed as an executable (standalone or in an archive)
     on fake video game websites (which this rule should detect), 
     these URLs are spread by users of this stealer (or compromised accounts) 
     via Discord messages asking victims to 'test' their game for them, 
