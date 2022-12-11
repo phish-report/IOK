@@ -16,4 +16,5 @@ detection:
     condition: jsCode and localStorageItem
 
 tags:
+  - kit
   - target.etherscan
