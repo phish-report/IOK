@@ -1,4 +1,4 @@
-title: Facebook Appeal Form Phishing 91f3caf
+title: Facebook Appeal Form Phishing Kit 91f3caf
 description: |
     Detects a fake Facebook appeal form, that 
     phishes for credentials, the kit was 
@@ -30,4 +30,5 @@ detection:
   condition: exfilCode and facebookLogo and appealForm
   
 tags:
+  - kit
   - target.facebook
