@@ -21,7 +21,8 @@ detection:
   condition: pageTitle and hiddenInputs
 
 tags:
-   - target.arkinvestment
-   - cryptocurrency
-   - cryptocurrency.bitcoin
-   - cryptocurrency.ethereum
+  - kit
+  - target.arkinvestment
+  - cryptocurrency
+  - cryptocurrency.bitcoin
+  - cryptocurrency.ethereum
