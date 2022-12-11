@@ -20,4 +20,5 @@ detection:
     condition: kitAssetsTimestamp and validationScript and exfilPHPScript
 
 tags:
+  - kit
   - target.credicard
