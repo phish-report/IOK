@@ -19,4 +19,5 @@ detection:
     condition: pageFavicon and formDefinition
    
 tags:
+  - kit
   - target.twitter
