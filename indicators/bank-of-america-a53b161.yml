@@ -21,5 +21,6 @@ detection:
     condition: exfilPHPScript and csrfToken and fakeSecurityPopupText
 
 tags:
+  - kit
   - target.bankofamerica
   - target_country.usa
