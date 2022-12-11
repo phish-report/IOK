@@ -38,4 +38,5 @@ detection:
     condition: jsFile and favicon and ((discordBackground and fakeCaptchaButton) or (linkAccountButton))
 
 tags:
+  - kit
   - target.minecraft
