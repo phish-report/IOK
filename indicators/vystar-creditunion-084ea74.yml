@@ -20,4 +20,5 @@ detection:
     condition: fakeRoutingID and pageTitle and footerCopyright
 
 tags:
+  - kit
   - target.vystarcu
