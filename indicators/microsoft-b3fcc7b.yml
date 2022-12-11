@@ -20,4 +20,5 @@ detection:
     condition: hiddenFormID and formElementIDs
 
 tags:
+  - kit
   - target.microsoft
