@@ -22,4 +22,5 @@ detection:
     condition: fakeCaseNumber and exfilPHPScript and fullDateJSVariable
 
 tags:
+  - kit
   - target.facebook
