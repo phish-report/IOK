@@ -43,6 +43,7 @@ detection:
     condition: title and (cssUrlencoded or css) and classes and (icon or backgroundUrl)
 
 tags:
+  - kit
   - cryptocurrency
   - cryptocurrency.bitcoin
   - cryptocurrency.ethereum
