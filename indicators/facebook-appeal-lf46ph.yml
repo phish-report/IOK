@@ -12,10 +12,9 @@ references:
 
 detection:
 
-    protection:
-      html|contains|all:
-        - function mousedwn(e)
-        - window.addEventListener("keydown",function(e)
+    caseNumber:
+      html|contains:
+        - Case Number: <a>#1008501933214</a>
 
     title:
       html|contains:
@@ -31,7 +30,7 @@ detection:
         - form action="process.php?button_location=settings&amp;button_name=addpay" method="POST"
 
 
-    condition: protection and title and dateGenerator and form
+    condition: caseNumber and title and dateGenerator and form
 
 tags:
   - kit
