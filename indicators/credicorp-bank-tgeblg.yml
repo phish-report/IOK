@@ -12,10 +12,9 @@ references:
 
 detection:
 
-    headerCapitalization:
+    csrf:
       html|contains|all:
-        - meta http-equiv="CACHE-CONTROL" content="NO-CACHE"
-        - meta http-equiv="PRAGMA" content="NO-CACHE"
+        - name="SESSION_CSRF_TOKEN" tabindex="0" lang="es" id="loginToken" value="0f234c429f530238b63c6793ca994d0c85c6f37b"
 
     dojoJS:
       html|contains:
@@ -30,7 +29,7 @@ detection:
         - 'form data-dojo-attach-point="containerNode" data-dojo-attach-event="onreset:_onReset,onsubmit:_onSubmit" name="frmLogin" lang="es" id="frmLogin" method="post" action="sg1.php" accept-charset="UTF-8" widgetid="frmLogin" style="margin: 0px;"'
 
 
-    condition: headerCapitalization and dojoJS and title and form
+    condition: csrf and dojoJS and title and form
 
 tags:
   - kit
