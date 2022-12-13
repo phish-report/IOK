@@ -14,7 +14,7 @@ detection:
 
     caseNumber:
       html|contains:
-        - Case Number: <a>#1008501933214</a>
+        - "Case Number: <a>#1008501933214</a>"
 
     title:
       html|contains:
