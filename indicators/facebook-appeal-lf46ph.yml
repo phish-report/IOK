@@ -1,0 +1,37 @@
+title: Facebook Appeal Phishing Kit lf46pH
+description: |
+    Detects a phishing kit targeting Facebook by tricking users into filling out a fake Community Standards violation appeal form.
+
+
+references:
+    - https://urlscan.io/result/93543e89-756e-4baa-8201-72d75943b421/
+    - https://urlscan.io/result/bea1dc69-a55c-4d5d-a2bd-ca6da51bafa7/
+    - https://urlscan.io/result/b998e7ed-92e8-45ef-af4c-1f5fc38fb968/
+    - https://urlscan.io/result/cf35e2a2-e4cd-4ff3-a573-f900bfb18f95/
+    - https://urlscan.io/search/#hash%3Af467a3a908fdedcb8af1cfb80bed6f6e990b021945ad10247f2b94294ffcbb0f
+
+detection:
+
+    caseNumber:
+      html|contains:
+        - "Case Number: <a>#1008501933214</a>"
+
+    title:
+      html|contains:
+        - <title>Restrictions Information</title>
+
+    dateGenerator:
+      html|contains|all:
+        - var tanggallengkap = new String();
+        - var namahari = ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
+
+    form:
+      html|contains:
+        - form action="process.php?button_location=settings&amp;button_name=addpay" method="POST"
+
+
+    condition: caseNumber and title and dateGenerator and form
+
+tags:
+  - kit
+  - target.facebook
