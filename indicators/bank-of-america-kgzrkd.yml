@@ -6,6 +6,7 @@ description: |
 
 references:
     - https://urlscan.io/result/928c09f2-1a08-4a13-a76e-4c8c5e741063/
+    - https://urlscan.io/result/3377f34c-fa5a-4171-8ea4-6501c3b70c9b/
 
 detection:
 
@@ -16,7 +17,7 @@ detection:
     css:
       html|contains|all:
         - .fondo{	background:url(prin.png);	background-repeat:no-repeat;	}
-        - .Sign #button:hover{background:url(BotonAzul.png)}
+        - ".Sign #button:hover{background:url(BotonAzul.png)}"
 
     form:
       html|contains:
