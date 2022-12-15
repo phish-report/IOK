@@ -3,8 +3,6 @@ title: Solana cryptocurrency wallet drainer - tokenup
 description: |
     Detects a Solana cryptocurrency wallet drainer that fakes the number
     of minted NFTs to initiate Fear of Missing Out (FOMO) against the victim.
-
-author: iamdeadlyz
     
 references:
     - https://urlscan.io/search/#filename%3A%22tokenup.js%22
