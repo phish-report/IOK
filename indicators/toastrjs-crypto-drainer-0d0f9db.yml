@@ -11,13 +11,10 @@ detection:
     fileName:
       requests|contains: 'toastr.js'
 
-    dataExfiltrationC2: 
-      js|contains: 'https://bootcs.com/gsql/'
-
     faviconSrc:
       html|contains: 'bootcs.com/fav.ico'
 
-    condition: fileName and dataExfiltrationC2 and faviconSrc
+    condition: fileName and faviconSrc
 
 tags:
   - cryptocurrency
