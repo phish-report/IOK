@@ -19,14 +19,9 @@ references:
 
 detection:
 
-    css:
-      html|contains|all:
-        - link rel="stylesheet" href="css/normalize.min.css"
-        - link rel="stylesheet" data-href="https://fonts.googleapis.com/css?family=Rubik:400,700&amp;display=swap"
-
-    favicon:
+    googleTagManager:
       html|contains:
-        - link rel="shortcut icon" href="/static/favicon-16x16.png"
+        - 'script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-P3PQJJC"'
 
     title:
       html|contains:
@@ -37,7 +32,7 @@ detection:
         - form class="css-f1fhd9" action="db/loginStep1.php" method="POST"
 
 
-    condition: css and favicon and title and form
+    condition: googleTagManager and title and form
 
 tags:
   - kit
