@@ -20,8 +20,12 @@ detection:
       html|contains:
         - form action="send.php" method="post" id="form1" onkeypress="return evalEnter(event);" autocomplete="off"
 
+    csrf:
+      html|contains:
+        - input name="__RequestVerificationToken" type="hidden" value="NOkPDuCJE_NXUBMT9OQG-KhVO3-R8Uruo-giLM1tLPZAsdDMuxuWaFsp-kpbIt1CHFjZx6z644GVwxBiB9gp6U0zaZWoM_pAGYsQZLEfUM01"
 
-    condition: malformedHTML and banner and form
+
+    condition: malformedHTML and banner and form and csrf
 
 tags:
   - kit
