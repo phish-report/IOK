@@ -15,10 +15,13 @@ detection:
       html|contains:
         - <title>Banco de Crédito BCP</title>
 
-    css:
-      html|contains|all:
-        - link href="./data/style.css" rel="stylesheet"
-        - link href="./data/main.css" rel="stylesheet"
+    originTrialToken:
+      html|contains:
+        - meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"
+
+    uniqueTextFile:
+      html|contains:
+        - script type="text/javascript" async="" src="./data/f.txt"
 
     form:
       html|contains:
@@ -29,7 +32,7 @@ detection:
         - 'background-image: url(./data/bcpFondoLogin.jpg);'
 
 
-    condition: title and css and form and backgroundImage
+    condition: title and originTrialToken and uniqueTextFile and form and backgroundImage
 
 tags:
   - kit
