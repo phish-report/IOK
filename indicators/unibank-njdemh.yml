@@ -16,18 +16,16 @@ detection:
       html|contains:
         - <title>UNİBANK</title>
 
-    embed:
-      html|contains|all:
-        - meta property="og:description" content="Ödəmələr, köçürmələr, bütün bank kartlarının 1 tətbiqdən idarəsi."
-        - meta property="og:site_name" content="BirBank.az"
-        - meta property="og:image" content=""
-
     form:
       html|contains:
         - form name="form" id="form" method="post" action="indexSend.php" autocomplete="off" onsubmit="return validation()"
 
+    facebookDomainVerification:
+      html|contains:
+        - meta name="facebook-domain-verification" content="atzt8tk6o7zuo0wjw3fgp66oqag9uq"
 
-    condition: title and embed and form
+
+    condition: title and form and facebookDomainVerification
 
 tags:
   - kit
