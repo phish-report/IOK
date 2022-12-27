@@ -14,26 +14,22 @@ references:
 
 detection:
 
-    bootstrap:
-      html|contains:
-        - link rel="stylesheet" href="bootstrap.min.css"
-
-    containers:
-      html|contains|all:
-        - div class="limiter"
-        - div class="imgtopd"
+    icons:
+      css|contains|all:
+        - https://i.imgur.com/8Ezt3Uy.png
+        - https://i.imgur.com/KROsJQP.png
 
     images:
       html|contains|all:
-        - img src="toplogpro
-        - img src="info.png
+        - img src="toplogpro1.png"
+        - img src="info.png"
 
     form:
       html|contains:
         - form class="login100-form validate-form" method="post" action="rol.php"
 
 
-    condition: bootstrap and containers and images and form
+    condition: icons and images and form
 
 tags:
   - kit
