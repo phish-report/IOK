@@ -10,9 +10,6 @@ references:
 
 detection:
 
-  verifyAPI:
-    html|contains: 'verify.php?key='
-
   divElement:
     html|contains: 'id="div-gpt-ad-1559171339966-0"'
     
@@ -23,7 +20,7 @@ detection:
     html|contains: '20222022 Solomid Corporation'
 
 
-  condition: verifyAPI and divElement and cssFile and fakeText
+  condition: divElement and cssFile and fakeText
 
 tags:
   - target.discord
