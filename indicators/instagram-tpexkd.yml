@@ -12,10 +12,6 @@ references:
 
 detection:
 
-    fontAwesome:
-      html|contains:
-        - script src="https://kit.fontawesome.com/64d58efce2.js"
-
     icon:
       html|contains:
         - link rel="icon" type="image/png" href="form/img/logom.png"
@@ -29,9 +25,10 @@ detection:
         - class="signin-signup"
         - class="sign-in-form"
         - class="inputsevindk"
+        - class="yasinbaykam
 
 
-    condition: fontAwesome and icon and logo and classes
+    condition: icon and logo and classes
 
 tags:
   - kit
