@@ -30,15 +30,19 @@ type Input struct {
 }
 
 func GetMatches(input Input) ([]sigma.Rule, error) {
+	return GetMatchesForRules(input, evaluators)
+}
+
+func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
-	for _, evaluator := range evaluators {
-		result, err := evaluator.Matches(context.Background(), convertInput(input))
+	for _, rule := range rules {
+		result, err := rule.Matches(context.Background(), convertInput(input))
 		if err != nil {
-			return nil, fmt.Errorf("error evaluating %s: %w", evaluator.Title, err)
+			return nil, fmt.Errorf("error evaluating %s: %w", rule.Title, err)
 		}
 
 		if result.Match {
-			matches = append(matches, evaluator.Rule)
+			matches = append(matches, rule.Rule)
 		}
 	}
 	return matches, nil
