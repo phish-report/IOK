@@ -51,7 +51,7 @@ To contribute a new rule:
 |                                       |          IOK          | [PhishingKit-Yara-Rules] |   [Wappalyzer]    |
 |---------------------------------------|:---------------------:|:------------------------:|:-----------------:|
 | Open Source                           |           ✅           |            ✅             |         ✅         |
-| Ruleset size                          | 100+ Rules 🦐 |    &gt; 300 rules 🐠     | 1000s of rules 🐳 |
+| Ruleset size                          | &gt; 175 Rules 🦐 |    &gt; 300 rules 🐠     | 1000s of rules 🐳 |
 | Can scan                              |   Live websites 🕸    |   Phishing kit zips 📦   | Live websites 🕸  |
 | Phishing focused                      |           ✅           |            ✅             |         ❌         |
 | Supports complex conditions           |           ✅           |            ✅             |         ❌         |
