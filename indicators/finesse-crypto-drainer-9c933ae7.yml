@@ -22,5 +22,6 @@ detection:
     condition: drainerSettings and drainerKeywords
 
 tags:
+  - kit
   - cryptocurrency
   - cryptocurrency.ethereum
