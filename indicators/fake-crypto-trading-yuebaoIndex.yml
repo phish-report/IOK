@@ -2,7 +2,7 @@ title: Fake crypto trading - yuebaoIndex
 
 description: |
     Detects a malicious DApp that pretends to be a trading
-    platform that offers AI bots, lending, mining.
+    platform that offers AI bots, lending, and mining.
 
 references:
     - https://urlscan.io/result/c0aa6eb6-f455-47df-91a5-02c3d41b6677/
