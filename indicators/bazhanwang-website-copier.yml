@@ -11,3 +11,6 @@ detection:
     html|contains: '<!-- This web page is copied by the "https://bazhan.wang" -->'
     
   condition: copierSignature
+
+tags:
+  - cloning
