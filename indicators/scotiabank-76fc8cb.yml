@@ -21,6 +21,8 @@ detection:
         
     buttonID:
         html|contains: 'button id="submitx"'
+        
+    condition: imageAssets and exfilPhpScript and buttonID
     
 tags:
   - target.scotiabank
