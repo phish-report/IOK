@@ -14,15 +14,15 @@ If you believe the guidelines require alteration please propose your own changes
 ```
 🟢Additions:
 
-- Added [`rule-name-lowercase`](<COMMIT_URL>)
+- Add [`rule-name-lowercase`](<COMMIT_URL>)
 
 🟠Changes:
 
-- Added rule condition to [`rule-name-lowercase`](<COMMIT_URL>)
+- Add rule condition to [`rule-name-lowercase`](<COMMIT_URL>)
 
 🔴Removals:
 
-- Removed [`rule-name-lowercase`](<COMMIT_URL>)
+- Remove [`rule-name-lowercase`](<COMMIT_URL>)
 
 ```
 
