@@ -14,22 +14,11 @@ references:
 
 detection:
 
-    meta:
-      html|contains:
-        - meta http-equiv="X-UA-Compatible" content="ie=edge"
-
     form:
-      html|contains:
-        - form action="data.php" method="post" class="form_contact"
+      html|contains: form action="data.php" method="post" class="form_contact"
 
     image:
-      html|contains:
-        - <img src="css/c4.
-
-    inputs:
-      html|contains|all:
-        - input type="text" name="primero" required="" placeholder=
-        - input type="password" maxlength="4" minlength="4" name="segundo" onkeypress="return (event.charCode >= 48 &amp;&amp; event.charCode <= 57)" placeholder=
+      html|contains: <img src="css/c4.
 
     background:
       html|contains|all:
@@ -37,12 +26,7 @@ detection:
         - <img _ngcontent-awt-c52="" src="./css/trazo2.png" alt="" class="trazo2">
         - <img _ngcontent-awt-c52="" src="./css/trazo3.png" alt="" class="trazo3">
 
-    h1:
-      html|contains:
-        - Ingrese sus datos actuales <br>
-
-
-    condition: meta and form and image and inputs and background and h1
+    condition: form and image and background
 
 tags:
   - kit
