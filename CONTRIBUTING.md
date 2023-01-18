@@ -7,16 +7,38 @@ If you believe the guidelines require alteration please propose your own changes
 
 ## Styleguides
 
+### Pull Requests
+
+- Please follow the format below to help speed up the process of reviewing PRs
+
+```
+🟢Additions:
+
+- Add [`rule-name-lowercase`](<COMMIT_URL>)
+
+🟠Changes:
+
+- Add rule condition to [`rule-name-lowercase`](<COMMIT_URL>)
+
+🔴Removals:
+
+- Remove [`rule-name-lowercase`](<COMMIT_URL>)
+
+```
+
 ### Commit Messages
 
 - Use the present tense
 - Reference related issues & pull requests in the description (*if applicable*)
 - Limit the title to 60 characters at most
 - It is advised to prepend the following emojis to the start of a commit message:
-  - ✨ `:sparkles:` when adjusting an IOK rule
+  - 💎 `:gem:` when changing underlying IOK code
+  - 💡 `:bulb:` when updating dependencies 
+  - ✂️ `:scissors:` when removing dependencies
+  - ✨ `:sparkles:` when modifying an IOK rule
   - 🚀 `:rocket:` when creating a new IOK rule
-  - 📦 `:package:` when adjusting the CI workflows
-  - 📌 `:pushpin:` when adjusting the guidelines outlined in this file (`CONTRIBUTING.md`)
+  - 📦 `:package:` when modifying the CI workflows
+  - 📌 `:pushpin:` when modifying the guidelines outlined in this file (`CONTRIBUTING.md`)
 
 ### IOK Rules
 
@@ -28,7 +50,7 @@ If you believe the guidelines require alteration please propose your own changes
 - Descriptions must at the least accurately describe what the rule detects (e.g. `Detects a Facebook phishing kit, telling the victim to enter their details to reactivate their account.`)
 - References must include between to `2` to `5` unique URLScan URLs which refer to the same kit
 - All detection fields must follow camel casing (e.g. `camelCase`)
-- Tags must include the targeted company/brand <ins>**OR**</ins> technique(s) used, and at the very least should include targeted country (*if applicable*) and any other tags that you deem to be sufficient (`kit`, `target.facebook`, `target_country.germany`)
+- Tags must include the targeted company/brand <ins>**OR**</ins> technique(s) used, and at the very least should include targeted country (*if applicable*) and any other tags that you deem to be sufficient (eg. `kit`, `target.facebook`, `target_country.germany`)
 
 **Rule Structure:**
 ```yaml
