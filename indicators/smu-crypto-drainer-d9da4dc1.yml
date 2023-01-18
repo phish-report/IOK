@@ -25,7 +25,6 @@ detection:
     backendEndpoint:
       js|contains: 'logo1.png'
 
-
   condition: drainerFiles and alertFunctions and backendEndpoint
   
 tags:
