@@ -8,9 +8,9 @@ references:
   - https://urlscan.io/result/d9da4dc1-2252-45b6-b23a-2860b3d31531
   - https://urlscan.io/result/b7c65cea-65fe-44c8-ae80-40407936ddc9
   - https://urlscan.io/search/#filename%3A%22utils.js%22%20AND%20filename%3A%22showMess.js%22
-    
+
 detection:
-  
+
     drainerFilers:
       requests|contains|all: 
         - 'utils.js'
@@ -25,8 +25,9 @@ detection:
     backendEndpoint:
       js|contains: 'logo1.png'
 
-  condition: drainerFiles and alertFunctions and backendEndpoint
-  
+    
+    condition: drainerFiles and alertFunctions and backendEndpoint
+
 tags:
   - kit
   - crypto_drainer.smu
