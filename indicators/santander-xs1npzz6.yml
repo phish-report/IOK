@@ -1,0 +1,37 @@
+title: Banco Santander Phishing Kit detection xs1npzz6
+description: |
+    Detects a Santander Bank phishing kit landings.
+
+references:
+    - https://urlscan.io/result/59af173c-4373-4c20-9739-a445797f76ad
+
+detection:
+
+    title:
+      html|contains:
+        - 'Personal Online Banking: Log on or sign up'
+
+    css:
+      html|contains:
+        - 'san_filez/css/main.css'
+
+    textContent:
+      html|contains|all:
+        - 'Log on to your Online Banking'
+        - 'Business'
+        - 'Personal'
+        - 'Corporate'
+
+    logoImage:
+      requests|contains: 
+        - 'san_filez/img/asset-3-3-x@2x.png'
+
+    js:
+      html|contains:
+        - 'san_filez/js/jquery.js'
+
+    condition: title and logoImage and css and textContent and js
+
+tags:
+  - target.santander
+  - target_country.brazil
