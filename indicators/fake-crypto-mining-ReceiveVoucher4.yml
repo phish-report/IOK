@@ -1,0 +1,42 @@
+title: Fake crypto mining - ReceiveVoucher4
+
+description: |
+    Detects a malicious DApp that pretends to be a liquidity mining platform
+    while presenting fake audit reports and partners. AJAX call to receive
+    other contents.
+
+references:
+    - https://urlscan.io/search/#hash%3A5218075e53acd18fdd4b8c92cb0dad377bffab9d072cc6205e51ee8e32514a14
+    - https://urlscan.io/result/07c863ae-f341-4908-9686-2fc030c40a47/
+    - https://urlscan.io/result/a43482f4-83ee-4f17-9928-f6c4bc437e2f/
+
+related:
+    - fake-crypto-mining-ReceiveVoucher
+
+detection:
+
+    obfuscatedJS:
+      js|contains|all:
+        - 'get_html'
+        - '8723328gHHTPS'
+        - '87VwwxYy'
+        - '53630pSYWUE'
+        - 'Exojc'
+        - 'php'
+        - 'html'
+        - '13646660VJQPHo'
+        - 'user_ajax.'
+        - 'body'
+        - 'post'
+        - '723116asFYFQ'
+        - '9184383CPkzio'
+        - '182408kZXAnM'
+        - '21YLYsFs'
+        - '453822htrOgd'
+        - 'mdXAV'
+        - '35VIsnck'
+
+    condition: obfuscatedJS
+
+tags:
+  - cryptocurrency
