@@ -8,26 +8,16 @@ references:
 
 detection:
 
-    div1:
-      html|contains:
-        - 'div title="Elija una opción" class="textbox-wrap"'
-    div2:
-      html|contains:
-        - 'div title="Ingrese su nro. de documento" class="textbox-wrap"'
-    div3:
-      html|contains:
-        - 'div title="Ingrese su contraseña" class="textbox-wrap"'
-    title:
-      html|contains:
-        - <title>Interfisa Home</title>
-    a:
-      html|contains:
-        - 'a href="https://digital.interfisa.com.py/#!/cuenta-digital/inicio?canal=8" class="a-login" style="font-size: 1em;"'
-    img:
-      html|contains:
-        - 'img src="main/imagestest.png" alt="" style="width: 70%;"'
+    imageFilename:
+        html|contains: 'img-index.jpg'
+  
+    iconClass:
+        html|contains: 'fa fa-university'
 
-    condition: div1 and div2 and div3 and title and a and img
+    googleCaptchaVersion:
+        html|contains: 'VZKEDW9wslPbEc9RmzMqaOAP'
+
+    condition: imageFilename and iconClass and googleCaptchaVersion
 
 tags:
   - kit
