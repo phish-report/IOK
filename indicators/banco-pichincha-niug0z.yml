@@ -21,16 +21,12 @@ detection:
         - link rel="stylesheet" href="assets/css/styles.05.css"
         - link rel="stylesheet" href="assets/css/styles.45fc6f0f.css"
 
-    guid:
-      html|contains:
-        - div id="2a94e1b1-6526-42dc-9c3a-e7a1eda7e463"
-
     copyright:
       html|contains:
-        - © 2022 Banco Pichincha. Todos los derechos reservados
+        - "© 2022 Banco Pichincha. Todos los derechos reservados"
 
 
-    condition: title and css and guid and copyright
+    condition: title and css and copyright
 
 tags:
   - kit
