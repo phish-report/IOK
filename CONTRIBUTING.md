@@ -39,6 +39,7 @@ If you believe the guidelines require alteration please propose your own changes
   - 🚀 `:rocket:` when creating a new IOK rule
   - 📦 `:package:` when modifying the CI workflows
   - 📌 `:pushpin:` when modifying the guidelines outlined in this file (`CONTRIBUTING.md`)
+  - 📜 `:scroll:` when modifying the README
 
 ### IOK Rules
 
@@ -50,7 +51,7 @@ If you believe the guidelines require alteration please propose your own changes
 - Descriptions must at the least accurately describe what the rule detects (e.g. `Detects a Facebook phishing kit, telling the victim to enter their details to reactivate their account.`)
 - References must include between to `2` to `5` unique URLScan URLs which refer to the same kit
 - All detection fields must follow camel casing (e.g. `camelCase`)
-- Tags must include the targeted company/brand <ins>**OR**</ins> technique(s) used, and at the very least should include targeted country (*if applicable*) and any other tags that you deem to be sufficient (eg. `kit`, `target.facebook`, `target_country.germany`)
+- Tags must include the targeted company/brand <ins>**OR**</ins> technique(s) used, and at the very least should include targeted country (*if applicable*) and any other tags that you deem to be sufficient (eg. `kit`, `target.facebook`, `target_country.germany`, `threat_actor.kimsuky`)
 
 **Rule Structure:**
 ```yaml
