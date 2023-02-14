@@ -6,13 +6,15 @@ description: |
 
 references:
     - https://www.tuya.com.co/
-    - https://urlscan.io/result/026d1d48-ba58-477d-a168-0581ef8b9ebc/
+    - https://urlscan.io/result/630122d4-6b1b-4b56-bb13-6b6a1f28af4f/
 
 detection:
 
     title:
-      html|contains:
-        - Portal Transaccional
+      html|contains: Portal Transaccional
+
+    scriptSource:
+      html|contains: 'src="https://us-sonar.sociomantic.com/js/2010-07-01/adpan/tuya-co"'
 
     css:
       html|contains|all:
@@ -20,17 +22,8 @@ detection:
         - link href="App_Themes/404/Default1.css" type="text/css"
         - link href="App_Themes/404/bootstrap.min.css" rel="stylesheet"
 
-    form:
-      html|contains:
-        - form name="aspnetForm" method="post" action="
 
-    telegram:
-      html|contains|all:
-        - const token = '5670102107:AAGWzjd8rsaQb_KMkVQsCcgPB9o85gb_rXc';
-        - const chatId = '-1001617305508';
-
-
-    condition: title and css and form and telegram
+    condition: title and scriptSource and css
 
 tags:
   - kit
