@@ -23,6 +23,8 @@ align="right"
 - [Identify fingerprints of known threat actors](https://github.com/phish-report/IOK/blob/main/indicators/cazanova-cookie.yml)
 - [Discover anti-analysis techniques](https://github.com/phish-report/IOK/blob/main/indicators/fake-chrome-error.yml)
 - [Classify which specific phishing kit is in use on a page](https://github.com/phish-report/IOK/blob/main/indicators/123-reg-63c26.yml)
+- [Identify deceptive websites dropping malicious software](https://github.com/phish-report/IOK/blob/main/indicators/bbystealer-family-dropper-website-7019ae4.yml)
+- [Discover APT infrastructure](https://github.com/phish-report/IOK/blob/main/indicators/kimsuky-nginx-fake-error-9b43f670.yml)
 
 ## 📝 Creating indicators
 
