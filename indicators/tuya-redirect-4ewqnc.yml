@@ -13,8 +13,8 @@ detection:
     title:
       html|contains: Portal Transaccional
 
-    scriptSource:
-      html|contains: 'src="https://us-sonar.sociomantic.com/js/2010-07-01/adpan/tuya-co"'
+    function:
+      html|contains: onclick="insertclavex('0');"
 
     css:
       html|contains|all:
@@ -23,7 +23,7 @@ detection:
         - link href="App_Themes/404/bootstrap.min.css" rel="stylesheet"
 
 
-    condition: title and scriptSource and css
+    condition: title and function and css
 
 tags:
   - kit
