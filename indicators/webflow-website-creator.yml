@@ -1,8 +1,12 @@
 title: Webflow Website Creator
 description: |
-    Detects the Webflow website creator
+    Detects websites made with the WebFlow website builder.
+    
+    WebFlow provides software as a service (SaaS) for website
+    building as well as hosting.
     
 references:
+  - https://webflow.com/
   - https://urlscan.io/result/8953ff2a-f891-40cb-9310-7edab6f0876a
   - https://urlscan.io/result/44812aa4-942c-43e1-a451-a1c3aeecdb40
   
@@ -14,4 +18,5 @@ detection:
   condition: signature
 
 tags:
+  - website_builder
   - website_builder.webflow
