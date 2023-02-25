@@ -16,4 +16,5 @@ detection:
   condition: mobiriseSignature
 
 tags:
+  - website_builder
   - website_builder.mobirise
