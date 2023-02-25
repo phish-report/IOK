@@ -16,8 +16,11 @@ detection:
       html|contains:
         - <img src="https://sapientist.ru/images/62a315f45888ab5517509314_b941bc1dfe379db6cc1f2acc5a612f41.png"
 
+    embedImage:
+      html|contains:
+        - <meta content="https://assets-global.website-files.com/6257adef93867e50d84d30e2/625d07708827f8702cce4899_photo_2022-04-18_10-38-29.jpg" property="twitter:image">
 
-    condition: image
+    condition: image and embedImage
 
 tags:
   - kit
