@@ -37,7 +37,15 @@ detection:
         - 'mdXAV'
         - '35VIsnck'
 
-    condition: obfuscatedJS
+    deobfuscatedJS:
+      js|contains|all:
+        - 'user_ajax.php'
+        - 'get_html'
+        - 'body'
+        - '_0x112088'
+        - '_0x2aa5d2'
+
+    condition: obfuscatedJS or deobfuscatedJS
 
 tags:
   - cryptocurrency
