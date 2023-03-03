@@ -13,4 +13,5 @@ detection:
   condition: background
 
 tags:
+  - kit
   - target.facebook
