@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/bradleyjkemp/sigma-go v0.4.1
-	golang.org/x/net v0.0.0-20220630215102-69896b714898
+	golang.org/x/net v0.7.0
 )
 
 require (
