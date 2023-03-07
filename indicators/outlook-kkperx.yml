@@ -1,0 +1,30 @@
+title: Outlook Phishing Kit kkPeRx
+description: |
+    Detects a phishing kit targeting Outlook. The page is designed to appear similar to the real Outlook Web App login page. Inline Base64 is used to locally load images.
+    Found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/573face2-579c-4c40-8b36-7a00156bd492/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Outlook</title>
+
+    base64Logo:
+      html|contains|all:
+        - <img class="mouseHeader" src="data:image/png;base64
+        - alt="Outlook">
+
+    Base64Arrow:
+      html|contains:
+        - <img class="imgLnk" src="data:image/png;base64
+
+
+    condition: title and base64Logo and Base64Arrow
+
+tags:
+  - kit
+  - target.outlook
