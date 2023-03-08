@@ -22,12 +22,12 @@ detection:
       html|contains:
         - <img src="k.png" class="img-fluid">
 
-    harvester:
+    logoGenerator:
       html|contains:
-        - https://esperanzahumura.org/d2/post.php
+        - logo.clearbit.com
 
 
-    condition: title and logo and privateComputerCheckmark and harvester
+    condition: title and logo and privateComputerCheckmark and logoGenerator
 
 tags:
   - kit
