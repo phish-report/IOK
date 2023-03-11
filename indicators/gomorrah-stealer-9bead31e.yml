@@ -21,7 +21,7 @@ detection:
   backgroundImagePath:
     css|contains: '../img/img/bg/login.jpg'
    
-  condition: titleStyleAttribute and loginPageTitle
+  condition: titleStyleAttribute and loginPageTitle and backgroundImagePath
 
 
 tags: 
