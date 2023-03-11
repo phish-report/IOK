@@ -13,7 +13,7 @@ references:
 detection: 
 
   titleStyleAttribute: 
-    html|contains: 'style="color:#000;letter-spacing:3px;font:20px \'Cairo\';'
+    html|contains: 'style="color:#000;letter-spacing:3px;font:20px \\'Cairo\\';'
     
   loginPageTitle:
     html|contains: 'Gomorrah v5.0 Stealer'
