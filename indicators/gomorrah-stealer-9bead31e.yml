@@ -12,16 +12,13 @@ references:
 
 detection: 
 
-  titleStyleAttribute: 
-    html|contains: 'style="color:#000;letter-spacing:3px;font:20px \\'Cairo\\';'
-    
   loginPageTitle:
     html|contains: 'Gomorrah v5.0 Stealer'
     
   backgroundImagePath:
     css|contains: '../img/img/bg/login.jpg'
    
-  condition: titleStyleAttribute and loginPageTitle and backgroundImagePath
+  condition: loginPageTitle and backgroundImagePath
 
 
 tags: 
