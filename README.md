@@ -25,6 +25,8 @@ align="right"
 - [Classify which specific phishing kit is in use on a page](https://github.com/phish-report/IOK/blob/main/indicators/123-reg-63c26.yml)
 - [Identify deceptive websites dropping malicious software](https://github.com/phish-report/IOK/blob/main/indicators/bbystealer-family-dropper-website-7019ae4.yml)
 - [Discover APT infrastructure](https://github.com/phish-report/IOK/blob/main/indicators/kimsuky-nginx-fake-error-9b43f670.yml)
+- [Detect malware C&C panels](https://github.com/phish-report/IOK/blob/main/indicators/rhadamanthys-stealer-26461dbb.yml)
+
 
 ## 📝 Creating indicators
 
