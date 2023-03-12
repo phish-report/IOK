@@ -16,11 +16,11 @@ detection:
 
     favicon:
       html|contains:
-        - link rel="icon" href="𝖋𝖆𝖛𝖎𝖈𝖔𝖓.png"
+        - 𝖋𝖆𝖛𝖎𝖈𝖔𝖓.png
 
     microsoftLogo:
       html|contains:
-        - img src="./cactusjack_files/𝟎𝖚𝖙𝟏𝟎𝟎𝖐.jpg"
+        - 𝟎𝖚𝖙𝟏𝟎𝟎𝖐.jpg
 
     continueButton:
       html|contains:
