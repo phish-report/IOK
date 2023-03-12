@@ -27,6 +27,6 @@ detection:
   
 tags:
   - threat_actor_country.china
-  - cryptodrainer.asli
+  - crypto_drainer.asli
   - cryptocurrency
   - cryptocurrency.ethereum
