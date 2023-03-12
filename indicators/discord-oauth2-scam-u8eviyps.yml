@@ -1,7 +1,7 @@
 title: Discord oAuth2 Scam u8eviyps
 description: |
     Detects a Discord oAuth2 scam confirmation page, which is often used in combination with social engineering to get the user to authorize for a spam application.
-    This for example enables the attacker to add the victims into further scam/advertised servers using the 'guilds.join' scope.
+    This for example enables the attacker to add the victims into further scam/advertised servers using the `guilds.join` scope.
     
 references:
     - https://urlscan.io/result/1314542e-6bdd-496d-a89c-dd20eb60cc99/
