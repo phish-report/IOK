@@ -1,6 +1,6 @@
 title: Adobe Phishing Kit 5c70696
 description: |
-    Adoba phishing kit which uses the same `template`
+    Adobe phishing kit which uses the same `template`
     element `id` attribute as well as having the same
     value inside the `noscript` tags.
 
