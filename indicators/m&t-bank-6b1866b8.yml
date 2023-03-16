@@ -1,13 +1,13 @@
 title: M&T Bank Phishing Kit 6b1866b8
 description: |
-    Detects a phishing kit targeting users of M&T Bank.
-	
-    The core processing of the phishing kit is hidden
-    within the file named `min2.js`. 
-	
-    The kit also has a high entropy session ID present
-    within the HTML, likely as a result of cloning the
-    website.
+  Detects a phishing kit targeting users of M&T Bank.
+  
+  The core processing of the phishing kit is hidden
+  within the file named `min2.js`.
+  
+  The kit also has a high entropy session ID present
+  within the HTML, likely as a result of cloning the
+  website.
 
 references:
   - https://urlscan.io/result/6b1866b8-84a3-4fb5-9e52-012c0a78e615
