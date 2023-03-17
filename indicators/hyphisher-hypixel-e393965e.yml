@@ -4,7 +4,7 @@ description: |
   victims into thinking they have been gifted an item from
   the Hypixel store, it then asks the victim to enter their
   username and email, upon doing this the backend will send
-  the victim and email asking to verify the gift by entering
+  the victim an email asking to verify the gift by entering
   their authentication code into the website.
   
   This specific kit dubbed `Hyphisher` is developed by a threat
