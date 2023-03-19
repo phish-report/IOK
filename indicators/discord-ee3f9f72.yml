@@ -1,7 +1,7 @@
 title: Discord Phishing Kit ee3f9f72
 description: |
     Detects a `Discord` phishing kit targeting Discord users.
-	
+    
     This kit proxies all requests made by the original Discord
     website to the domain the kit is running on.
     
