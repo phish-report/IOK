@@ -16,36 +16,20 @@ related:
 
 detection:
 
-    obfuscatedJS:
+    jsKeywords:
       js|contains|all:
         - 'get_html'
-        - '8723328gHHTPS'
-        - '87VwwxYy'
-        - '53630pSYWUE'
-        - 'Exojc'
         - 'php'
         - 'html'
-        - '13646660VJQPHo'
         - 'user_ajax.'
         - 'body'
         - 'post'
-        - '723116asFYFQ'
-        - '9184383CPkzio'
-        - '182408kZXAnM'
-        - '21YLYsFs'
-        - '453822htrOgd'
-        - 'mdXAV'
-        - '35VIsnck'
-
-    deobfuscatedJS:
-      js|contains|all:
-        - 'user_ajax.php'
-        - 'get_html'
-        - 'body'
-        - '_0x112088'
-        - '_0x2aa5d2'
-
-    condition: obfuscatedJS or deobfuscatedJS
+        - 'type'
+        
+    jsRequest:
+      js|contains: 'user_ajax.php'
+        
+    condition: jsKeywords and jsRequest
 
 tags:
   - cryptocurrency
