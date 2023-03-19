@@ -18,7 +18,7 @@ detection:
         js|contains: 'oldFetch'
 
     originCheck:
-        js|contains: 'url.includes(\'://discord.com/api/\')'
+        js|contains: 'url.includes(\\'://discord.com/api/\\')'
         
     condition: proxyOpenCall and proxyFetchCall and originCheck
     
