@@ -46,7 +46,7 @@ description: |
   * [45[.]63[.]39[.]151](https://urlscan.io/ip/45.63.39.151) has been seen targeting multiple companies.
   * [mailchimp-help[.]com](https://urlscan.io/domain/mailchimp-help.com) has been observed targeting multiple companies.
 related:
-  - okta-6a6c442
+  - id: okta-6a6c442
 
 detection:
   jsChunks:

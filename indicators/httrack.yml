@@ -7,7 +7,7 @@ description: |
 references:
   - https://www.httrack.com/
 related:
-  - savepage-we
+  - id: savepage-we
 
 detection:
   copyrightNotice:

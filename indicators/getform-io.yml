@@ -4,7 +4,7 @@ description: |
 
   It can be used by threat actors building "serverless" phishing pages i.e. where they don't have a backend server that can send emails or store logs.
 related:
-  - formspree-io
+  - id: formspree-io
 
 detection:
   formAction:

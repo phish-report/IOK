@@ -8,8 +8,8 @@ references:
   - https://chrome.google.com/webstore/detail/webscrapbook/oegnpmiddfljlloiklpkeelagaeejfai
   
 related:
-  - httrack
-  - savepage-we
+  - id: httrack
+  - id: savepage-we
 
 detection:
 

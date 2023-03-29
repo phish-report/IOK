@@ -13,7 +13,7 @@ references:
     - https://urlscan.io/result/7f1c19fe-6861-4742-865e-9caba6d72976/
 
 related:
-    - fake-crypto-mining-noChrome
+    - id: fake-crypto-mining-noChrome
 
 detection:
 
