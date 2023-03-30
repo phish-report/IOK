@@ -8,7 +8,7 @@ description: |
 references:
   - https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof
 related:
-  - httrack
+  - id: httrack
 
 detection:
   cssComment:

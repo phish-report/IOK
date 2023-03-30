@@ -12,7 +12,7 @@ references:
     - https://urlscan.io/result/a43482f4-83ee-4f17-9928-f6c4bc437e2f/
 
 related:
-    - fake-crypto-mining-ReceiveVoucher
+    - id: fake-crypto-mining-ReceiveVoucher
 
 detection:
 

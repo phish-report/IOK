@@ -2,7 +2,7 @@ title: Camouflaged Okta kit (old)
 description: |
   An older version of the Okta phishing kit [described here](https://phish.report/IOK/indicators/okta-5844ad4)
 related:
-  - okta-5844ad4
+  - id: okta-5844ad4
 detection:
   jsChunks:
     requests|contains|all:
