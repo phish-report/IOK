@@ -1,0 +1,57 @@
+title: Generic Crypto Scam dd1f3101
+description: |
+    Detects a generic crypto scam that generally
+    leverages on using popular people such as 
+    Elon Musk and companies such as OpenAI to lure
+    victims into sending the target wallet address
+    crypto (like BTC, ETH, XRP or DOGE).
+    
+references:
+    - https://urlscan.io/result/21898373-e858-453d-9739-7f9a8926400a
+    - https://urlscan.io/result/dd1f3101-aaf1-4f3f-bc75-568cc42a4a43
+
+detection:
+
+    # From the DOM
+    configuration:
+        js|contains|all: 
+            - 'wallet_btc'
+            - 'wallet_eth'
+            - 'wallet_xrp'
+            - 'wallet_doge'
+            - 'min_btc'
+            - 'max_btc'
+            - 'min_eth'
+            - 'max_eth'
+            - 'min_xrp'
+            - 'max_xrp'
+            - 'min_doge'
+            - 'max_doge'
+            - 'multiplier'
+            - 'window.cdata'
+
+    attackerWallet:
+        html|contains: 'participate-address'
+
+    backgroundElementClass:
+        js|contains: 'class="background2"'
+        
+    # From script.js
+    jsKeywords:
+        js|contains|all:
+            - 'randomPoz
+            - 'jQuery.fn.ForceNumericOnly'
+            - 'kill_ctrl_key_combo'
+            - 'disable_selection'
+            - 'double_mouse'
+            
+
+    condition: configuration and attackerWallet and backgroundElementClass and jsKeywords
+
+tags:
+  - kit
+  - target.generic_crypto
+  - cryptocurrency.btc
+  - cryptocurrency.eth
+  - cryptocurrency.xrp
+  - cryptocurrency.doge
