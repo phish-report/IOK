@@ -39,7 +39,7 @@ detection:
     # From script.js
     jsKeywords:
         js|contains|all:
-            - 'randomPoz
+            - 'randomPoz'
             - 'jQuery.fn.ForceNumericOnly'
             - 'kill_ctrl_key_combo'
             - 'disable_selection'
