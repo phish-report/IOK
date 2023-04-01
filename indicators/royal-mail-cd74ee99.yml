@@ -11,5 +11,6 @@ detection:
   condition: selection
 
 tags:
+  - kit
   - target.royal-mail
   - target_country.uk
