@@ -1,0 +1,28 @@
+name: Rules
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify-rules:
+    name: Verify rule correctness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go 1.x
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.18
+
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v35
+        with:
+          files: indicators/*.{yml,yaml}
+
+      - name: Verify rule references
+        run: go run ./tools/internal/verify-rule-references ${{ steps.changed-files.outputs.all_changed_files }}
