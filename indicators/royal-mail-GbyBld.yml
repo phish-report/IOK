@@ -9,8 +9,8 @@ detection:
   css:
     requests|contains: css_GbyBld2YVfGaoHcw3eZJtGlhAxDTBpV3xkP06qLMwBI.css
   html:
-    html|contains: A total of <b>Â£2.99</b> is required to proceed the shipment towards your address.
-  condition: css and html
+    html|contains: "A total of <b>£2.99</b> is required to proceed the shipment towards your address."
+  condition: html
 
 tags:
   - kit
