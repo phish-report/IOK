@@ -28,8 +28,6 @@ detection:
     js|contains|all:
       - 'sendCode'
       - 'sendEmail'
-      - 'urlParams'
-      - 'queryString'
 
 
   condition: siteElementScript and jsCodeSnippets
