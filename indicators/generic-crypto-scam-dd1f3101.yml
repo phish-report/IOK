@@ -17,7 +17,7 @@ detection:
         html|contains: 'participate-address'
 
     ruleText:
-        html|contains: 'In order to calculate your prize, you can use the built-in calculator on our website'
+        html|contains: 'you can use the built-in calculator on our website'
     
     giveawayText:
         html|contains: 'giveaway for all crypto holders!'
