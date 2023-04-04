@@ -1,0 +1,23 @@
+title: MyGovAU Phishing Kit - 7d9649
+
+description: |
+	Detects a phishing kit using the MyGov Australia branding.
+
+references: 
+	- https://urlscan.io/result/d0a5f9fd-b960-47a5-8b44-3f9c7ffc9cd8/
+	
+	
+detection:
+    chromeHTMLFragments:
+        html|contains|all:
+            - '<form id="mygov-login-form" aria-describedby="error-msg" class="mygov-login-form alternative" action="CONFIG/login_db.php '
+            - '<title> Sign in with myGov - myGov'
+    condition: chromeHTMLFragments
+    
+    stylesheet:
+        html|contains|all: 
+            - '/css/mgv2-application.css'
+            - '/css/blugov.css'
+
+tags:
+  - target.mygovau
