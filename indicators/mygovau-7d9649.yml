@@ -12,12 +12,14 @@ detection:
         html|contains|all:
             - '<form id="mygov-login-form" aria-describedby="error-msg" class="mygov-login-form alternative" action="CONFIG/login_db.php '
             - '<title> Sign in with myGov - myGov'
-    condition: chromeHTMLFragments
+            - 'apiKey: "Gwhrue6nv7INVxMChew6XgpGD3_aLJ3imwX5OnvbETNpA" '
     
     stylesheet:
         html|contains|all: 
             - '/css/mgv2-application.css'
             - '/css/blugov.css'
+    
+    condition: chromeHTMLFragments and stylesheet
 
 tags:
   - target.mygovau
