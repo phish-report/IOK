@@ -11,7 +11,7 @@ detection:
         html|contains|all:
             - '<form id="mygov-login-form" aria-describedby="error-msg" class="mygov-login-form alternative" action="CONFIG/login_db.php '
             - 'Sign in with myGov - myGov'
-            - 'apiKey: "Gwhrue6nv7INVxMChew6XgpGD3_aLJ3imwX5OnvbETNpA" '
+            - 'apiKey: "Gwhrue6nv7INVxMChew6XgpGD3_aLJ3imwX5OnvbETNpA"'
 
     stylesheet:
         html|contains|all: 
