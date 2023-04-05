@@ -5,7 +5,7 @@ description: |
 references: 
     - https://urlscan.io/result/d0a5f9fd-b960-47a5-8b44-3f9c7ffc9cd8
     - https://urlscan.io/result/d9b6c4f6-3f15-417c-bcc8-e03e9c91e702
-	
+
 detection:
     chromeHTMLFragments:
         html|contains|all:
