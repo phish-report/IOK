@@ -21,12 +21,13 @@ var config []byte
 var evaluators []*evaluator.RuleEvaluator
 
 type Input struct {
-	HTML     string
-	JS       []string
-	CSS      []string
-	Cookies  []string
-	Headers  []string
-	Requests []string
+	Hostname string   // Hostname is the hostname that the page was served from
+	HTML     string   // HTML contains the HTML contents of the primary page
+	JS       []string // JS contains all JavaScript on the page, whether an embedded script or loaded from a file
+	CSS      []string // CSS contains all CSS on the page, whether an embedded stylesheet or loaded from a file
+	Cookies  []string // Cookies contains all cookies set both by the initial page load and any subsequent requests
+	Headers  []string // Headers contains the headers of the initial page load
+	Requests []string // Requests contains a list of all URLs requested during the page load
 }
 
 func GetMatches(input Input) ([]sigma.Rule, error) {
@@ -35,8 +36,9 @@ func GetMatches(input Input) ([]sigma.Rule, error) {
 
 func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
+	ruleInput := convertInput(input)
 	for _, rule := range rules {
-		result, err := rule.Matches(context.Background(), convertInput(input))
+		result, err := rule.Matches(context.Background(), ruleInput)
 		if err != nil {
 			return nil, fmt.Errorf("error evaluating %s: %w", rule.Title, err)
 		}
@@ -50,6 +52,7 @@ func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.
 
 func convertInput(input Input) evaluator.Event {
 	return map[string]interface{}{
+		"hostname": input.Hostname,
 		"html":     input.HTML,
 		"js":       toInterfaceSlice(input.JS),
 		"css":      toInterfaceSlice(input.CSS),

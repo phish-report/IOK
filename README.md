@@ -34,6 +34,7 @@ IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
 
 | Field name |   Type   | Description                                                                                          |
 |:----------:|:--------:|------------------------------------------------------------------------------------------------------|
+|  hostname  |  string  | The hostname of the site                                                                             |
 |    html    |  string  | The contents of the page HTML (as returned by the server)                                            |
 |     js     | []string | Contents of JavaScript from the page (includes inline scripts as well as scripts loaded externally)  |
 |    css     | []string | Contents of CSS from the page (includes inline stylesheets as well as externally loaded stylesheets) |
