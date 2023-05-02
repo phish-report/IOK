@@ -13,7 +13,7 @@ references:
 detection: 
 
   pageTitle: 
-    html|contains: 'Mystic Stealer - Login'
+    html|contains: '        Mystic Stealer -  Login'
   
   cssFile:
     requests|contains: 'datta-icon.css'
