@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"time"
 
 	"golang.org/x/net/html"
@@ -458,13 +459,18 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		return Input{}, fmt.Errorf("failed to decode search result: %w", err)
 	}
 
+	input := Input{}
+	u, err := url.Parse(result.Page.Url)
+	if err != nil {
+		return Input{}, fmt.Errorf("failed to parse result URL: %w", err)
+	}
+	input.Hostname = u.Hostname()
+
 	domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
 	domResp, err := client.Do(domReq)
 	if err != nil {
 		return Input{}, fmt.Errorf("failed to get result html: %w", err)
 	}
-
-	input := Input{}
 
 	resultHTML, _ := io.ReadAll(domResp.Body)
 	input.HTML = string(resultHTML)
