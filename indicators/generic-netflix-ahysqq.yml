@@ -23,5 +23,4 @@ detection:
   condition: originTrialToken and not (officialDomain or officialSubdomain)
 
 tags:
-  - kit
   - target.netflix
