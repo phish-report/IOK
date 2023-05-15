@@ -10,6 +10,6 @@ references:
 detection:
 
   javascriptInHref:
-    html|contains: 'href="javascript:"'
+    html|contains: 'href="javascript:'
 
   condition: javascriptInHref
