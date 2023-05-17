@@ -453,6 +453,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	if err != nil {
 		return Input{}, fmt.Errorf("failed to get search result: %w", err)
 	}
+	defer resp.Body.Close()
 
 	result := urlscanResult{}
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
@@ -471,6 +472,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	if err != nil {
 		return Input{}, fmt.Errorf("failed to get result html: %w", err)
 	}
+	defer domResp.Body.Close()
 
 	resultHTML, _ := io.ReadAll(domResp.Body)
 	input.HTML = string(resultHTML)
@@ -507,6 +509,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 				return Input{}, fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
 			}
 			resource, _ := io.ReadAll(resp.Body)
+			resp.Body.Close()
 			switch request.Request.Type {
 			case "Stylesheet":
 				input.CSS = append(input.CSS, string(resource))
