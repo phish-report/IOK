@@ -10,19 +10,17 @@ references:
     - https://urlscan.io/result/b87affd1-1f6e-4bd8-b49e-d534993e96bb/
 
 detection:
-
     title:
       html|contains:
         - <title>Amazon Pre-Sale for AMZ (up to 200% bonus)</title>
 
     meta:
       html|contains:
-        - <meta name="description" content="Cryptocash is Professional Creative Template">
+        - <meta name="description" content="Cryptocash is Professional Creative Template" />
 
     css:
       requests|contains:
         - cryptocoins.css
-
 
     condition: title and meta and css
 

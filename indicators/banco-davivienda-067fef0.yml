@@ -15,10 +15,7 @@ detection:
   otherFakeLogo: 
     requests|contains: 'https://seeklogo.com/images/D/daviplata-logo-750F0FC1B7-seeklogo.com.png'
 
-  backlinkReference:
-    html|contains: '<a class="logo" href="https://loaosanjjdda.lusamarilla.repl.co/#" target="_blank">'
-
-  condition: fakeLogo and otherFakeLogo and backlinkReference
+  condition: fakeLogo and otherFakeLogo
 
 tags:
   - target.bancodavivienda

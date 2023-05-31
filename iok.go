@@ -22,7 +22,8 @@ var evaluators []*evaluator.RuleEvaluator
 
 type Input struct {
 	Hostname string   // Hostname is the hostname that the page was served from
-	HTML     string   // HTML contains the HTML contents of the primary page
+	DOM      string   // DOM contains the HTML contents of the primary page *after* it has loaded
+	HTML     string   // HTML contains the HTML response of the primary page
 	JS       []string // JS contains all JavaScript on the page, whether an embedded script or loaded from a file
 	CSS      []string // CSS contains all CSS on the page, whether an embedded stylesheet or loaded from a file
 	Cookies  []string // Cookies contains all cookies set both by the initial page load and any subsequent requests
@@ -53,6 +54,7 @@ func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.
 func convertInput(input Input) evaluator.Event {
 	return map[string]interface{}{
 		"hostname": input.Hostname,
+		"dom":      input.DOM,
 		"html":     input.HTML,
 		"js":       toInterfaceSlice(input.JS),
 		"css":      toInterfaceSlice(input.CSS),
