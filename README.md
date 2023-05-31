@@ -1,11 +1,15 @@
 <p align="center">
+  <a href="https://phish.report/IOK">
   <img
     width="400"
     src="https://raw.githubusercontent.com/phish-report/IOK/main/.github/logo.svg"
     alt="IOK logo"
-  />
+       /></a>
 </p>
-
+<p align="center">
+  <a href="https://phish.report/IOK">View detections on phish.report 🐟</a>
+</p>
+<hr>
 <img
 src="https://raw.githubusercontent.com/phish-report/IOK/main/.github/fake-chrome-error.yml.svg"
 alt="Screenshot of one of the IOK indicator rules"
@@ -13,7 +17,7 @@ width="50%"
 align="right"
 />
 
-**Open source detection rules for phishing site techniques, kits, and threat actors 🕵️**
+**[Indicator of Kit](https://phish.report) is an open source detection language for phishing site techniques, kits, and threat actors 🕵️**
 
 - **Simple:** based on [Sigma](https://github.com/sigmahq/Sigma), a simple detection rules language 🚀
 - **Rich metadata:** rules have descriptions, tags, and links to blog posts or related rules.
@@ -43,7 +47,7 @@ IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
 |  headers   | []string | Headers sent by the server. Each is in the form `Header-Name: value`                                 |
 |  requests  | []string | URLs of requests made by the page (and assets loaded by the page)                                    |
 
-We are always looking for contributions—there's far more phishing kits and techniques than a single team can analyse!
+We are always looking for contributions: there's far more phishing kits and techniques than a single team can analyse!
 
 To contribute a new rule:
 
@@ -69,7 +73,7 @@ To contribute a new rule:
 
 ## 🤝 Contributing
 
-Documentation on how to write a rule is coming soon...
+There's a [reference on how to write IOK rules](https://phish.report/docs/iok-rule-reference) in the Phish Report documentation.
 
 ## 📝 License
 
