@@ -36,6 +36,7 @@ IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
 |:----------:|:--------:|------------------------------------------------------------------------------------------------------|
 |  hostname  |  string  | The hostname of the site                                                                             |
 |    html    |  string  | The contents of the page HTML (as returned by the server)                                            |
+|    dom     |  string  | The contents of the page HTML after loading (e.g. after javascript has executed)                     |
 |     js     | []string | Contents of JavaScript from the page (includes inline scripts as well as scripts loaded externally)  |
 |    css     | []string | Contents of CSS from the page (includes inline stylesheets as well as externally loaded stylesheets) |
 |  cookies   | []string | Cookies from the page. Each is in the form `cookieName=value`                                        |

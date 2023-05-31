@@ -13,7 +13,7 @@ detection:
     html|contains: '<link rel="stylesheet" type="text/css" href="VisitorIdentificationCSS.aspx.css">'
 
   formError:
-    html|contains: '<div class="form-error" id="B21AD518E4EF4F3DBCF943D0B6EDE8A3-error" tabindex="-1">Please enter a search term</div>'
+    html|contains: '<div class="form-error" id="B21AD518E4EF4F3DBCF943D0B6EDE8A3-error" tabindex="-1">Please'
 
   condition: stylesheet and formError
 

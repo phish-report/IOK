@@ -475,7 +475,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	defer domResp.Body.Close()
 
 	resultHTML, _ := io.ReadAll(domResp.Body)
-	input.HTML = string(resultHTML)
+	input.DOM = string(resultHTML)
 
 	// parse any JS/CSS from the dom
 	node, err := html.Parse(bytes.NewReader(resultHTML))
@@ -489,7 +489,8 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	for _, request := range result.Data.Requests {
 		input.Requests = append(input.Requests, request.Request.Request.Url)
 
-		if request.Request.RequestId == request.Request.LoaderId {
+		// TODO: how does this check behave in the case of redirects?
+		if request.Request.PrimaryRequest {
 			// this is the "primary" page load, so we need to extract the response headers
 			for headerKey, headerValue := range request.Response.Response.Headers {
 				input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
@@ -502,7 +503,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		}
 
 		switch request.Request.Type {
-		case "Stylesheet", "Script":
+		case "Stylesheet", "Script", "Document":
 			resourceReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/responses/"+request.Response.Hash, nil)
 			resp, err := client.Do(resourceReq)
 			if err != nil {
@@ -515,8 +516,20 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 				input.CSS = append(input.CSS, string(resource))
 			case "Script":
 				input.JS = append(input.JS, string(resource))
+			case "Document":
+				if request.Request.PrimaryRequest {
+					if input.HTML != "" {
+						fmt.Println("oops already have response html")
+					}
+					// this is the initial page load
+					input.HTML = string(resource)
+				}
 			}
 		}
+	}
+
+	if input.HTML == "" {
+		return input, fmt.Errorf("failed to get response html")
 	}
 
 	return input, nil

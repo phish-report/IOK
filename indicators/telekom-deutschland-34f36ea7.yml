@@ -13,13 +13,13 @@ references:
 detection:
 
     csrfTokenName:
-        js|contains: 'xsrf_rU86LhWL7rEI3N39kv0Evw'
+        html|contains: 'xsrf_rU86LhWL7rEI3N39kv0Evw'
 
     csrfTokenValue:
-        js|contains: 'ELotLohGqbr24MkEJvabkg'
+        html|contains: 'ELotLohGqbr24MkEJvabkg'
 
     transactionId:
-        js|contains: 'cc832e58-f790-49f8-b8bc-1f64b300c52b'
+        html|contains: 'cc832e58-f790-49f8-b8bc-1f64b300c52b'
 
     condition: csrfTokenName and csrfTokenValue and transactionId
 

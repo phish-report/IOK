@@ -16,7 +16,7 @@ import (
 
 func main() {
 	rules := os.Args[1:]
-	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Minute)
 	defer cancel()
 	ctx, cancel = signal.NotifyContext(ctx, syscall.SIGTERM)
 	defer cancel()

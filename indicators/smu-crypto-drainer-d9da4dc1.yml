@@ -11,7 +11,7 @@ references:
 
 detection:
 
-    drainerFilers:
+    drainerFiles:
       requests|contains|all: 
         - 'utils.js'
         - 'showMess.js'

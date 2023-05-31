@@ -13,13 +13,13 @@ references:
 detection: 
     
   pageTitle:
-    html|contains: 'Dashboard - Rhadamanthys'
+    dom|contains: 'Dashboard - Rhadamanthys'
     
   logo:
-    html|contains: 'data-v-9beba3d6="" src="assets/logo.faa4fd30.svg"'
+    dom|contains: 'data-v-9beba3d6="" src="assets/logo.faa4fd30.svg"'
     
   copyrightFooter:
-    html|contains: 'Copyright © 2022 rhadamanthys'
+    dom|contains: 'Copyright © 2022 rhadamanthys'
    
   condition: logo and pageTitle
 

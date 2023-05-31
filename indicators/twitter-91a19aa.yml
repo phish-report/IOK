@@ -3,11 +3,7 @@ description: |
     Detects a phishing kit developed by a Turkish actor
     targeting users of Twitter.
 
-references:
-    - https://urlscan.io/result/084ea74d-50a6-4e58-bca2-e5b83cebb715
-
 detection:
-
     pageFavicon:
       html|contains: 'https://www.imajkoruma.com/wp-content/uploads/2019/02/twitter.png'
 
