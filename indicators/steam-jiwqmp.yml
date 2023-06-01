@@ -1,8 +1,9 @@
-title: Discord/Steam Phishing Kit jIwQMP
+title: Steam Phishing Kit jIwQMP
 description: |
-    Detects a phishing kit impersonating Discord and targeting Steam with a fake popup that opens when the "Get Nitro" button is clicked. The site promises to give you a free Discord Nitro subscription.
+    Detects a phishing kit impersonating Discord and targeting Steam users with a fake popup that opens when the "Get Nitro" button is clicked. 
+    The site promises to give you a free Discord Nitro subscription upon entering your Steam credentials.
+    
     This phishing kit has been discovered by the FishFish.gg team.
-
 
 references:
     - https://urlscan.io/result/7d69a2f2-047e-4e82-89ed-bac9d322c662/
@@ -27,3 +28,4 @@ detection:
 tags:
   - kit
   - target.discord
+  - target.steam
