@@ -1,0 +1,32 @@
+title: Bancoagrícola Phishing Kit zHBobf
+description: |
+    Detects a phishing kit targeting Bancoagrícola, a subsidiary of Bancolombia.
+    Found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/3b3cce21-471f-4cc2-b8bd-fee7fea21b22/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>AGRicola</title>
+
+    form:
+      html|contains:
+        - form action="pas.php" method="post"
+
+    images:
+      html|contains|all:
+        - img src="positivo.svg"
+        - img src="titulo.png"
+        - img src="abajo.png"
+        - img src="ubajo.png"
+
+
+    condition: title and form and images
+
+tags:
+  - kit
+  - target.bancoagricola
