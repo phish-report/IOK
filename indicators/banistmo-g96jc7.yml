@@ -1,0 +1,30 @@
+title: Banistmo Phishing Kit G96jc7
+description: |
+    Detects a phishing kit targeting Banistmo, a bank operating in Panama and Central America. Subsidiary of Bancolombia.
+    Found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/d46ce720-a815-4fd0-b993-341ca70029ff/
+    - https://urlscan.io/result/df1aca45-cb5d-47c2-8337-6c79b547e7f6/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Banistmo - Banca en Línea</title>
+
+    icon:
+      html|contains:
+        - link rel="icon" type="image/x-icon" href="https://personas.banistmo.com/favicon_mod.ico"
+
+    css:
+      html|contains:
+        - link rel="stylesheet" href="./datos/styles.d764c0cd6a2f2178.css" media="all"
+
+
+    condition: title and icon and css
+
+tags:
+  - kit
+  - target.banistmo
