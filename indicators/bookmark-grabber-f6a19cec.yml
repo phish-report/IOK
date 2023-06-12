@@ -22,7 +22,7 @@ detection:
   exfilPage:
     dom|contains: 'x.html'
 
-  condition: animatedPages and randomString and exfilPage
+  condition: animatedImages and randomString and exfilPage
 
 tags:
   - target.wick_bot
