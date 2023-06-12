@@ -5,6 +5,7 @@ description: |
     the victim's discord token.
     
 references:
+  - https://urlscan.io/result/f6a19cec-fcab-4331-8a96-42d9654c0768
   - https://urlscan.io/result/75519f83-1671-4065-9bf7-5de0c8ddd25b
 
 detection:
@@ -16,7 +17,7 @@ detection:
       - '3.gif'
 
   randomString:
-    dom|contains: ' 321AAAQAA123'
+    dom|contains: '321AAAQAA123'
 
   exfilPage:
     dom|contains: 'x.html'
