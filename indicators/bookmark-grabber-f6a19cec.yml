@@ -17,10 +17,10 @@ detection:
       - '3.gif'
 
   randomString:
-    dom|contains: ' 321AAAQAA123'
+    html|contains: ' 321AAAQAA123'
 
   exfilPage:
-    dom|contains: 'x.html'
+    html|contains: 'x.html'
 
   condition: animatedImages and randomString and exfilPage
 
