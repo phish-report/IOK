@@ -10,19 +10,13 @@ references:
 
 detection:
 
-  animatedImages:
-    requests|contains|all:
-      - '1.gif'
-      - '2.gif'
-      - '3.gif'
-
   randomString:
     dom|contains: '321AAAQAA123'
 
   exfilPage:
     dom|contains: 'x.html'
 
-  condition: animatedImages and randomString and exfilPage
+  condition: randomString and exfilPage
 
 tags:
   - target.wick_bot
