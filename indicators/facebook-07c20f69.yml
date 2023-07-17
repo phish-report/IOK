@@ -18,7 +18,7 @@ detection:
     
   secondAsset: 
     requests|contains: '190947209-1002880900116912-4375102209501448340-n.jpg' 
-	
+
   pathSegment:
     requests|contains: 'ilham@sultan' 
 
