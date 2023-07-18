@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"sort"
 	"time"
 
 	"golang.org/x/net/html"
@@ -481,6 +482,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	node, err := html.Parse(bytes.NewReader(resultHTML))
 	if err == nil {
 		extractEmbedded(node, &input)
+		extractTitle(node, &input)
 	}
 
 	for _, cookie := range result.Data.Cookies {
@@ -495,6 +497,9 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			for headerKey, headerValue := range request.Response.Response.Headers {
 				input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
 			}
+			sort.Slice(input.Headers, func(i, j int) bool {
+				return input.Headers[i] < input.Headers[j]
+			})
 		}
 
 		if request.Response.Hash == "" {
@@ -544,5 +549,20 @@ func extractEmbedded(node *html.Node, input *Input) {
 	}
 	for c := node.FirstChild; c != nil; c = c.NextSibling {
 		extractEmbedded(c, input)
+	}
+}
+
+func extractTitle(node *html.Node, input *Input) {
+	if input.Title != "" {
+		return
+	}
+
+	if node.Type == html.ElementNode && node.Data == "title" && node.FirstChild != nil {
+		input.Title = node.FirstChild.Data
+		return
+	}
+
+	for c := node.FirstChild; c != nil; c = c.NextSibling {
+		extractTitle(c, input)
 	}
 }

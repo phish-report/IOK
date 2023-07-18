@@ -21,6 +21,7 @@ var config []byte
 var evaluators []*evaluator.RuleEvaluator
 
 type Input struct {
+	Title    string   // Title is the title of the page as it would be shown in a browser
 	Hostname string   // Hostname is the hostname that the page was served from
 	DOM      string   // DOM contains the HTML contents of the primary page *after* it has loaded
 	HTML     string   // HTML contains the HTML response of the primary page
@@ -53,6 +54,7 @@ func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.
 
 func convertInput(input Input) evaluator.Event {
 	return map[string]interface{}{
+		"title":    input.Title,
 		"hostname": input.Hostname,
 		"dom":      input.DOM,
 		"html":     input.HTML,

@@ -38,6 +38,7 @@ IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
 
 | Field name |   Type   | Description                                                                                          |
 |:----------:|:--------:|------------------------------------------------------------------------------------------------------|
+|   title    |  string  | The title of the site as shown in a browser                                                          |
 |  hostname  |  string  | The hostname of the site                                                                             |
 |    html    |  string  | The contents of the page HTML (as returned by the server)                                            |
 |    dom     |  string  | The contents of the page HTML after loading (e.g. after javascript has executed)                     |
