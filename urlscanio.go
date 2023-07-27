@@ -515,12 +515,12 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			if err != nil {
 				return Input{}, fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
 			}
+			resource, _ := io.ReadAll(resp.Body) // always read the body to completion to ensure proper connection re-use + caching
+			resp.Body.Close()
 			if resp.StatusCode/100 != 2 {
 				// not all resources are saved by urlscan.io e.g. stylesheets are frequently missing
 				continue
 			}
-			resource, _ := io.ReadAll(resp.Body)
-			resp.Body.Close()
 			switch request.Request.Type {
 			case "Stylesheet":
 				input.CSS = append(input.CSS, string(resource))
