@@ -488,6 +488,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	for _, cookie := range result.Data.Cookies {
 		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
 	}
+	foundHTML := false
 	for _, request := range result.Data.Requests {
 		input.Requests = append(input.Requests, request.Request.Request.Url)
 
@@ -508,7 +509,9 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		}
 
 		switch request.Request.Type {
-		case "Stylesheet", "Script", "Document":
+		case "Stylesheet":
+			// TODO: these aren't saved by urlscan.io, what can we do here?
+		case "Script", "Document":
 			resourceReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/responses/"+request.Response.Hash, nil)
 			resp, err := client.Do(resourceReq)
 			if err != nil {
@@ -517,12 +520,11 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			resource, _ := io.ReadAll(resp.Body)
 			resp.Body.Close()
 			switch request.Request.Type {
-			case "Stylesheet":
-				input.CSS = append(input.CSS, string(resource))
 			case "Script":
 				input.JS = append(input.JS, string(resource))
 			case "Document":
 				if request.Request.PrimaryRequest {
+					foundHTML = true
 					if input.HTML != "" {
 						fmt.Println("oops already have response html")
 					}
@@ -533,7 +535,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		}
 	}
 
-	if input.HTML == "" {
+	if !foundHTML {
 		return input, fmt.Errorf("failed to get response html")
 	}
 
