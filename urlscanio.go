@@ -509,17 +509,21 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		}
 
 		switch request.Request.Type {
-		case "Stylesheet":
-			// TODO: these aren't saved by urlscan.io, what can we do here?
-		case "Script", "Document":
+		case "Stylesheet", "Script", "Document":
 			resourceReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/responses/"+request.Response.Hash, nil)
 			resp, err := client.Do(resourceReq)
 			if err != nil {
 				return Input{}, fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
 			}
+			if resp.StatusCode/100 != 2 {
+				// not all resources are saved by urlscan.io e.g. stylesheets are frequently missing
+				continue
+			}
 			resource, _ := io.ReadAll(resp.Body)
 			resp.Body.Close()
 			switch request.Request.Type {
+			case "Stylesheet":
+				input.CSS = append(input.CSS, string(resource))
 			case "Script":
 				input.JS = append(input.JS, string(resource))
 			case "Document":
