@@ -1,0 +1,27 @@
+title: Steam Phishing Kit metrica.php
+
+description: |
+  Steam Phishing Kit that uses a fake Steam login window to steal user credentials and free 50/100$ gift cards, csgo skins, csgo2 beta or discord nitro as bait.
+
+references:
+  - https://urlscan.io/result/d7243f7d-e10a-4309-8450-869229ac286d
+  - https://urlscan.io/result/1ec85742-f31e-4d45-a37b-8c91d94996df
+  - https://urlscan.io/result/d09c1f36-773f-437c-b533-4dced6cecc1f
+  - https://urlscan.io/result/0eb7900f-dd6e-4491-ad69-e9f4b14e0e41
+  - https://urlscan.io/result/19b11718-4018-449f-8829-3365a10c812a
+  - https://urlscan.io/result/8690e751-6bb9-4bd7-a7b9-34ce3b719fef
+
+detection:
+
+  getSiteConfigJson:
+    requests|contains: 'metrica.php?method=LoadedCount'
+
+  aShowAuthWin:
+    html|contains:
+      - '<a href="#" class="showAuthWin">'
+
+
+  condition: getSiteConfigJson and aShowAuthWin
+
+tags:
+  - target.steam
