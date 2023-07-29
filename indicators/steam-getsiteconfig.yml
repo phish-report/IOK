@@ -1,0 +1,29 @@
+title: Steam Phishing Kit getsiteconfig
+
+description: |
+  Steam Phishing Kit with obfuscated javascript pages that use a fake Steam login window to steal user credentials and free 50/100$ gift cards, csgo skins, csgo2 beta or discord nitro as bait.
+
+references:
+  - https://urlscan.io/result/732d40f3-c113-44da-bcd4-5f39ff173e83
+  - https://urlscan.io/result/0712a363-be77-4482-960a-886738d7f882
+  - https://urlscan.io/result/01e4685b-9001-4843-a50f-a41ad126fc8c
+  - https://urlscan.io/result/64c8c423-5e1e-4779-a4b0-66c9e0beb8d7
+  - https://urlscan.io/result/02d78cc5-5035-490d-ade3-8043a1d29d29
+  - https://urlscan.io/result/65902fde-168e-4492-a039-b678cedc23c8
+  - https://urlscan.io/result/5988575a-6cc7-4e5b-ac87-22fb5e29b6e6
+
+detection:
+
+  getSiteConfigJson:
+    requests|contains: '/api/getsiteconfig/'
+
+  viewportAndScriptElems:
+    html|contains|all:
+      - '<meta name="viewport" content="width=device-width, initial-scale=1">'
+      - '<script type="module" crossorigin src="/assets/'
+
+  condition: getSiteConfigJson and viewportAndScriptElems
+
+tags:
+  - target.steam
+  - threat_actor_country.russia
