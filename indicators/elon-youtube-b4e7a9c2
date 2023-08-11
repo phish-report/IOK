@@ -1,19 +1,13 @@
-title: Fake Elon Musk Crypto Giveaway
+title: Elon Musk Crypto Giveaway Phishing Kit b4e7a9c2
 description: |
     These phishing sites pretend to be Elon Musk-endorsed crypto giveaways, designed to deceive users into sending 
     cryptocurrency or revealing private keys, with false promises of greater returns.
-level: likely_malicious
-
 references:
     - https://urlscan.io/result/652a9d46-c012-42d1-a148-5bcf45174bf9
     - https://urlscan.io/result/3cf5b7c4-a5f9-455c-a387-fd73a010aa9f
     - https://urlscan.io/result/2baed78f-44e1-4d8e-8943-971a470fa7d4
     - https://urlscan.io/result/e2c67e74-69f7-4ad2-8a25-3ea9a74be45c
     - https://urlscan.io/result/c91ac187-9eb0-4168-93c6-ddf7e27e9e55
-    - https://urlscan.io/result/9d4307f3-02b2-4cfb-b054-5d0997813c8d
-    - https://urlscan.io/result/fadf8f66-f8c3-4b0f-9c01-211d551c92ff
-    - https://urlscan.io/result/56e131f3-5403-474d-87aa-fefc17fba548
-
 detection:
     muskCryptoPhrases:
         html|contains|any:
@@ -28,7 +22,6 @@ detection:
         domain|contains:
             - 'bootstrap.smartsuppchat.com'
     condition: muskCryptoPhrases or chatDomain
-
 tags:
   - crypto_scam
   - impersonation
