@@ -13,7 +13,7 @@ references:
 
 detection:
 
-  getSiteConfigJson:
+  metricaLoadedCount:
     requests|contains: 'metrica.php?method=LoadedCount'
 
   aShowAuthWin:
