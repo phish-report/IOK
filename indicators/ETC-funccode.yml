@@ -1,4 +1,4 @@
-title: ETC_PhishingDetection
+title: ETC_Phishing_funccode
 description: |
     Detects an ETC phishing targeting Japanese users.(etc-meisai.jp)
 
@@ -16,5 +16,5 @@ detection:
     condition: ETCTitle and pagePHP
 
 tags:
-  - target.etc-meisai
+  - target.etc_meisai
   - target_country.japan
