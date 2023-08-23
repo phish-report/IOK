@@ -90,7 +90,7 @@ func ParseRule(path string, contents []byte) (*evaluator.RuleEvaluator, error) {
 		rule.ID, _, _ = strings.Cut(filepath.Base(path), ".")
 	}
 
-	return evaluator.ForRule(rule, evaluator.WithConfig(config)), nil
+	return evaluator.ForRule(rule, evaluator.WithConfig(config), evaluator.CaseSensitive), nil
 }
 
 func init() {

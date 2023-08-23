@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/bradleyjkemp/cupaloy/v2 v2.6.0
-	github.com/bradleyjkemp/sigma-go v0.6.1
+	github.com/bradleyjkemp/sigma-go v0.6.4
 	golang.org/x/net v0.7.0
 )
 
