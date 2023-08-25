@@ -8,15 +8,16 @@ references:
   - https://urlscan.io/result/607f6acb-1301-4ca5-9e33-0e0ca5b7c359
   - https://urlscan.io/result/6c29c34f-1dac-433c-b2d9-005bd8db3ee1
 
-
 detection:
     FormContains: 
         html|contains: 
             - 'method="post" id="tijiao" action="1.php"'
-    SMBCTitle:
-        title: '三井住友カード会員向けサービス「Vpass」ログイン'
 
-    condition: FormContains and SMBCTitle
+    iframeContains: 
+        html|contains: 
+            - 'id="aMpc0Wu2zFxeefIt" style="display: none;"'
+
+    condition: FormContains and iframeContains
 
 tags:
   - target.smbc
