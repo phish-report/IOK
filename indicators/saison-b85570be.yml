@@ -17,5 +17,5 @@ detection:
     condition: FormContains and pagePHP
 
 tags:
-  - target.saison
+  - target.saison_card
   - target_country.japan
