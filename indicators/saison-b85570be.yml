@@ -1,7 +1,6 @@
 title: SAISON Card Phishing Kit b85570be
 description: |
     Detects a SAISON Card phishing kit targeting Japanese users.
-
 references:
   - https://urlscan.io/result/b85570be-adc3-45f8-83ee-9a4a46737f89
   - https://urlscan.io/result/4332baf6-7b01-49e9-9d88-b7dcb9ad5a33
@@ -11,10 +10,13 @@ detection:
     FormContains: 
         html|contains: 
             - 'name="loginForm" id="loginForm" method="post" action="USA0201UIP01SCR.do.php"'
+    TokenContains: 
+        html|contains: 
+            - 'type="hidden" name="_csrf" value="a9410f4f-e742-47a4-bcb4-78b655267747"'
     pagePHP:
         requests|contains: 'auth.php'
 
-    condition: FormContains and pagePHP
+    condition: FormContains and TokenContains and pagePHP
 
 tags:
   - target.saison_card
