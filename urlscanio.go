@@ -536,6 +536,8 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 					input.HTML = string(resource)
 
 					// parse any JS/CSS from the html
+					// This does result in duplicate values (for sites that don't have any dynamically inserted JS/CSS),
+					// but that doesn't affect correctness
 					node, err := html.Parse(bytes.NewReader(resource))
 					if err == nil {
 						extractEmbedded(node, &input)
