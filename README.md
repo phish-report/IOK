@@ -36,17 +36,17 @@ align="right"
 
 IOK indicators are written using [Sigma](https://github.com/SigmaHQ/sigma)
 
-| Field name |   Type   | Description                                                                                          |
-|:----------:|:--------:|------------------------------------------------------------------------------------------------------|
-|   title    |  string  | The title of the site as shown in a browser                                                          |
-|  hostname  |  string  | The hostname of the site                                                                             |
-|    html    |  string  | The contents of the page HTML (as returned by the server)                                            |
-|    dom     |  string  | The contents of the page HTML after loading (e.g. after javascript has executed)                     |
-|     js     | []string | Contents of JavaScript from the page (includes inline scripts as well as scripts loaded externally)  |
-|    css     | []string | Contents of CSS from the page (includes inline stylesheets as well as externally loaded stylesheets) |
-|  cookies   | []string | Cookies from the page. Each is in the form `cookieName=value`                                        |
-|  headers   | []string | Headers sent by the server. Each is in the form `Header-Name: value`                                 |
-|  requests  | []string | URLs of requests made by the page (and assets loaded by the page)                                    |
+| Field name |   Type   | Description                                                                                                           |
+|:----------:|:--------:|-----------------------------------------------------------------------------------------------------------------------|
+|   title    | []string | The title of the site as shown in a browser. If multiple titles are set (e.g. by JavaScript), this contains each one. |
+|  hostname  |  string  | The hostname of the site                                                                                              |
+|    html    |  string  | The contents of the page HTML (as returned by the server)                                                             |
+|    dom     |  string  | The contents of the page HTML after loading (e.g. after javascript has executed)                                      |
+|     js     | []string | Contents of JavaScript from the page (includes inline scripts as well as scripts loaded externally)                   |
+|    css     | []string | Contents of CSS from the page (includes inline stylesheets as well as externally loaded stylesheets)                  |
+|  cookies   | []string | Cookies from the page. Each is in the form `cookieName=value`                                                         |
+|  headers   | []string | Headers sent by the server. Each is in the form `Header-Name: value`                                                  |
+|  requests  | []string | URLs of requests made by the page (and assets loaded by the page)                                                     |
 
 We are always looking for contributions: there's far more phishing kits and techniques than a single team can analyse!
 

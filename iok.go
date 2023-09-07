@@ -21,7 +21,7 @@ var config []byte
 var evaluators []*evaluator.RuleEvaluator
 
 type Input struct {
-	Title    string   // Title is the title of the page as it would be shown in a browser
+	Title    []string // Title is the title of the page as it would be shown in a browser. If multiple titles are set (e.g. by JavaScript), this contains each one.
 	Hostname string   // Hostname is the hostname that the page was served from
 	DOM      string   // DOM contains the HTML contents of the primary page *after* it has loaded
 	HTML     string   // HTML contains the HTML response of the primary page

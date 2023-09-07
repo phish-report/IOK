@@ -534,6 +534,13 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 					}
 					// this is the initial page load
 					input.HTML = string(resource)
+
+					// parse any JS/CSS from the html
+					node, err := html.Parse(bytes.NewReader(resource))
+					if err == nil {
+						extractEmbedded(node, &input)
+						extractTitle(node, &input)
+					}
 				}
 			}
 		}
@@ -559,12 +566,8 @@ func extractEmbedded(node *html.Node, input *Input) {
 }
 
 func extractTitle(node *html.Node, input *Input) {
-	if input.Title != "" {
-		return
-	}
-
 	if node.Type == html.ElementNode && node.Data == "title" && node.FirstChild != nil {
-		input.Title = node.FirstChild.Data
+		input.Title = append(input.Title, node.FirstChild.Data)
 		return
 	}
 
