@@ -3,6 +3,7 @@ backends:
   - github.com/bradleyjkemp/sigma-go
 
 fieldmappings:
+  title: $.title[*]
   js: $.js[*]
   css: $.css[*]
   cookies: $.cookies[*]

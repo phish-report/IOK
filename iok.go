@@ -54,7 +54,7 @@ func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.
 
 func convertInput(input Input) evaluator.Event {
 	return map[string]interface{}{
-		"title":    input.Title,
+		"title":    toInterfaceSlice(input.Title),
 		"hostname": input.Hostname,
 		"dom":      input.DOM,
 		"html":     input.HTML,
