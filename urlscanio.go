@@ -34,33 +34,39 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	}
 	input.Hostname = u.Hostname()
 
-	domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
-	domResp, err := client.Do(domReq)
-	if err != nil {
-		return Input{}, fmt.Errorf("failed to get result html: %w", err)
-	}
-	defer domResp.Body.Close()
+	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
+	// This fetches up to 5 resources in parallel
+	g, ctx := errgroup.WithContext(ctx)
+	g.SetLimit(5)
+	mu := sync.Mutex{}
 
-	resultHTML, _ := io.ReadAll(domResp.Body)
-	input.DOM = string(resultHTML)
+	g.Go(func() error {
+		domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
+		domResp, err := client.Do(domReq)
+		if err != nil {
+			return fmt.Errorf("failed to get result dom: %w", err)
+		}
+		defer domResp.Body.Close()
 
-	// parse any JS/CSS from the dom
-	node, err := html.Parse(bytes.NewReader(resultHTML))
-	if err == nil {
-		extractEmbedded(node, &input)
-		extractTitle(node, &input)
-	}
+		mu.Lock()
+		defer mu.Unlock()
+		resultHTML, _ := io.ReadAll(domResp.Body)
+		input.DOM = string(resultHTML)
+
+		// parse any JS/CSS from the dom
+		node, err := html.Parse(bytes.NewReader(resultHTML))
+		if err == nil {
+			extractEmbedded(node, &input)
+			extractTitle(node, &input)
+		}
+		return nil
+	})
 
 	for _, cookie := range result.Data.Cookies {
 		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
 	}
 	foundHTML := false
 
-	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
-	// This fetches up to 5 resources in parallel
-	g, ctx := errgroup.WithContext(ctx)
-	g.SetLimit(5)
-	mu := sync.Mutex{}
 	for _, request := range result.Data.Requests {
 		request := request
 		g.Go(func() error {
