@@ -5,11 +5,13 @@ import (
 	"context"
 	"fmt"
 	"golang.org/x/net/html"
+	"golang.org/x/sync/errgroup"
 	"io"
 	"net/http"
 	"net/url"
 	"phish.report/urlscanio-go"
 	"sort"
+	"sync"
 )
 
 type httpClient interface {
@@ -53,38 +55,56 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
 	}
 	foundHTML := false
+
+	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
+	// This fetches up to 5 resources in parallel
+	g, ctx := errgroup.WithContext(ctx)
+	g.SetLimit(5)
+	mu := sync.Mutex{}
 	for _, request := range result.Data.Requests {
-		input.Requests = append(input.Requests, request.Request.Request.Url)
+		request := request
+		g.Go(func() error {
+			mu.Lock()
+			input.Requests = append(input.Requests, request.Request.Request.Url)
 
-		// TODO: how does this check behave in the case of redirects?
-		if request.Request.PrimaryRequest {
-			// this is the "primary" page load, so we need to extract the response headers
-			for headerKey, headerValue := range request.Response.Response.Headers {
-				input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
+			// TODO: how does this check behave in the case of redirects?
+			if request.Request.PrimaryRequest {
+				// this is the "primary" page load, so we need to extract the response headers
+				for headerKey, headerValue := range request.Response.Response.Headers {
+					input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
+				}
+				sort.Slice(input.Headers, func(i, j int) bool {
+					return input.Headers[i] < input.Headers[j]
+				})
 			}
-			sort.Slice(input.Headers, func(i, j int) bool {
-				return input.Headers[i] < input.Headers[j]
-			})
-		}
+			mu.Unlock()
 
-		if request.Response.Hash == "" {
-			// this isn't a response we can fetch
-			continue
-		}
+			if request.Response.Hash == "" {
+				// this isn't a response we can fetch
+				return nil
+			}
 
-		switch request.Request.Type {
-		case "Stylesheet", "Script", "Document":
+			switch request.Request.Type {
+			default:
+				return nil
+			case "Stylesheet", "Script", "Document":
+			}
+
+			// Fetch the response in parallel with other threads, only lock the mutex once we're modifying the Input{}
 			resourceReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/responses/"+request.Response.Hash, nil)
 			resp, err := client.Do(resourceReq)
 			if err != nil {
-				return Input{}, fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
+				return fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
 			}
 			resource, _ := io.ReadAll(resp.Body) // always read the body to completion to ensure proper connection re-use + caching
 			resp.Body.Close()
 			if resp.StatusCode/100 != 2 {
 				// not all resources are saved by urlscan.io e.g. stylesheets are frequently missing
-				continue
+				return nil
 			}
+
+			mu.Lock()
+			defer mu.Unlock()
 			switch request.Request.Type {
 			case "Stylesheet":
 				input.CSS = append(input.CSS, string(resource))
@@ -109,7 +129,11 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 					}
 				}
 			}
-		}
+			return nil
+		})
+	}
+	if err := g.Wait(); err != nil {
+		return input, err
 	}
 
 	if !foundHTML {
