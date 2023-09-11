@@ -51,13 +51,16 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		extractTitle(node, &input)
 	}
 
-	mu := sync.Mutex{}
 	for _, cookie := range result.Data.Cookies {
 		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
 	}
 	foundHTML := false
+
+	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
+	// This fetches up to 5 resources in parallel
 	g, ctx := errgroup.WithContext(ctx)
 	g.SetLimit(5)
+	mu := sync.Mutex{}
 	for _, request := range result.Data.Requests {
 		request := request
 		g.Go(func() error {
