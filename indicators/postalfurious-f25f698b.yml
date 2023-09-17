@@ -18,6 +18,7 @@ references:
   - https://urlscan.io/result/c4f93aaf-833b-4ca9-86c9-7be303bd386c
   - https://urlscan.io/result/859b1cd4-470e-440d-b7d9-7dcae81e80b2
 
+detection:
   kitPaths:
     requests|contains|all:
       - '/api/save-data'
