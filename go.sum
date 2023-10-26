@@ -60,3 +60,5 @@ gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 phish.report/urlscanio-go v0.0.0-20230905142413-ecc6ecfca602 h1:cpBOU2BjQ1amcY5yALjLfsd4ODpA6ckcSwJKH75Ou9A=
 phish.report/urlscanio-go v0.0.0-20230905142413-ecc6ecfca602/go.mod h1:pJPFc89ctVOCv3nhtbb8cPOOjcVDJmCRz7R2O1Z8cQY=
+phish.report/urlscanio-go v0.0.0-20230915155435-2677d74fc8a2 h1:Pf9Z3H+o20DiHIB3n94vXQBttBzDclmujSbTI9Zj6TA=
+phish.report/urlscanio-go v0.0.0-20230915155435-2677d74fc8a2/go.mod h1:pJPFc89ctVOCv3nhtbb8cPOOjcVDJmCRz7R2O1Z8cQY=
