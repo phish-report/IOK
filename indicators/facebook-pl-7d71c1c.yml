@@ -17,14 +17,13 @@ detection:
     logo:
       requests|contains: 'fb4.png'
 
-    loginElement:
-      html|contains|all:
-        - '<div class="loginbox">'
-        - '<input type="text" name="email" placeholder="Numer telefonu komÃ³rkowego lub adres e-mail"> <br>'
-        - '<input type="password" name="pass" placeholder="HasÅ‚o"> <br>'
-        - '<input type="submit" name="get" value="Zaloguj siÄ™"> <br>'
+    googleTagId:
+      dom|contains: 'UA-178388451-1'
+
+    invalidStylesheetReference:
+      dom|contains: 'https://fonts.googlay=swap'
    
-    condition: logo and loginElement
+    condition: logo and googleTagId and invalidStylesheetReference
 
 tags:
   - target.facebook
