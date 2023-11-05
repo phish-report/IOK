@@ -18,7 +18,7 @@ detection:
     
     kitAssets:
       requests|contains|all:
-        - 'humanIcon-v5.62b0718b3254f2a8ab0f.png'
+        - '62b0718b3254f2a8ab0f.png'
         - 'montserrat-latin-400-normal.acb6629fe45c43ad5d8b.woff2'
         
     kitAPI:
