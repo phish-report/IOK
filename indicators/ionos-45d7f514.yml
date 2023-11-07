@@ -14,6 +14,6 @@ detection:
         title: "Webmail Login | IONOS by 1&1"
   
     ionosLogo:
-        requests|contains: "i.imgur.com/jyliqfL.png"
+        requests|contains: "https://i.imgur.com/jyliqfL.png"
         
     condition: ionosLogo and pageTitle
