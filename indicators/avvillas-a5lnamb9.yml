@@ -27,5 +27,6 @@ detection:
     condition: title and meta and favicon and form
 
 tags:
-  - target.avvillas
+  - kit
+  - target.banco_av_villas
   - target_country.colombia
