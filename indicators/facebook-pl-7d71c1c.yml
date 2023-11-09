@@ -24,6 +24,7 @@ detection:
     condition: logo and googleTagId and invalidStylesheetReference
 
 tags:
+  - kit
   - target.facebook
   - target_country.poland
 
