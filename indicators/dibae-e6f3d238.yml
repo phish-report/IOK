@@ -1,5 +1,4 @@
 title: Dubai Islamic Bank Phishing Kit e6f3d238
-
 description: |
   Dubai Islamic Bank Phishing Kit that uses a fake login page
 
@@ -16,4 +15,5 @@ detection:
   condition: htmlContent
 
 tags:
+  - kit
   - target.dibae
