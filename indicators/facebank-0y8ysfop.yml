@@ -36,5 +36,6 @@ detection:
     condition: title and meta and css and form and img
 
 tags:
+  - kit
   - target.facebank
   - target_country.usa
