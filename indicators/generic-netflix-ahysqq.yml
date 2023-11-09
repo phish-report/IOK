@@ -10,6 +10,7 @@ references:
   - https://urlscan.io/result/12125ecc-0b2b-4f17-82c7-3d01fab35d84/
 
 detection:
+
   originTrialToken:
     html|contains:
       - <meta http-equiv="origin-trial" data-feature="EME Extension - Policy Check" data-expires="2018-11-26" content="Aob+++752GiUzm1RNSIkM9TINnQDxTlxz02v8hFJK/uGO2hmXnJqH8c/ZpI05b2nLsHDhGO3Ce2zXJUFQmO7jA4AAAB1eyJvcmlnaW4iOiJodHRwczovL25ldGZsaXguY29tOjQ0MyIsImZlYXR1cmUiOiJFbmNyeXB0ZWRNZWRpYUhkY3BQb2xpY3lDaGVjayIsImV4cGlyeSI6MTU0MzI0MzQyNCwiaXNTdWJkb21haW4iOnRydWV9">
@@ -23,4 +24,5 @@ detection:
   condition: originTrialToken and not (officialDomain or officialSubdomain)
 
 tags:
+  - kit
   - target.netflix
