@@ -30,5 +30,6 @@ detection:
     condition: form and css and img
 
 tags:
+  - kit
   - target.bancor
   - target_country.argentina
