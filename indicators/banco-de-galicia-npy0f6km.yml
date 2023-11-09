@@ -34,5 +34,5 @@ detection:
     condition: favicon and title and css and form and img
 
 tags:
-  - target.bancogalicia
+  - target.banco_de_galicia
   - target_country.argentina
