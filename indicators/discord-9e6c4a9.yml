@@ -21,5 +21,6 @@ detection:
   condition: developerSignature and nonceCSP
   
 tags:
+  - kit
   - target.discord
   - threat_actor.strolly
