@@ -1,4 +1,4 @@
-title: International Card Services phishing kit
+title: International Card Services Phishing Kit
 description: |
     Detects a phishing kit for a creditcard processor which uses the same hidden value across various domains.
     
@@ -16,5 +16,5 @@ detection:
     condition: did_proxy
 
 tags:
-  - target.international-card-services
+  - target.international_card_services
   - target_country.netherlands
