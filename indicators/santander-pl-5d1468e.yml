@@ -22,5 +22,6 @@ detection:
     condition: originalPageCloned and hiddenInputValue
 
 tags:
+  - kit
   - target.santander
   - target_country.poland
