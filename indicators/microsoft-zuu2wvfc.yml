@@ -27,4 +27,5 @@ detection:
     condition: title and css and form and img
 
 tags:
+  - kit
   - target.microsoft
