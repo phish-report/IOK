@@ -1,5 +1,4 @@
-title: Patelco phishing kit 48ba653f
-
+title: Patelco Phishing Kit 48ba653f
 description: |
     Patelco phishing kit which uses the same stylesheet and form error id across various domains.
 
@@ -9,6 +8,7 @@ references:
     - https://urlscan.io/result/726289c0-aa7a-4801-83d2-f4fd32cf7f80/
 
 detection:
+
   stylesheet:
     html|contains: '<link rel="stylesheet" type="text/css" href="VisitorIdentificationCSS.aspx.css">'
 
@@ -18,4 +18,5 @@ detection:
   condition: stylesheet and formError
 
 tags:
+  - kit
   - target.patelco
