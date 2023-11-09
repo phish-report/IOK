@@ -23,8 +23,8 @@ detection:
 
     form:
       html|contains|all:
-        - form method="POST" id="loggin"
-        - form method="post" id="des" target="_self"
+        - form method="POST"  id="loggin"
+        - form method="post"  id="des" target="_self"
 
     condition: title and css and script and form
 
