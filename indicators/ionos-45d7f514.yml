@@ -17,3 +17,7 @@ detection:
         requests: "https://i.imgur.com/jyliqfL.png"
         
     condition: ionosLogo and pageTitle
+
+tags:
+  - kit
+  - target.ionos
