@@ -23,5 +23,5 @@ detection:
     condition: form and img
 
 tags:
-  - target.bancodelpacifico
+  - target.banco_del_pacifico
   - target_country.ecuador
