@@ -26,7 +26,7 @@ detection:
 
     form:
       html|contains:
-        - form method="post" action="index1.php" id="aspnetForm"
+        - form method="post" action="index1.php"  id="aspnetForm"
 
     inputs:
       html|contains|all:
@@ -36,14 +36,13 @@ detection:
 
     placeholders:
       html|contains|all:
-        - placeholder="n° de documento"
+        - placeholder="nÂ° de documento"
         - placeholder="Pin de acceso"
         - placeholder="Pin de Transacciones"
 
     logo:
       html|contains:
         - img src="ff/LOGO_ita.png" style="width:120px;"
-        - img src="ff/lita.png" style="width:120px;"
 
     condition: all of them
 
