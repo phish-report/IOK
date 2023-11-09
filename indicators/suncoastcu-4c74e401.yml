@@ -1,5 +1,4 @@
 title: Suncoast Credit Union Phishing Kit 4c74e401
-
 description: |
   Detects a Suncoast Credit Union phishing kit that uses the same commented out JS and static VIcurrentDateTime value on all domains.
 
@@ -13,10 +12,11 @@ detection:
   commentedOutJS:
     html|contains: '<script async type="text/javascript" src="ajax/css/images/custom/suncoast/sed-suncoast-46110420.js" id="_imp_apg_dip_" _imp_apg_cid_="sed-suncoast-46110420" _imp_apg_api_domain_="https://us.gimp.zeronaught.com"></script>'
 
-  VIcurrentDateTime:
+  viCurrentDateTime:
     html|contains: '<meta name="VIcurrentDateTime" content="637791568414341755">'
 
-  condition: commentedOutJS and VIcurrentDateTime
+  condition: commentedOutJS and viCurrentDateTime
 
 tags:
+  - kit
   - target.sccu
