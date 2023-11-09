@@ -34,4 +34,5 @@ detection:
     condition: all of them
 
 tags:
+  - kit
   - target.microsoft
