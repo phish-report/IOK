@@ -14,10 +14,11 @@ detection:
         - 'input_16'
         - 'input_17'
 
-  fontJS:
+  fontJs:
     requests|contains: 'iconfontd630.js?v=1643358052'
 
-  condition: fakeForm and fontJS
+  condition: fakeForm and fontJs
 
 tags:
+  - kit
   - target.coinsbit
