@@ -31,5 +31,6 @@ detection:
     condition: title and favicon and form and img
 
 tags:
+  - kit
   - target.banco_del_pacifico
   - target_country.ecuador
