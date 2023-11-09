@@ -9,7 +9,7 @@ references:
 detection:
 
     formDefinition:
-      html|contains: '<form action="secure.php" method="post" id="form1">'
+      html|contains: 'action="secure.php" method="post" id="form1"'
 
     credentialFieldNames:
       html|contains|all:
