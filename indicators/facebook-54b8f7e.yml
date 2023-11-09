@@ -22,4 +22,5 @@ detection:
   condition: formExfil and styleSheets and logoImage
 
 tags:
+  - kit
   - target.facebook
