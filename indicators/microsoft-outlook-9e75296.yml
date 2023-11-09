@@ -20,4 +20,5 @@ detection:
     condition: jsFunction and logoFileName and exfilDestination
 
 tags:
+  - kit
   - target.microsoft_outlook
