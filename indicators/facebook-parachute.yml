@@ -1,4 +1,4 @@
-title: Facebook phishing kit with peculiar opengraph tags
+title: Facebook Phishing Kit with peculiar opengraph tags
 description: |
   A Facebook phishing kit which includes some peculiar OpenGraph tags originally from https://www.jpl.nasa.gov/news/testing-proves-its-worth-with-successful-mars-parachute-deployment 
 
@@ -14,4 +14,5 @@ detection:
   condition: ogTags and not newsArticle
 
 tags:
+  - kit
   - target.facebook
