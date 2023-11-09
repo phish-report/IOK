@@ -19,5 +19,6 @@ detection:
     condition: ogImage and bannerImage
 
 tags:
+  - kit
   - target.facebook
   - target_country.vietnam
