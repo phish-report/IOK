@@ -20,5 +20,6 @@ detection:
     condition: formDefinition and credentialFieldNames
 
 tags:
+  - kit
   - target.banco_de_galicia
   - target_country.argentina
