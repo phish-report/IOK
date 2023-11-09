@@ -21,4 +21,5 @@ detection:
     condition: cloneTimestamp and passwordFieldName and exfilDestination
 
 tags:
+  - kit
   - target.santander
