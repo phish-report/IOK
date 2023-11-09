@@ -16,5 +16,6 @@ detection:
     condition: did_proxy
 
 tags:
+  - kit
   - target.international_card_services
   - target_country.netherlands
