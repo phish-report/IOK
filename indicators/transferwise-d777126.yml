@@ -1,8 +1,6 @@
 title: Wise Phishing Kit d777126
-
 description: |
     Wise phishing kit which uses the same sentry.io
-
     API key across various domains.
 
 references:
@@ -13,11 +11,12 @@ references:
 
 detection:
 
-    sentryAPICall:
+    sentryApiCall:
       requests|contains: '?sentry_key=d777126e0316438b8a582a674f5ec311&sentry_version=7'
    
-    condition: sentryAPICall
+    condition: sentryApiCall
 
 tags:
+  - kit
   - target.wise
 
