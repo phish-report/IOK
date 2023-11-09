@@ -28,5 +28,6 @@ detection:
     condition: title and css and form and inputs
 
 tags:
+  - kit
   - target.bbva
   - target_country.argentina
