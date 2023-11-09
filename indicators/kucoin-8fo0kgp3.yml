@@ -31,5 +31,6 @@ detection:
     condition: title and form and (loginEmail or loginPhone)
 
 tags:
+  - kit
   - target.kucoin
   - target_country.argentina
