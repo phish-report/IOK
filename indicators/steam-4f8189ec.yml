@@ -1,5 +1,4 @@
 title: Steam Phishing Kit 4f8189ec
-
 description: |
   Steam Phishing Kit that uses a fake Steam login window to steal user credentials.
 
@@ -18,4 +17,5 @@ detection:
     condition: htmlContent
 
 tags:
+  - kit
   - target.steam
