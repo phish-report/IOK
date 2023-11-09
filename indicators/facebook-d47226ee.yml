@@ -25,3 +25,7 @@ detection:
       requests|contains: 'flexflex.online'
 
     condition: kitAssets and kitAPI
+
+tags:
+  - kit
+  - target.facebook
