@@ -8,10 +8,13 @@ references:
 
 detection:
 
+    image:
+      html|contains: 
+        - <img class="imagen" src="222hotmail.jpg" alt="" />
+
     form:
       html|contains|all:
         - type="email" name="emil"
-        - id="clave" type="password" name="pss"
 
     favicon:
       html|contains: 'SCAM/favicon.png'
@@ -19,7 +22,7 @@ detection:
     cssFile:
       html|contains: 'estilo.css'
 
-    condition: form and favicon and cssFile
+    condition: image and form and favicon and cssFile
 
 tags:
   - kit
