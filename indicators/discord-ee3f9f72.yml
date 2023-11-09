@@ -23,4 +23,5 @@ detection:
     condition: proxyOpenCall and proxyFetchCall and originCheck
     
 tags:
+  - kit
   - target.discord
