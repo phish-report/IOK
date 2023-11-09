@@ -18,5 +18,6 @@ detection:
   condition: formAttributes and jsFingerPrinter
 
 tags:
+  - kit
   - target_country.japan
   - target.smbc
