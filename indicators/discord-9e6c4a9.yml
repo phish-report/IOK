@@ -1,6 +1,7 @@
-title: Discord Hypesquad phishing kit strolly
+title: Discord Hypesquad Phishing Kit 9e6c4a9
 description: |
-  Discord Hypesquad phishing kit containing a comment left behind by the supposed developer of the kit.
+  Discord Hypesquad phishing kit containing a comment 
+  left behind by the supposed developer of the kit.
   As well as a unique nonce value that is present.
   
 references:
@@ -21,4 +22,4 @@ detection:
   
 tags:
   - target.discord
-  - threatactor.strolly
+  - threat_actor.strolly
