@@ -22,5 +22,6 @@ detection:
     condition: form and favicon and cssFile
 
 tags:
+  - kit
   - target.microsoft
   - target_country.argentina
