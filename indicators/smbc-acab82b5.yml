@@ -9,7 +9,8 @@ references:
   - https://urlscan.io/result/6c29c34f-1dac-433c-b2d9-005bd8db3ee1
 
 detection:
-    FormContains: 
+
+    formContains: 
         html|contains: 
             - 'method="post" id="tijiao" action="1.php"'
 
@@ -17,8 +18,9 @@ detection:
         html|contains: 
             - 'id="aMpc0Wu2zFxeefIt" style="display: none;"'
 
-    condition: FormContains and iframeContains
+    condition: formContains and iframeContains
 
 tags:
+  - kit
   - target.smbc
   - target_country.japan
