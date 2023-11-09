@@ -12,18 +12,19 @@ references:
 
 detection:
 
-    fakeParcelID:
+    fakeParcelId:
       html|contains: 'Parcel details (15503215866135)'
 
-    siteStyleSheet:
+    siteStylesheet:
       requests|contains: 'parse/real.css?'
 
     logoAsset:
       requests|contains: 'dpd_group_82x22.png'
     
 
-    condition: fakeParcelID and siteStyleSheet and logoAsset
+    condition: fakeParcelId and siteStylesheet and logoAsset
 
 tags:
+  - kit
   - target.dpd
 
