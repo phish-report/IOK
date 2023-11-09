@@ -29,7 +29,7 @@ detection:
 
     csrf:
       html|contains:
-        - input type="hidden" name="ctl00$ctl00$antiXsrfField" id="ctl00_ctl00_antiXsrfField" value="oPPd/MmJh8S2vBndhzQnxV9FJkjWRdgkiw=="
+        - value="oPPd/MmJh8S2vBndhzQnxV9FJkjWRdgkiw=="
 
     condition: css and favicon and logo and csrf
 
