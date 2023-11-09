@@ -8,17 +8,18 @@ references:
     
 detection:
 
-    usernameLabelID:
+    usernameLabelId:
       html|contains: 'EB8236264AE3C04429B8F46076848E7B'
       
-    passwordLabelID:
+    passwordLabelId:
       html|contains: '85B6CAE065D33FEEEB4297826ECB9B2D'
       
     exfilDestination:
       html|contains: 'database_setup/routes/process_login.php'
    
 
-    condition: usernameLabelID and passwordLabelID and exfilDestination
+    condition: usernameLabelId and passwordLabelId and exfilDestination
 
 tags:
+  - kit
   - target.santander
