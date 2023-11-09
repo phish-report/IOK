@@ -37,5 +37,6 @@ detection:
     condition: title and css and js and favicon and form and img
 
 tags:
+  - kit
   - target.davivienda
   - target_country.colombia
