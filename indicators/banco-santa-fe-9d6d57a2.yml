@@ -1,4 +1,4 @@
-title: Banco Santa Fe phishing kit 9d6d57a2
+title: Banco Santa Fe Phishing Kit 9d6d57a2
 
 description: |
   Banco Santa Fe phishing kit which uses the same CSS and JS files.
@@ -22,4 +22,4 @@ detection:
   condition: stylesheet and scriptContent
 
 tags:
-  - target.bancosantafe
+  - target.banco_santa_fe
