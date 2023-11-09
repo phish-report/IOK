@@ -3,7 +3,6 @@ description: |
     Detects a phishing kit targeting Amerant Bank.
     This was found as a result of this kit being deployed on Replit.
 
-
 references:
     - https://www.amerantbank.com/
     - https://urlscan.io/result/88c70641-58c8-45f2-843e-a9026f8110cd/
@@ -28,4 +27,4 @@ detection:
 tags:
   - kit
   - target.amerant
-  - target_country.us
+  - target_country.usa
