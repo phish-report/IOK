@@ -25,3 +25,7 @@ detection:
       html|contains: 'src="js/sax.js"'
    
     condition: ipDisplay and formFunction and scriptFile
+
+tags:
+  - kit
+  - target_region.latin_america
