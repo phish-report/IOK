@@ -1,4 +1,4 @@
-title: Coinbase clone generic
+title: Coinbase Phishing Kit cf711368
 description: |
     Detects a cloned version of the Coinbase website from the past 
     that uses the same `amplitude.js` API key as well as the same 
@@ -20,3 +20,7 @@ detection:
     js|contains: '132e62b5953ce8d568137d5887b6b7ab'
     
   condition: googleSiteVerificationKeyOne and googleSiteVerificationKeyTwo and amplitudeJSKey
+
+tags:
+  - kit
+  - target.coinbase
