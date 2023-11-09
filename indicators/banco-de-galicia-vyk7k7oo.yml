@@ -23,5 +23,6 @@ detection:
     condition: script and img
 
 tags:
+  - kit
   - target.banco_de_galicia
   - target_country.argentina
