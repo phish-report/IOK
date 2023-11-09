@@ -27,4 +27,5 @@ detection:
   condition: formAction and backgroundImage and cardValidation
 
 tags:
+  - kit
   - target.dhl
