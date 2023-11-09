@@ -12,4 +12,4 @@ detection:
   condition: cazanovaCookie
 
 tags:
-  - threat_actors.cazanova
+  - threat_actor.cazanova
