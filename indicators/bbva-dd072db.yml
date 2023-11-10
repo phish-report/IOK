@@ -12,11 +12,12 @@ detection:
     cssFile:
       requests|contains: 'mafalda.css'
         
-    dataComponentIDAttribute:
+    dataComponentIdAttribute:
       html|contains: 'dd072dbe-f468-4569-a1a2-8812203f5bf5'
 
-    condition: cssFile and dataComponentIDAttribute
+    condition: cssFile and dataComponentIdAttribute
 
 tags:
+  - kit
   - target.bbva
   - target_country.argentina

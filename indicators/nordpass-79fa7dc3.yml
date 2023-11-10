@@ -1,5 +1,4 @@
 title: NordPass Phishing Kit 79fa7dc3
-
 description: |
   NordPass Phishing Kit that uses a fake login page to steal user credentials.
 
@@ -17,4 +16,5 @@ detection:
   condition: cssStyles
 
 tags:
+  - kit
   - target.nordpass

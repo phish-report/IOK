@@ -7,7 +7,7 @@ references:
     
 detection:
 
-    exfilPHPScript:
+    exfilPhpScript:
       html|contains: 'login.php'
 
     csrfToken:
@@ -16,7 +16,8 @@ detection:
     clonedNonce:
       html|contains: 'OdHJON702gbbVy4cAFWxaboMpVOk5muI1jhED3XwaB6eOIPN'
 
-    condition: exfilPHPScript and csrfToken and clonedNonce
+    condition: exfilPhpScript and csrfToken and clonedNonce
 
 tags:
+  - kit
   - target.paypal

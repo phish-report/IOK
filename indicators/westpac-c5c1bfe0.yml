@@ -1,5 +1,4 @@
-title: Westpac phishing kit c5c1bfe0
-
+title: Westpac Phishing Kit c5c1bfe0
 description: |
     Westpac phishing kit which uses the same CSS files and directory structure across various domains.
 
@@ -23,4 +22,5 @@ detection:
     condition: stylesheet and shortcutIcon
 
 tags:
+  - kit
   - target.westpac

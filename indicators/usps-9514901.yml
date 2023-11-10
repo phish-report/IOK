@@ -1,5 +1,4 @@
 title: USPS Phishing Kit 9514901
-
 description: |
   Detects a USPS phishing kit that uses the same fake tracking ID
   & same stylesheet on every phish.
@@ -13,13 +12,14 @@ references:
 
 detection:
 
-  fakeTrackingID:
+  fakeTrackingId:
     html|contains: 'class="tracking-number"> US9514901185421</span>'
 
   stylesheet:
     requests|contains: '1.css?apiType=css&projectid=ee38900c-6459-4e0c-95d6-896c0208d3d0'
 
-  condition: fakeTrackingID and stylesheet
+  condition: fakeTrackingId and stylesheet
 
 tags:
+  - kit
   - target.usps

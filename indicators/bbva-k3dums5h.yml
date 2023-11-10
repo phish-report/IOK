@@ -22,11 +22,12 @@ detection:
 
     inputs:
       html|contains|all:
-        - input name="numdoc" type="tel"
+        - input name="numdoc"  type="tel"
         - input type="password" name="clvs"
 
     condition: title and css and form and inputs
 
 tags:
+  - kit
   - target.bbva
   - target_country.argentina

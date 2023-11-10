@@ -20,5 +20,6 @@ detection:
   condition: whatsAppHref and jivoWidget
 
 tags:
+  - kit
   - target_country.turkey
   - target.avis

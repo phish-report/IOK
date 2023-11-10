@@ -24,5 +24,6 @@ detection:
     condition: form and img
 
 tags:
-  - target.bancoatlantida
+  - kit
+  - target.banco_atlantida
   - target_country.honduras

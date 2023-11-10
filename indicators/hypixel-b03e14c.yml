@@ -30,5 +30,7 @@ detection:
       html|contains: '<td style="width:10%;"><input type="text" name="quantity[540085]" value="1" class="quantity" disabled="disabled"></td>'
 
     condition: formStructure or quantityElement or alternateQuantityElement
+    
 tags:
+  - kit
   - target.hypixel

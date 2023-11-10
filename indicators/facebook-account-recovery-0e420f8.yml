@@ -18,4 +18,5 @@ detection:
   condition: fontStylesheet and pageStylesheet
 
 tags:
+  - kit
   - target.facebook

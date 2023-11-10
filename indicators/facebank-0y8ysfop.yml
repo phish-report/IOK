@@ -17,7 +17,7 @@ detection:
     meta:
       html|contains|all:
         - link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://secureib.facebank.pr/personas/services/cobis/web/assets/img/favicons/apple-touch-icon-120x120.png"
-        - llink rel="icon" type="image/png" href="https://secureib.facebank.pr/personas/services/cobis/web/assets/img/favicons/favicon-128.png" sizes="128x128"
+        - link rel="icon" type="image/png" href="https://secureib.facebank.pr/personas/services/cobis/web/assets/img/favicons/favicon-128.png" sizes="128x128"
 
     css:
       html|contains|all:
@@ -36,5 +36,6 @@ detection:
     condition: title and meta and css and form and img
 
 tags:
+  - kit
   - target.facebank
   - target_country.usa

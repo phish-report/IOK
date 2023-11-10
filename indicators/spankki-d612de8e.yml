@@ -1,5 +1,4 @@
-title: S-Pankki phishing kit d612de8e
-
+title: S-Pankki Phishing Kit d612de8e
 description: |
     S-Pankki phishing kit which uses the same hidden value across various domains.
 
@@ -16,4 +15,5 @@ detection:
     condition: qrId
 
 tags:
+  - kit
   - target.spankki

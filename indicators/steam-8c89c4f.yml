@@ -1,4 +1,4 @@
-title: Steam phishing kit 8c89c4f
+title: Steam Phishing Kit 8c89c4f
 description: |
   Steam phishing kit containing an image URL that only appears in phishing pages,
   additionally uses Discord Nitro as a lure.
@@ -14,4 +14,5 @@ detection:
   condition: image
   
 tags:
+  - kit
   - target.steam

@@ -13,13 +13,14 @@ references:
 
 detection:
 
-    templateElementID:
+    templateElementId:
       html|contains: '5c706966-0c66-4623-bdc3-5bd23e958ca3'
 
     noScriptValue:
       html|contains: 'f67126f1a0cee6aeda1cbb99c2a1c01f'
    
-    condition: templateElementID and noScriptValue
+    condition: templateElementId and noScriptValue
 
 tags:
+  - kit
   - target.adobe

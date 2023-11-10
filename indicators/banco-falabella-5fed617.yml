@@ -1,4 +1,4 @@
-title: Banco Falabela Phishing Kit 5fed617
+title: Banco Falabella Phishing Kit 5fed617
 description: |
     Detects a phishing kit targeting Banco Falabella (Colombia) users
     Deployed often on `replit.com`.
@@ -18,5 +18,6 @@ detection:
   condition: googleJS and jsFile
 
 tags:
-  - target.bancofalabella
+  - kit
+  - target.banco_falabella
   - target_country.colombia

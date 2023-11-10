@@ -22,4 +22,5 @@ detection:
   condition: zewformJS and formHref and zewformComment
 
 tags:
+  - kit
   - target.meta

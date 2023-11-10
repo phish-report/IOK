@@ -28,5 +28,5 @@ detection:
 
 tags:
   - kit
-  - target.bankofamerica
-  - target_country.us
+  - target.bank_of_america
+  - target_country.usa

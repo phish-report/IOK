@@ -29,9 +29,10 @@ detection:
 
     img:
       html|contains:
-        - 'img style="width: 101px;" src="imagen.jpg"'
+        - img  style="width: 101px;" src="imagen.jpg"  alt=""
 
     condition: all of them
 
 tags:
+  - kit
   - target.microsoft

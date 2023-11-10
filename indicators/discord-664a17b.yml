@@ -14,10 +14,11 @@ references:
   
 detection: 
 
-  generalCSS:
+  generalCss:
     requests|contains: 'general.664a17b86a0ff56191d0.css'
 
-  condition: generalCSS
+  condition: generalCss
   
 tags:
+  - kit
   - target.discord

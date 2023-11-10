@@ -1,5 +1,4 @@
-title: HSBC phishing kit ea738a3
-
+title: HSBC Phishing Kit ea738a3
 description: |
     HSBC phishing kit which uses the same fake login detected
     HTML element across various domains.
@@ -13,12 +12,13 @@ detection:
 
     fakeLoginElement:
       html|contains|all:
-      - "A login attempt was made in:"
-      - "Location: Bangkok, Thailand"
-      - "IP : 290.630.232.85"
-      - "If this was NOT your please verify your credentials."
+          - "A login attempt was made in:"
+          - "Location: Bangkok, Thailand"
+          - "IP : 290.630.232.85"
+          - "If this was NOT your please verify your credentials."
 
     condition: fakeLoginElement
 
 tags:
+  - kit
   - target.hsbc

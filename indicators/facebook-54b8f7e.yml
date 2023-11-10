@@ -3,7 +3,6 @@ description: |
     Detects a Facebook phishing kit.
     
 references:
-   - https://urlscan.io/result/54b8f7ec-22f8-416f-b253-213d28262587
    - https://urlscan.io/result/d45ebbf2-ecf0-4a83-a908-7c7d08522d1c
    
 detection:
@@ -22,4 +21,5 @@ detection:
   condition: formExfil and styleSheets and logoImage
 
 tags:
+  - kit
   - target.facebook

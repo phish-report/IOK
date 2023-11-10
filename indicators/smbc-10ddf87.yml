@@ -20,5 +20,6 @@ detection:
   condition: hiddenToken and mainPagePath
 
 tags:
+  - kit
   - target_country.japan
   - target.smbc

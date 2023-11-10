@@ -2,6 +2,7 @@ title: Itaú Unibanco Phishing Kit s8hx648o
 description: |
     Detects a different Itaú Unibanco phishing kit.
     Discovered as a result of this being deployed on Replit.com.
+    
 references:
     - https://urlscan.io/result/d6c00c2d-d6be-4237-a9d1-2e10e481373b
     - https://urlscan.io/result/927b7a73-74df-4594-a431-e8da2cb741dd
@@ -25,7 +26,7 @@ detection:
 
     form:
       html|contains:
-        - form method="post" action="index1.php" id="aspnetForm"
+        - form method="post" action="index1.php"  id="aspnetForm"
 
     inputs:
       html|contains|all:
@@ -35,17 +36,17 @@ detection:
 
     placeholders:
       html|contains|all:
-        - placeholder="n° de documento"
+        - placeholder="nÂ° de documento"
         - placeholder="Pin de acceso"
         - placeholder="Pin de Transacciones"
 
     logo:
       html|contains:
         - img src="ff/LOGO_ita.png" style="width:120px;"
-        - img src="ff/lita.png" style="width:120px;"
 
     condition: all of them
 
 tags:
-  - target.itauunibanco
+  - kit
+  - target.itau_unibanco
   - target_country.brazil

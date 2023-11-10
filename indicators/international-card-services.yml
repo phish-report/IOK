@@ -1,4 +1,4 @@
-title: International Card Services phishing kit
+title: International Card Services Phishing Kit
 description: |
     Detects a phishing kit for a creditcard processor which uses the same hidden value across various domains.
     
@@ -10,11 +10,12 @@ references:
 
 detection:
 
-    did_proxy:
-      html|contains: <input id="did_proxy" name="did_proxy" type="hidden" value="1:zEUeQFVqXRrb1FthfkZ64J1LHpob1ksgZd7jHNpUxXxlq0gz2-i7oZP9U70asvhwgYSKXzVQArfJATAYu8N_bw">
+    didProxy:
+      html|contains: <input id="did_proxy" name="did_proxy" type="hidden" value="1:zEUeQFVqXRrb1FthfkZ64ABdt_5GKQC5gxwQD8dmYXkPJuYmhQBLey8Rpq4xyTEU0FS3yivFtzoWrZDVqZEzXw">
 
-    condition: did_proxy
+    condition: didProxy
 
 tags:
-  - target.international-card-services
+  - kit
+  - target.international_card_services
   - target_country.netherlands

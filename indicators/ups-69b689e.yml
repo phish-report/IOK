@@ -12,15 +12,16 @@ references:
 
 detection:
 
-    fakeParcelID:
+    fakeParcelId:
       html|contains: 'RAxxxxxxxxxUS'
 
     upsDataToken:
       html|contains: '69b689e92856af4eda14fb2bd0418c69158f2943d18691e934ada3ceefb3b914f225910c8bbd05dc221d336eac174899277c8bef3b610c7aa622d42913525889'
 
 
-    condition: fakeParcelID and upsDataToken
+    condition: fakeParcelId and upsDataToken
 
 tags:
+  - kit
   - target.ups
 

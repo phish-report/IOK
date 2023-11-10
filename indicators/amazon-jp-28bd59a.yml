@@ -24,5 +24,6 @@ detection:
     condition: randomString and pageScript and imageName
     
 tags:
+  - kit
   - target.amazon
   - target_country.japan

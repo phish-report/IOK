@@ -23,4 +23,5 @@ detection:
   condition: formString and scriptNonce and pageTitle
 
 tags:
+  - kit
   - target.facebook

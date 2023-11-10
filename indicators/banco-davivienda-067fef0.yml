@@ -18,5 +18,6 @@ detection:
   condition: fakeLogo and otherFakeLogo
 
 tags:
-  - target.bancodavivienda
+  - kit
+  - target.banco_davivienda
   - target_country.colombia

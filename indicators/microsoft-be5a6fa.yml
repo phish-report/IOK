@@ -23,4 +23,5 @@ detection:
     condition: divClass and otherDivClass and inputFieldClass and logoFileName
 
 tags:
+  - kit
   - target.microsoft

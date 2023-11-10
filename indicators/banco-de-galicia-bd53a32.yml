@@ -1,6 +1,6 @@
-title: Banco Galicia Phishing Kit bd53a32
+title: Banco de Galicia Phishing Kit bd53a32
 description: |
-    Detects a Banco Galicia phishing kit deployed quite oftenly on `replit.com`.
+    Detects a Banco de Galicia phishing kit deployed quite oftenly on `replit.com`.
     
 references:
     - https://urlscan.io/result/bd53a324-fc80-4bd5-801e-e9b3f10f3564
@@ -9,7 +9,7 @@ references:
 detection:
 
     formDefinition:
-      html|contains: '<form action="secure.php" method="post" id="form1">'
+      html|contains: 'action="secure.php" method="post" id="form1"'
 
     credentialFieldNames:
       html|contains|all:
@@ -20,5 +20,6 @@ detection:
     condition: formDefinition and credentialFieldNames
 
 tags:
-  - target.bancogalicia
+  - kit
+  - target.banco_de_galicia
   - target_country.argentina

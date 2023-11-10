@@ -28,4 +28,5 @@ detection:
     condition: img and script and form
 
 tags:
+  - kit
   - target.scotiabank

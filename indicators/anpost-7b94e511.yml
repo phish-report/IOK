@@ -1,5 +1,4 @@
 title: An Post Phishing Kit 7b94e511
-
 description: |
   Detects an An Post phishing kit that uses the same fake tracking ID across multiple domains.
 
@@ -10,10 +9,11 @@ references:
 
 detection:
 
-  fakeTrackingID:
+  fakeTrackingId:
     html|contains: '<form action="Details.php?tracking=372837491"'
 
-  condition: fakeTrackingID
+  condition: fakeTrackingId
 
 tags:
+  - kit
   - target.anpost

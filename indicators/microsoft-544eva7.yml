@@ -11,16 +11,17 @@ references:
     
 detection:
 
-    dropDownDividerID:
+    dropDownDividerId:
       html|contains: 'id="dropDownSelect1"'
 
     validationFunction:
       html|contains: 'soloNumeros'
 
-    fakeSessionID:
+    fakeSessionId:
       html|contains: '#544eva77'
 
-    condition: dropDownDividerID and validationFunction and fakeSessionID
+    condition: dropDownDividerId and validationFunction and fakeSessionId
     
 tags:
+  - kit
   - target.microsoft
