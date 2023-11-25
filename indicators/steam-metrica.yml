@@ -13,7 +13,7 @@ references:
 detection:
 
   metricaLoadedCount:
-    requests|contains: 'metrica.php?method=LoadedCount'
+    requests|contains: 'metrica.php'
 
   aShowAuthWin:
     html|contains:
