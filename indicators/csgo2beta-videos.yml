@@ -20,7 +20,7 @@ detection:
       - counter-strike.net
 
   csgo2PageTitle:
-    html|re: '/<title>Counter-Strike 2 \| Limited Test<\/title>/i'
+    html|re: '(?i)<title>Counter-Strike 2 \| Limited Test<\/title>'
 
   csgo2Youtube:
     requests|contains|all:
