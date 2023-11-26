@@ -14,7 +14,7 @@ references:
 detection:
 
   saleBannerGif:
-    requests|contains: 'https://s12.gifyu.com/images/SWtIF.gif'
+    requests|contains: 'https://s12.gifyu.com/images/'
 
   siteMetrics:
     requests|contains: 'metrica.php'
