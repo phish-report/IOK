@@ -13,8 +13,7 @@ references:
 detection:
 
   giftFromAuronplay:
-    html|contains:
-      - '<p style="margin-top: 6px;">A gi<span style="display:none;">cqg</span>ft fr<span style="display:none;">ged</span>om <span style="font-weight: bold; color: white;">auronplay</span>'
+    html|re: '(?i)A ((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)g((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)i((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)f((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)t((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|) ((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)f((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)r((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)o((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>[^>]*>)|)m ((?:<([^\s]+)(\s[^>]*?)?(?<!\/)>)|)auronplay'
 
   steamGiftPageFooter:
     html|contains|all:
