@@ -1,0 +1,23 @@
+title: Microsoft Phishing Kit fyfcvk8e
+description: |
+    Detects a Microsoft phishing kit with a hardcoded MFA phone number and misspelled words.
+
+references:
+    - https://urlscan.io/result/0f35c05b-73e0-4397-9e7e-9e3edb508d16
+    - https://urlscan.io/result/e73ca666-5a09-4c0e-949b-33a8f6ee7564
+
+detection:
+
+    phone:
+      dom|contains:
+        - +X XXXXXXXX71
+    
+    browser:
+      dom|contains:
+        - THIS WORKS AS A SIGNA TURE CHANGE FOR DETECED BROWSER
+
+    condition: phone and browser
+
+tags:
+    - kit
+    - target.microsoft
