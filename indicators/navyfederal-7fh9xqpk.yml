@@ -12,8 +12,8 @@ related:
   - id: savepage-we
 
 detection:
-  title:
-    title|contains: "Navy Federal Credit Union - Our Members are the Mission®"
+  pageTitle:
+    title: "Navy Federal Credit Union - Our Members are the Mission®"
 
   cloned:
     dom|contains: "Thu Mar 25 2021 16:38:13 GMT+0300 (East Africa Time)"
