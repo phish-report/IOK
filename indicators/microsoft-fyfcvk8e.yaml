@@ -20,7 +20,7 @@ detection:
         - THIS WORKS AS A SIGNA TURE CHANGE FOR DETECED BROWSER
 
     licenseServer:
-      requests|contains:
+      requests|contains|all:
         - "sc.php"
         - "jquery-3.1.1.min.js"
         - "crypto-js.min.js"
