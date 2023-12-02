@@ -13,10 +13,10 @@ related:
 
 detection:
   title:
-    html|contains: "<title>Navy Federal Credit Union - Our Members are the Mission®</title>"
+    title|contains: "Navy Federal Credit Union - Our Members are the Mission®"
 
-  cssComment:
-    html|contains: "/*savepage-url="
+  cloned:
+    dom|contains: "Thu Mar 25 2021 16:38:13 GMT+0300 (East Africa Time)"
 
   javascript:
     js|contains|all:
