@@ -3,6 +3,7 @@ package iok
 import (
 	"context"
 	"embed"
+	"errors"
 	"fmt"
 	"io/fs"
 	"path/filepath"
@@ -39,17 +40,19 @@ func GetMatches(input Input) ([]sigma.Rule, error) {
 func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
 	ruleInput := convertInput(input)
+	var errs []error
 	for _, rule := range rules {
 		result, err := rule.Matches(context.Background(), ruleInput)
 		if err != nil {
-			return nil, fmt.Errorf("error evaluating %s: %w", rule.Title, err)
+			errs = append(errs, fmt.Errorf("error evaluating %s: %w", rule.Title, err))
+			continue
 		}
 
 		if result.Match {
 			matches = append(matches, rule.Rule)
 		}
 	}
-	return matches, nil
+	return matches, errors.Join(errs...)
 }
 
 func convertInput(input Input) evaluator.Event {
