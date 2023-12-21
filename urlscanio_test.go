@@ -11,6 +11,7 @@ import (
 func TestInputFromURLScan(t *testing.T) {
 	tests := []string{
 		"be1f3938-ec14-4c0e-8f0a-45fb1ea423b3",
+		"55545c59-1b1c-452b-9b33-0b5d63a0d825",
 	}
 	for _, tt := range tests {
 		t.Run(tt, func(t *testing.T) {

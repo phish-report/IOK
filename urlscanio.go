@@ -56,8 +56,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		// parse any JS/CSS from the dom
 		node, err := html.Parse(bytes.NewReader(resultHTML))
 		if err == nil {
-			extractEmbedded(node, &input)
-			extractTitle(node, &input)
+			extractHTML(node, &input, extractEmbeddedAssets, extractTitle)
 		}
 		return nil
 	})
@@ -130,8 +129,7 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 					// but that doesn't affect correctness
 					node, err := html.Parse(bytes.NewReader(resource))
 					if err == nil {
-						extractEmbedded(node, &input)
-						extractTitle(node, &input)
+						extractHTML(node, &input, extractEmbeddedAssets, extractTitle)
 					}
 				}
 			}
@@ -147,27 +145,4 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	}
 
 	return input, nil
-}
-
-func extractEmbedded(node *html.Node, input *Input) {
-	if node.Type == html.ElementNode && node.Data == "style" && node.FirstChild != nil {
-		input.CSS = append(input.CSS, node.FirstChild.Data)
-	}
-	if node.Type == html.ElementNode && node.Data == "script" && node.FirstChild != nil {
-		input.JS = append(input.JS, node.FirstChild.Data)
-	}
-	for c := node.FirstChild; c != nil; c = c.NextSibling {
-		extractEmbedded(c, input)
-	}
-}
-
-func extractTitle(node *html.Node, input *Input) {
-	if node.Type == html.ElementNode && node.Data == "title" && node.FirstChild != nil {
-		input.Title = append(input.Title, node.FirstChild.Data)
-		return
-	}
-
-	for c := node.FirstChild; c != nil; c = c.NextSibling {
-		extractTitle(c, input)
-	}
 }
