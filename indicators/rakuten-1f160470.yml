@@ -16,12 +16,12 @@ detection:
         html|contains: 
             - 'type="text/javascript" src="static/js/challenger.js"'
 
-    scriptVariables: 
+    ScriptCharacteristic: 
         js|contains|all: 
             - 'typeof mkfp != "undefined"'
             - '"undefined" != typeof FloatingChatButton'
 
-    condition: RakutenTitle and ChallengerJS and scriptVariables
+    condition: RakutenTitle and ChallengerJS and ScriptCharacteristic
 
 tags:
   - kit
