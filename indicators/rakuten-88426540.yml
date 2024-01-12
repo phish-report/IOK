@@ -1,0 +1,26 @@
+title: Rakuten Phishing Kit 88426540
+description: |
+    Detects a Rakuten phishing kit targeting Japanese users.
+references:
+  - https://urlscan.io/result/88426540-8f66-4fe2-b8f2-526e7025ace7
+  - https://urlscan.io/result/ab83507a-012d-413e-bd3f-fee0fe5e9da4
+
+detection:
+
+    RakutenTitle:
+        title:
+            - "楽天e-NAVI: ログイン画面"
+
+    ScriptCharacteristic: 
+        js|contains: 
+            - 'window.location.href = "index.html"//移动端页面'
+
+    ConfigScript:
+        requests|contains: 'ResourceRedConfig.js'
+
+    condition: RakutenTitle and ScriptCharacteristic and ConfigScript
+
+tags:
+  - kit
+  - target.rakuten
+  - target_country.japan
