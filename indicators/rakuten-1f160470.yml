@@ -1,0 +1,29 @@
+title: Rakuten Phishing Kit 1f160470
+description: |
+    Detects a Rakuten phishing kit targeting Japanese users.
+
+references:
+  - https://urlscan.io/result/1f160470-9cc5-4ba3-b5a1-1f24a9bc113c
+  - https://urlscan.io/result/236af6c7-cc5f-49ee-b72e-5dc01f023899
+
+detection:
+
+    RakutenTitle:
+        title:
+            - "【楽天】ログイン"
+
+    ChallengerJS: 
+        html|contains: 
+            - 'type="text/javascript" src="static/js/challenger.js"'
+
+    scriptVariables: 
+        js|contains|all: 
+            - 'typeof mkfp != "undefined"'
+            - '"undefined" != typeof FloatingChatButton'
+
+    condition: RakutenTitle and ChallengerJS and scriptVariables
+
+tags:
+  - kit
+  - target.rakuten
+  - target_country.japan
