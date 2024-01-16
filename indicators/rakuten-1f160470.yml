@@ -13,8 +13,7 @@ detection:
             - "【楽天】ログイン"
 
     ChallengerJS: 
-        html|contains: 
-            - 'type="text/javascript" src="static/js/challenger.js"'
+        requests|contains: 'challenger.js'
 
     ScriptCharacteristic: 
         js|contains|all: 
