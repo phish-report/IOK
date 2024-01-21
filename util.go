@@ -3,6 +3,7 @@ package iok
 import (
 	"golang.org/x/net/html"
 	"net/url"
+	"strings"
 )
 
 func extractHTML(node *html.Node, input *Input, funcs ...func(node *html.Node, input *Input)) {
@@ -25,7 +26,7 @@ func extractEmbeddedAssets(node *html.Node, input *Input) {
 
 func extractTitle(node *html.Node, input *Input) {
 	if node.Type == html.ElementNode && node.Data == "title" && node.FirstChild != nil {
-		input.Title = append(input.Title, node.FirstChild.Data)
+		input.Title = append(input.Title, strings.TrimSpace(node.FirstChild.Data))
 	}
 }
 
