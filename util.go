@@ -25,7 +25,10 @@ func extractEmbeddedAssets(node *html.Node, input *Input) {
 }
 
 func extractTitle(node *html.Node, input *Input) {
-	if node.Type == html.ElementNode && node.Data == "title" && node.FirstChild != nil {
+	if node.Type == html.ElementNode &&
+		node.Data == "title" && // this is a <title> tag
+		node.Namespace == "" && // we're not within an <svg> element
+		node.FirstChild != nil {
 		input.Title = append(input.Title, strings.TrimSpace(node.FirstChild.Data))
 	}
 }
