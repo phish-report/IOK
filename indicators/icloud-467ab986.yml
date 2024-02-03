@@ -1,14 +1,14 @@
-title: iCloud Phishing Kit e63615d8
+title: iCloud Phishing Kit 467ab986
 description: |
     An iCloud Phishing Kit appearing in English and Spanish.
     This looks for file name references of a loader image and stylesheet.
 
 references:
-  - https://urlscan.io/result/e63615d8-a541-4703-9765-1a5d5730f61c/
-  - https://urlscan.io/result/477eeeb3-3fbc-4d82-b2b9-369617977d6c/
-  - https://urlscan.io/result/8b89890d-f011-477a-90bd-dd56eec8a81f/
-  - https://urlscan.io/result/79f6c20b-0dc0-4e3d-ac73-e07b17e4a3f5/
-  - https://urlscan.io/result/b745320b-4d0d-4c3f-afda-920bcbf03a14/
+  - https://urlscan.io/result/467ab986-22c1-466a-a9b4-173f6bd75205/
+  - https://urlscan.io/result/ec2b7fc2-7906-4f72-9f00-c8b35e6d6328/
+  - https://urlscan.io/result/e8eb17de-97c5-4e0a-a755-984208e6c35e/
+  - https://urlscan.io/result/224947d7-24c8-4c5f-b67c-236b150e87c2/
+  - https://urlscan.io/result/37cd6814-32ee-4ab3-aefa-673183507832/
   - https://urlscan.io/search/#(filename%3A%22assets%2Flayout%2Fapple.css%22)%20AND%20(filename%3A%22assets%2Fimg%2Fajax-loader.gif%22)
   
 detection:
