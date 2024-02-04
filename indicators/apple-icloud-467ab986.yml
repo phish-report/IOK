@@ -1,6 +1,6 @@
-title: iCloud Phishing Kit 467ab986
+title: Apple iCloud Phishing Kit 467ab986
 description: |
-    An iCloud Phishing Kit appearing in English and Spanish.
+    An Apple iCloud Phishing Kit appearing in English and Spanish.
     This looks for file name references of a stylesheet, title styling and a loader image.
 
 references:
@@ -13,10 +13,10 @@ references:
   
 detection:
     stylesheet:
-      html|contains: "href=\"assets/layout/apple.css\""
+        html|contains: "href=\"assets/layout/apple.css\""
 
     titleClassStyle:
-      html|contains: ".Estilo2"
+        html|contains: ".Estilo2"
 
     imageAjaxLoader:
         html|contains: "src=\"assets/img/ajax-loader.gif\""
@@ -26,3 +26,4 @@ detection:
 tags:
     - kit
     - target.icloud
+    - target.apple
