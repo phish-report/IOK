@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/bradleyjkemp/cupaloy/v2 v2.6.0
 	github.com/bradleyjkemp/sigma-go v0.6.4
-	golang.org/x/net v0.7.0
+	golang.org/x/net v0.17.0
 	golang.org/x/sync v0.3.0
 	phish.report/urlscanio-go v0.0.0-20230915155435-2677d74fc8a2
 )
