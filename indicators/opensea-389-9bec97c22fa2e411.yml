@@ -8,11 +8,14 @@ references:
     
 detection:
 
-  file:
+  fileRequest:
+    requests|endswith: '/389-9bec97c22fa2e411.gif'
+    
+  fileUsage:
     # This GIF file is used on a lot of OpenSea scams.
     html|contains: '/389-9bec97c22fa2e411.gif'
 
-  condition: file
+  condition: fileRequest and fileUsage
 
 tags:
     - target.opensea
