@@ -7,11 +7,12 @@ references:
     - https://urlscan.io/result/c6ed3c5a-e79a-491b-b316-deedc0527c49/
     
 detection:
-  File:
+
+  file:
     # This GIF file is used on a lot of OpenSea scams.
     html|contains: '/389-9bec97c22fa2e411.gif'
 
-  condition: File
+  condition: file
 
 tags:
     - target.opensea
