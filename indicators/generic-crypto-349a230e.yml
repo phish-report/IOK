@@ -1,0 +1,18 @@
+title: Generic Crypto 349a230e
+description: Finds genertic crypto scam sites with the 349a230e filename.
+
+references:
+    - https://urlscan.io/result/f07c5ddf-59cc-4131-9865-16f297918f2d/
+    - https://urlscan.io/result/57688f6f-3437-405e-915a-787ac8cb19df/
+    - https://urlscan.io/result/0cceace4-7aae-45ff-9e58-6da75e3c3220/
+
+detection:
+  jsFile:
+    html|contains: '/349a230e-c6d6-4e19-ac12-43f6f1612f37.js'
+
+  condition: jsFile
+
+tags:
+    - target.satoshivm
+    - target.monad
+    - cryptocurrency
