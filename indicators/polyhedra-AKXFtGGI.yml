@@ -1,0 +1,27 @@
+title: Polyhedra Airdrop AKXFtGGI
+description: Detects a wallet drainer relating to the Polyhedra $ZK Airdrop.
+
+references:
+    - https://urlscan.io/result/e511f859-b299-4923-8d05-c6847815bc36/
+    - https://urlscan.io/result/244b005c-6e67-4554-9660-e9714efced28/
+    - https://urlscan.io/result/6b42aaa3-1d06-4ff6-bfaa-b943a691d347/
+
+detection:
+
+  siteTitle:
+    html|contains: "Polyhedra $ZK Airdrop"
+
+  fileRequest:
+    requests|endswith: '/logo-AKXFtGGI.svg'
+
+  fileUsage:
+    html|contains: '/logo-AKXFtGGI.svg'
+  
+  walletConnect:
+    requests|contains: 'wallet-connect-v2.js'
+
+  condition: siteTitle or fileRequest or fileUsage and walletConnect
+
+tags:
+    - target.polyhedra
+    - cryptocurrency
