@@ -1,0 +1,25 @@
+title: Telegram Phishing Kit
+description: |
+    Detects a Telegram QR phishing
+    
+references:
+    - https://urlscan.io/result/aba56998-9ab5-44dd-a780-2bacc4a5b779/
+    - https://urlscan.io/result/b34b27aa-fd23-4b1b-887d-0c3b773889e2/
+    - https://urlscan.io/result/53cb4636-8cc0-4f2a-b7df-0357342ec578/
+    - https://urlscan.io/result/739d1a87-c83c-468b-b888-191e79b4a246/
+
+detection:
+
+    htmltags:
+      html|contains|all: 
+        - '<html lang="en" translate="no" class="notranslate">'
+        - '<script>console.log("主页面1");</script>'
+
+    nginxheaders:
+      headers|contains: 'strict-transport-security: max-age=31536000'
+
+    condition:  htmltags and scriptlog
+
+tags:
+  - kit
+  - target.telegram
