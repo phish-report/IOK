@@ -84,8 +84,8 @@ var Fields = []Field{
 		Modifiers:   StandardModifiers,
 	},
 	{
-		SigmaName:   "cookies",
-		Name:        "Cookies",
+		SigmaName:   "cookie",
+		Name:        "Cookie",
 		Type:        StringListField,
 		Description: "Cookies from the page. Each is in the form cookieName=value",
 		Example:     "PHPSESSID=el4ukv0kqbvoirg7nkp4dncpk3",
