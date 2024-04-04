@@ -1,0 +1,26 @@
+title: telegram
+description: Page with same title as Telegram
+level: likely_malicious
+
+references:
+    - https://urlscan.io/result/fdf45a2f-c2e6-4eaa-84ed-757f489b2075
+    - https://urlscan.io/result/63accd56-b1fe-4b67-aa98-cc234662994d
+    - https://urlscan.io/result/e589d444-5e9c-4264-9c15-7505fe4793f0/
+
+detection:
+
+  telegramTitle:
+    title:
+      - "Telegram"
+      - "Telegram Web"
+
+  realDomain:
+    hostname:
+      - telegram.org
+      - web.telegram.org
+
+  condition: telegramTitle and not realDomain
+
+tags:
+  - kit
+  - target.telegram
