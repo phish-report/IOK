@@ -43,7 +43,10 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	g.Go(func() error {
 		domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
 		domResp, err := client.Do(domReq)
-		if err != nil {
+		if err != nil || domResp.StatusCode != 200 {
+			if err == nil {
+				err = fmt.Errorf(domResp.Status)
+			}
 			return fmt.Errorf("failed to get result dom: %w", err)
 		}
 		defer domResp.Body.Close()
@@ -98,7 +101,10 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			// Fetch the response in parallel with other threads, only lock the mutex once we're modifying the Input{}
 			resourceReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/responses/"+request.Response.Hash, nil)
 			resp, err := client.Do(resourceReq)
-			if err != nil {
+			if err != nil || resp.StatusCode != 200 && resp.StatusCode != 404 {
+				if err == nil {
+					err = fmt.Errorf(resp.Status)
+				}
 				return fmt.Errorf("failed to fetch resource %s %s: %w", request.Request.RequestId, request.Response.Hash, err)
 			}
 			resource, _ := io.ReadAll(resp.Body) // always read the body to completion to ensure proper connection re-use + caching
