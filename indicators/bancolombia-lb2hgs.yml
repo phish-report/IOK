@@ -1,0 +1,57 @@
+title: Bancolombia Phishing Kit Lb2HGs
+description: |
+    Detects a phishing kit targeting Bancolombia.
+    Visually consists of the following:
+    - Bancolombia logo at the top
+    - 'Complete with your current details to reactivate.' message below
+    - The login form
+    This was found as a result of this kit being deployed on Replit.
+
+
+references:
+    - https://urlscan.io/result/d393d3f8-0fb7-487a-add8-0a60b5c151bc/
+    - https://urlscan.io/result/4b8d3e02-2dee-4b50-90b9-f4c63fda318d/
+    - https://urlscan.io/result/0da19b04-e21a-4b2d-b0bd-b2b4354b5c7b/
+    - https://urlscan.io/result/2d5ed732-58c7-4440-a94d-12390192fa1e/
+    - https://urlscan.io/result/8448836d-3079-4f65-afe9-2421cabeab5a/
+    - https://urlscan.io/result/08178bcd-09d3-4247-b4ea-aede9469cffa/
+    - https://urlscan.io/result/3d568188-ccda-48b1-8e78-ccd544094332/
+    - https://urlscan.io/result/28714249-1390-429a-8085-7a282c6759ae/
+    - https://urlscan.io/result/3084773e-e18f-43a6-a2c7-12f3770cde25/
+    - https://urlscan.io/result/11176924-40fd-46da-8984-f59717700da8/
+
+detection:
+
+    title:
+      html|contains:
+        - <title>Información</title>
+
+    viewportOptions:
+      html|contains:
+        - meta name="viewport" content="user-scalable=no,initial-scale=0.9,maximum-scale=0.9,minimum-scale=1,width=device-width,viewport-fit=cover"
+
+    topImage:
+      html|contains:
+        - c4.jpg" style="width:150px;"
+
+    inputPassword:
+      html|contains:
+        - input type="password" maxlength="4" minlength="4"
+
+    inputSubmit:
+      html|contains:
+        - input type="submit" value="Continuar"
+
+    background:
+      html|contains|all:
+        - trazo1.png
+        - trazo2.png
+        - trazo3.png
+
+
+    condition: title and viewportOptions and topImage and inputPassword and inputSubmit and background
+
+tags:
+  - kit
+  - target.bancolombia
+  - target_country.colombia
