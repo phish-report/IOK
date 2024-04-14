@@ -7,21 +7,23 @@ references:
     - https://urlscan.io/result/46166857-4a6b-48c7-8913-292a1d01ce99
 
 detection:
-
-  titleCheck:
+  shammerTitleCheck:
     title|contains:
       - "Sledgehammer"
+
+  verificationTitleCheck:
+    title|contains:
       - "Verification"
       
   htmlCheck:
     html|contains:
-      - "bookmark"
+      - "Sledgehammer Discord Bot"
     
   realDomain:
     hostname:
       - sledgehammer.app
 
-  condition: titleCheck and htmlCheck and not realDomain
+  condition: verificationTitleCheck and shammerTitleCheck and htmlCheck and not realDomain
 
 tags:
     - target.discord
