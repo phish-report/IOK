@@ -1,8 +1,7 @@
-title: sledgehammerfakeverification
+title: sledgehammerphish-821828
 description: |
   Tries to detect the fake sledgehammer login to verify or bookmark verification pages.
 
-level: likely_malicious
 
 references:
     -https://urlscan.io/result/4b34b0a1-c66c-4228-9d67-c9790dadccb8/
@@ -24,9 +23,8 @@ detection:
     hostname:
       - sledgehammer.app
 
-  condition: titlecheck and htmlcheck
+  condition: titlecheck and htmlcheck and not realDomain
 
 tags:
-    - phishing
     - target.discord
     - target.sledgehammer
