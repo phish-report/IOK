@@ -1,0 +1,28 @@
+title: sledgehammer-4b34b0a1
+description: |
+  Detects a page using a bookmarklet or iframe to steal Discord credentials.
+  Typically using SledgeHammer bot as a lure.
+references:
+    - https://urlscan.io/result/4b34b0a1-c66c-4228-9d67-c9790dadccb8
+    - https://urlscan.io/result/46166857-4a6b-48c7-8913-292a1d01ce99
+
+detection:
+
+  titleCheck:
+    title|contains:
+      - "Sledgehammer"
+      - "Verification"
+      
+  htmlCheck:
+    html|contains:
+      - "bookmark"
+    
+  realDomain:
+    hostname:
+      - sledgehammer.app
+
+  condition: titleCheck and htmlCheck and not realDomain
+
+tags:
+    - target.discord
+    - target.sledgehammer
