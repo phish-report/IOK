@@ -102,6 +102,14 @@ var Fields = []Field{
 		Modifiers:   slices.Concat(StandardModifiers, IPModifiers),
 	},
 	{
+		SigmaName:   "cname",
+		Name:        "Page CNAMEs",
+		Type:        StringList,
+		Description: "Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on Github",
+		Example:     "github.io",
+		Modifiers:   slices.Concat(StandardModifiers),
+	},
+	{
 		SigmaName:   "asn",
 		Name:        "Page ASN",
 		Type:        Number,

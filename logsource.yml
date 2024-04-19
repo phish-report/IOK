@@ -9,6 +9,7 @@ fieldmappings:
   url.path: $.urlPath
   url.query: $.urlQuery[*]
   ip: $.Ip[*]
+  cname: $.Cname[*]
   asn: $.asn
   registrar: $.Registrar
   status: $.Status

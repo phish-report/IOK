@@ -4,6 +4,7 @@ import "net/url"
 
 //go:generate go run ./internal/genlogsource
 //go:generate go fmt input.go
+//go:generate go run ./internal/gendocs
 
 type Input struct {
 	Url              *url.URL   // The full URL of the page
@@ -11,6 +12,7 @@ type Input struct {
 	urlPath          string     // Path component of the full URL of the page
 	urlQuery         []string   // Query parameters extracted from the full URL of the page
 	Ip               []string   // IP addresses from which the page was loaded (resolved from url.hostname)
+	Cname            []string   // Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on Github
 	asn              int        // ASN from which the page was loaded
 	Registrar        int        // IANA ID for the registrar of this domain
 	Status           int        // The HTTP status code of the primary page load

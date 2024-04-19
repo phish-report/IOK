@@ -36,6 +36,7 @@ import "net/url"
 
 //go:generate go run ./internal/genlogsource
 //go:generate go fmt input.go
+//go:generate go run ./internal/gendocs
 
 type Input struct {
 `)
