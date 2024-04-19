@@ -33,33 +33,47 @@ fieldmappings:
 	i.WriteString(`package iok
 
 //go:generate go run ./internal/genlogsource
+//go:generate go fmt input.go
 
 type Input struct {
 `)
 
 	for _, field := range schema.Fields {
-		jsonPath := "$." + toGoIdentifier(field.SigmaName)
-		if field.Type == schema.StringListField {
+		goIdentifier := toGoIdentifier(field.SigmaName, field.Derived)
+		jsonPath := "$." + goIdentifier
+		if field.Type == schema.StringList {
 			jsonPath += "[*]"
 		}
 		fmt.Fprintf(l, "  %s: %s\n", field.SigmaName, jsonPath)
 
-		var gotype string
-		switch field.Type {
-		case schema.StringListField:
-			gotype = "[]string"
-		default:
-			gotype = "string"
+		gotype := field.GoType
+		if field.GoType == "" {
+			switch field.Type {
+			case schema.String:
+				gotype = "string"
+			case schema.StringList:
+				gotype = "[]string"
+			case schema.Number:
+				gotype = "int"
+			case schema.NumberList:
+				gotype = "[]int"
+
+			default:
+				panic("unknown field type: " + field.Type)
+			}
 		}
-		fmt.Fprintf(i, "  %s %s // %s\n", toGoIdentifier(field.SigmaName), gotype, field.Description)
+		fmt.Fprintf(i, "  %s %s // %s\n", goIdentifier, gotype, field.Description)
 	}
 	i.WriteString("}\n")
 }
 
-func toGoIdentifier(s string) string {
+func toGoIdentifier(s, derived string) string {
 	parts := strings.Split(s, ".")
 	for i, part := range parts {
 		parts[i] = cases.Title(language.English, cases.Compact).String(part)
+	}
+	if derived != "" {
+		parts[0] = strings.ToLower(parts[0])
 	}
 	return strings.Join(parts, "")
 }
