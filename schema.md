@@ -25,5 +25,5 @@
 |`request.header`|Headers in requests made during the page load. Each is in the canonical form Header-Name: value|`Authentication: Bearer el4ukv0kqbvoirg7nkp4dncpk3`|
 |`response.hash`|SHA256 Hashes of response bodies|`f39889eb42412593927c5136480e66f4ff0b813e071f2e5ddab70c14154692e4`|
 |`response.header`|Headers returned as part of responses. Each is in the canonical form Header-Name: value|`X-Powered-By: PHP/7.4.33`|
-|`supported`|Fields supported by this IOK implementation|`url.query`|
-|`unsupported`|Fields *not* supported by this IOK implementation|`url.query`|
+|`supported`|Fields supported by this IOK implementation. This allows you to distinguish between fields which are genuinely empty (e.g. the page had no <title> element) from cases where the data was not loaded.|`url.query`|
+|`unsupported`|Fields *not* supported by this IOK implementation. For example, the favicon may not have been fetched and so the favicon.hash field will be unset.|`favicon.hash`|

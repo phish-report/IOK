@@ -31,6 +31,6 @@ type Input struct {
 	RequestHeader    []string   // Headers in requests made during the page load. Each is in the canonical form Header-Name: value
 	ResponseHash     []string   // SHA256 Hashes of response bodies
 	ResponseHeader   []string   // Headers returned as part of responses. Each is in the canonical form Header-Name: value
-	Supported        []string   // Fields supported by this IOK implementation
-	unsupported      []string   // Fields *not* supported by this IOK implementation
+	Supported        []string   // Fields supported by this IOK implementation. This allows you to distinguish between fields which are genuinely empty (e.g. the page had no <title> element) from cases where the data was not loaded.
+	unsupported      []string   // Fields *not* supported by this IOK implementation. For example, the favicon may not have been fetched and so the favicon.hash field will be unset.
 }
