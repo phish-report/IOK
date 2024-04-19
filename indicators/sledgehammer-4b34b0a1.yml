@@ -13,13 +13,13 @@ detection:
   verificationTitleCheck:
     title: "Verification"
       
-  htmlCheck:
-    html|contains: "Sledgehammer Discord Bot"
+  domCheck:
+    dom|contains: "Sledgehammer Discord Bot"
     
   realDomain:
     hostname: sledgehammer.app
 
-  condition: (shammerTitleCheck or verificationTitleCheck) and htmlCheck and not realDomain
+  condition: (shammerTitleCheck or verificationTitleCheck) and domCheck and not realDomain
 
 tags:
     - target.discord
