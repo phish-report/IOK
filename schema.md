@@ -6,6 +6,7 @@
 |`url.query`|Query parameters extracted from the full URL of the page|`key=value`|
 |`ip`|IP addresses from which the page was loaded (resolved from url.hostname)|`1.1.1.1`|
 |`asn`|ASN from which the page was loaded|`13335`|
+|`registrar`|IANA ID for the registrar of this domain|`1910`|
 |`status`|The HTTP status code of the primary page load|`200`|
 |`header`|HTTP Headers returned as part of page load. Each is in the canonical form Header-Name: value|`X-Powered-By: PHP/7.4.33`|
 |`title`|The title of the page as shown in a browser. If multiple titles are set (e.g. by JavaScript), this contains all of them|`Login | My Bank`|

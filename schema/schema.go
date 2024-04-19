@@ -111,6 +111,14 @@ var Fields = []Field{
 		Derived:     "ip",
 	},
 	{
+		SigmaName:   "registrar",
+		Name:        "Registrar",
+		Type:        Number,
+		Description: "IANA ID for the registrar of this domain",
+		Example:     "1910",
+		Modifiers:   slices.Concat(StandardModifiers, NumberModifiers),
+	},
+	{
 		SigmaName:   "status",
 		Name:        "Page HTTP Status",
 		Type:        Number,

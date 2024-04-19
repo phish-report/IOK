@@ -10,6 +10,7 @@ fieldmappings:
   url.query: $.urlQuery[*]
   ip: $.Ip[*]
   asn: $.asn
+  registrar: $.Registrar
   status: $.Status
   header: $.Header[*]
   title: $.Title[*]

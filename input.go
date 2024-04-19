@@ -10,6 +10,7 @@ type Input struct {
 	urlQuery         []string   // Query parameters extracted from the full URL of the page
 	Ip               []string   // IP addresses from which the page was loaded (resolved from url.hostname)
 	asn              int        // ASN from which the page was loaded
+	Registrar        int        // IANA ID for the registrar of this domain
 	Status           int        // The HTTP status code of the primary page load
 	Header           []string   // HTTP Headers returned as part of page load. Each is in the canonical form Header-Name: value
 	Title            []string   // The title of the page as shown in a browser. If multiple titles are set (e.g. by JavaScript), this contains all of them
