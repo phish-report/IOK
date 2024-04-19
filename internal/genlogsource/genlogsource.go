@@ -32,6 +32,8 @@ fieldmappings:
 
 	i.WriteString(`package iok
 
+import "net/url"
+
 //go:generate go run ./internal/genlogsource
 //go:generate go fmt input.go
 
