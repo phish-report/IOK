@@ -1,7 +1,7 @@
 title: Roblox phishing
 description: |
     Detects Roblox phishing sites using a roblox body id and cdn.
-    Usually at /controlPage/create a "non dualhooked Beam generator" is.
+    Usually at /controlPage/create you can create a "Beaming link".
     Often spread trough discord.
 
 level: likely_malicious
