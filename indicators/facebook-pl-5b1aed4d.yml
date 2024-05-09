@@ -13,8 +13,11 @@ detection:
 
   embeddedVideo:
     requests|contains: 'https://www.youtube.com/embed/3rH4-ib6IxQ'
-  
-  condition: embeddedVideo
+    
+  facebookLogo:
+    requests|contains: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png'
+
+  condition: embeddedVideo and facebookLogo
   
 tags:
   - target_country.poland
