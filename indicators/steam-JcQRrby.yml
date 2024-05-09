@@ -7,16 +7,15 @@ references:
   - https://urlscan.io/result/ae8d6f7e-3848-407d-8f2e-9102e837c8a3/
 
 detection:
+
   pageTitle:
     title: "University cup"
 
   siteLogo:
     requests|contains: 'https://i.ibb.co/JcQRrby/nse.png'
 
-  pagePath:
-    requests|contains: 'expo'
-
-  condition: pageTitle and siteLogo and pagePath
+  condition: pageTitle and siteLogo
 
 tags:
+  - kit
   - target.steam
