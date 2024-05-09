@@ -1,14 +1,11 @@
-title: Roblox phishing
+title: Roblox Phishing Kit
 description: |
     Detects Roblox phishing sites using a roblox body id and cdn.
     Usually at /controlPage/create you can create a "Beaming link".
     Often spread trough discord.
 
-level: likely_malicious
-
 references:
   - https://www.youtube.com/watch?v=lUL2vgyhsw4
-  - https://urlscan.io/result/c716b820-174e-4211-9c09-4663b4a7e47d/
   - https://urlscan.io/result/c716b820-174e-4211-9c09-4663b4a7e47d/
   - https://urlscan.io/result/e76d7a2f-3e6d-455e-8da8-1a94ea6c222f/
   - https://urlscan.io/result/f9ccb8a3-624b-4cb1-b237-36dd81cef6e3/
