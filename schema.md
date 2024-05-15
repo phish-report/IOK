@@ -19,10 +19,10 @@
 |`redirect`|If this page redirected the browser to another page, the URL it redirected to|`https://www.phish.domain/see-other`|
 |`redirect.kind`|If this page redirected the browser to another page, how was it redirected. One of: http{status}, js, meta|`http`|
 |`favicon.hash`|SHA256 hash of favicons specified by the page. All favicons found in the page will be included.|`f39889eb42412593927c5136480e66f4ff0b813e071f2e5ddab70c14154692e4`|
-|`requests`|URLs of requests made by the page (and assets loaded by the page)|`https://www.phish.domain/css/style.css`|
-|`requests.hostname`|Hostnames of requests made by the page (and assets loaded by the page)|`www.phish.domain`|
-|`requests.ip`|IPs contacted as part of requests made by the page|`1.1.1.1`|
-|`requests.asn`|ASNs contacted as part of requests made by the page|`13335`|
+|`request`|URLs of requests made by the page (and assets loaded by the page)|`https://www.phish.domain/css/style.css`|
+|`request.hostname`|Hostnames of requests made by the page (and assets loaded by the page)|`www.phish.domain`|
+|`request.ip`|IPs contacted as part of requests made by the page|`1.1.1.1`|
+|`request.asn`|ASNs contacted as part of requests made by the page|`13335`|
 |`request.header`|Headers in requests made during the page load. Each is in the canonical form Header-Name: value|`Authentication: Bearer el4ukv0kqbvoirg7nkp4dncpk3`|
 |`response.hash`|SHA256 Hashes of response bodies|`f39889eb42412593927c5136480e66f4ff0b813e071f2e5ddab70c14154692e4`|
 |`response.header`|Headers returned as part of responses. Each is in the canonical form Header-Name: value|`X-Powered-By: PHP/7.4.33`|

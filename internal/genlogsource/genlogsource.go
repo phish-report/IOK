@@ -73,9 +73,14 @@ type Input struct {
 func toGoIdentifier(s, derived string) string {
 	parts := strings.Split(s, ".")
 	for i, part := range parts {
-		parts[i] = cases.Title(language.English, cases.Compact).String(part)
+		if len(part) <= 3 || part == "cname" || part == "html" {
+			parts[i] = cases.Upper(language.English, cases.Compact).String(part)
+		} else {
+			parts[i] = cases.Title(language.English, cases.Compact).String(part)
+		}
 	}
 	if derived != "" {
+		// lowercasing makes this unexported
 		parts[0] = strings.ToLower(parts[0])
 	}
 	return strings.Join(parts, "")

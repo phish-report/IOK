@@ -4,29 +4,29 @@ backends:
   - github.com/bradleyjkemp/sigma-go
 
 fieldmappings:
-  url: $.Url
+  url: $.URL
   url.hostname: $.urlHostname
   url.path: $.urlPath
   url.query: $.urlQuery[*]
-  ip: $.Ip[*]
-  cname: $.Cname[*]
+  ip: $.IP[*]
+  cname: $.CNAME[*]
   asn: $.asn
   registrar: $.Registrar
   status: $.Status
   header: $.Header[*]
   title: $.Title[*]
-  html: $.Html[*]
-  js: $.Js[*]
-  css: $.Css[*]
+  html: $.HTML[*]
+  js: $.JS[*]
+  css: $.CSS[*]
   cookie: $.Cookie[*]
   referrer: $.Referrer
   redirect: $.Redirect
   redirect.kind: $.RedirectKind
   favicon.hash: $.FaviconHash[*]
-  requests: $.Requests[*]
-  requests.hostname: $.requestsHostname[*]
-  requests.ip: $.RequestsIp[*]
-  requests.asn: $.requestsAsn
+  request: $.Request[*]
+  request.hostname: $.requestHostname[*]
+  request.ip: $.RequestIP[*]
+  request.asn: $.requestASN
   request.header: $.RequestHeader[*]
   response.hash: $.ResponseHash[*]
   response.header: $.ResponseHeader[*]

@@ -219,7 +219,7 @@ var Fields = []Field{
 
 	// Fields relating to requests made outside the primary page load
 	{
-		SigmaName:   "requests", // not a plural, a verb!
+		SigmaName:   "request",
 		Name:        "Requested URLs",
 		GoType:      "[]*url.URL",
 		Type:        StringList,
@@ -228,7 +228,7 @@ var Fields = []Field{
 		Modifiers:   StandardModifiers,
 	},
 	{
-		SigmaName:   "requests.hostname",
+		SigmaName:   "request.hostname",
 		Name:        "Requested Hostnames",
 		Type:        StringList,
 		Description: "Hostnames of requests made by the page (and assets loaded by the page)",
@@ -237,7 +237,7 @@ var Fields = []Field{
 		Derived:     "requests",
 	},
 	{
-		SigmaName:   "requests.ip",
+		SigmaName:   "request.ip",
 		Name:        "Requested IPs",
 		Type:        StringList,
 		Description: "IPs contacted as part of requests made by the page",
@@ -245,7 +245,7 @@ var Fields = []Field{
 		Modifiers:   slices.Concat(StandardModifiers, IPModifiers),
 	},
 	{
-		SigmaName:   "requests.asn",
+		SigmaName:   "request.asn",
 		Name:        "Requested ASNs",
 		Type:        NumberList,
 		Description: "ASNs contacted as part of requests made by the page",
