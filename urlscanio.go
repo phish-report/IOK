@@ -74,15 +74,16 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 					input.AddRequestHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
 				}
 			}
+
+			input.AddResponseHash(request.Response.Hash)
+			for headerKey, headerValue := range request.Response.Response.Headers {
+				input.AddResponseHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
+			}
 			mu.Unlock()
 
 			if request.Response.Hash == "" {
 				// this isn't a response we can fetch
 				return nil
-			}
-			input.AddResponseHash(request.Response.Hash)
-			for headerKey, headerValue := range request.Response.Response.Headers {
-				input.AddResponseHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
 			}
 
 			switch request.Request.Type {

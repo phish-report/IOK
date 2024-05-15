@@ -14,27 +14,24 @@ import (
 // * Identify all requests made by the page (e.g. ones triggered by JavaScript)
 // * Fetch the contents of JavaScript/CSS files referenced by the page
 func InputFromHTTPResponse(resp *http.Response) (Input, error) {
-	input := Input{
-		Hostname: resp.Request.URL.Hostname(),
-		Requests: []string{resp.Request.URL.String()},
-	}
+	input := Input{}
+	input.SetURL(resp.Request.URL)
 
 	for header, values := range resp.Header {
 		for _, value := range values {
-			input.Headers = append(input.Headers, http.CanonicalHeaderKey(header)+": "+value)
+			input.AddHeader(http.CanonicalHeaderKey(header) + ": " + value)
 		}
 	}
 
 	for _, cookie := range resp.Cookies() {
-		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
+		input.AddCookie(cookie.Name + "=" + cookie.Value)
 	}
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return input, err
 	}
-	input.HTML = string(body)
-	input.DOM = string(body)
+	input.AddHTML(string(body))
 
 	// parse any JS/CSS from the html
 	node, err := html.Parse(bytes.NewReader(body))

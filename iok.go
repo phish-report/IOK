@@ -9,6 +9,7 @@ import (
 	"io/fs"
 	"path/filepath"
 	"phish.report/IOK/schema"
+	"reflect"
 	"strings"
 
 	"github.com/bradleyjkemp/sigma-go"
@@ -61,17 +62,25 @@ func convertInput(input Input) evaluator.Event {
 
 	event := map[string]interface{}{}
 	mapstructure.Decode(input, &event)
+	// TODO: do we need to handle []something -> []interface{} conversion?
 
-	// TODO: do we need to handle []string -> []interface{} conversion?
+	// Convert slices into []interface{} (required for sigma-go to work properly)
+	for key, val := range event {
+		if reflect.TypeOf(val).Kind() != reflect.Slice {
+			continue
+		}
+		event[key] = toInterfaceSlice(val)
+	}
 	return event
 }
 
-func toInterfaceSlice(s []string) []interface{} {
-	i := make([]interface{}, 0, len(s))
-	for _, str := range s {
-		i = append(i, str)
+func toInterfaceSlice(s any) []interface{} {
+	v := reflect.ValueOf(s)
+	is := []interface{}{}
+	for i := 0; i < v.Len(); i++ {
+		is = append(is, v.Index(i).Interface())
 	}
-	return i
+	return is
 }
 
 var Rules = map[string]*evaluator.RuleEvaluator{}
