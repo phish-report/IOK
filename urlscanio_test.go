@@ -4,7 +4,8 @@ import (
 	"context"
 	"github.com/bradleyjkemp/cupaloy/v2"
 	"net/http"
-	"sort"
+	"net/url"
+	"slices"
 	"testing"
 )
 
@@ -21,20 +22,27 @@ func TestInputFromURLScan(t *testing.T) {
 			}
 
 			// because resources are fetched in parallel the output is non-deterministic, so we need to sort each field
-			sortField(input.Title)
-			sortField(input.JS)
-			sortField(input.CSS)
-			sortField(input.Cookies)
-			sortField(input.Headers)
-			sortField(input.Requests)
+			slices.Sort(input.Title)
+			slices.Sort(input.Title)
+			slices.Sort(input.JS)
+			slices.Sort(input.CSS)
+			slices.Sort(input.Cookie)
+			slices.Sort(input.Header)
+			slices.SortFunc(input.Request, func(a, b *url.URL) int {
+				switch {
+				case a.String() < b.String():
+					return -1
+				case a.String() == b.String():
+					return 0
+				default:
+					return 1
+				}
+			})
 
 			cupaloy.SnapshotT(t, input)
+			t.Run("converted", func(t *testing.T) {
+				cupaloy.SnapshotT(t, convertInput(input))
+			})
 		})
 	}
-}
-
-func sortField(f []string) {
-	sort.Slice(f, func(i, j int) bool {
-		return f[i] < f[j]
-	})
 }

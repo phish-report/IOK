@@ -5,8 +5,10 @@ import (
 	"embed"
 	"errors"
 	"fmt"
+	"github.com/mitchellh/mapstructure"
 	"io/fs"
 	"path/filepath"
+	"phish.report/IOK/schema"
 	"strings"
 
 	"github.com/bradleyjkemp/sigma-go"
@@ -44,17 +46,24 @@ func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.
 }
 
 func convertInput(input Input) evaluator.Event {
-	return map[string]interface{}{
-		"title":    toInterfaceSlice(input.Title),
-		"hostname": input.Hostname,
-		"dom":      input.DOM,
-		"html":     input.HTML,
-		"js":       toInterfaceSlice(input.JS),
-		"css":      toInterfaceSlice(input.CSS),
-		"cookies":  toInterfaceSlice(input.Cookies),
-		"headers":  toInterfaceSlice(input.Headers),
-		"requests": toInterfaceSlice(input.Requests),
+	for _, field := range schema.Fields {
+		supported := false
+		for _, s := range input.Supported {
+			if field.SigmaName == s {
+				supported = true
+				break
+			}
+		}
+		if !supported {
+			input.unsupported = append(input.unsupported, field.SigmaName)
+		}
 	}
+
+	event := map[string]interface{}{}
+	mapstructure.Decode(input, &event)
+
+	// TODO: do we need to handle []string -> []interface{} conversion?
+	return event
 }
 
 func toInterfaceSlice(s []string) []interface{} {

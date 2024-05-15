@@ -5,12 +5,14 @@ import "slices"
 type Field struct {
 	SigmaName   string
 	Name        string
+	Alias       string
 	GoType      string
 	Type        FieldType
 	Description string
 	Example     string
 	Modifiers   []Modifier
 	Derived     string // If this field is automatically derived from another by the IOK library
+	Deprecated  bool
 }
 
 type Modifier struct {
@@ -72,8 +74,14 @@ var Fields = []Field{
 		Type:        String,
 		Description: "The hostname of the page",
 		Example:     "phish.domain",
-		Modifiers:   StandardModifiers,
+		Modifiers:   slices.Concat(StandardModifiers, HostnameModifiers),
 		Derived:     "url",
+	},
+	{
+		SigmaName:  "hostname",
+		Name:       "Page URL Hostname",
+		Alias:      "url.hostname",
+		Deprecated: true,
 	},
 	{
 		SigmaName:   "url.path",
@@ -97,6 +105,7 @@ var Fields = []Field{
 		SigmaName:   "ip",
 		Name:        "Page IP",
 		Type:        StringList,
+		GoType:      "[]net.IP",
 		Description: "IP addresses from which the page was loaded (resolved from url.hostname)",
 		Example:     "1.1.1.1",
 		Modifiers:   slices.Concat(StandardModifiers, IPModifiers),
@@ -142,6 +151,12 @@ var Fields = []Field{
 		Example:     "X-Powered-By: PHP/7.4.33",
 		Modifiers:   StandardModifiers,
 	},
+	{
+		SigmaName:  "headers",
+		Name:       "Page HTTP headers",
+		Alias:      "header",
+		Deprecated: true,
+	},
 
 	// Fields relating to the HTML content returned by the server
 	{
@@ -153,12 +168,24 @@ var Fields = []Field{
 		Modifiers:   StandardModifiers,
 	},
 	{
+		SigmaName:  "titles",
+		Name:       "Title",
+		Alias:      "titles",
+		Deprecated: true,
+	},
+	{
 		SigmaName:   "html",
 		Name:        "HTML",
 		Type:        StringList,
 		Description: "The contents of the page HTML. If JavaScript is used to modify the contents of the page, this contains multiple values",
 		Example:     "<html><head>....</html>",
 		Modifiers:   StandardModifiers,
+	},
+	{
+		SigmaName:  "dom",
+		Name:       "DOM",
+		Alias:      "html",
+		Deprecated: true,
 	},
 	{
 		SigmaName:   "js",
@@ -183,6 +210,12 @@ var Fields = []Field{
 		Description: "Cookies from the page. Each is in the form cookieName=value",
 		Example:     "PHPSESSID=el4ukv0kqbvoirg7nkp4dncpk3",
 		Modifiers:   StandardModifiers,
+	},
+	{
+		SigmaName:  "cookies",
+		Name:       "Cookies",
+		Alias:      "cookie",
+		Deprecated: true,
 	},
 	{
 		SigmaName:   "referrer",
@@ -221,11 +254,17 @@ var Fields = []Field{
 	{
 		SigmaName:   "request",
 		Name:        "Requested URLs",
-		GoType:      "[]*url.URL",
 		Type:        StringList,
+		GoType:      "[]*url.URL",
 		Description: "URLs of requests made by the page (and assets loaded by the page)",
 		Example:     "https://www.phish.domain/css/style.css",
 		Modifiers:   StandardModifiers,
+	},
+	{
+		SigmaName:  "requests",
+		Name:       "Requested URLs",
+		Alias:      "request",
+		Deprecated: true,
 	},
 	{
 		SigmaName:   "request.hostname",
@@ -240,6 +279,7 @@ var Fields = []Field{
 		SigmaName:   "request.ip",
 		Name:        "Requested IPs",
 		Type:        StringList,
+		GoType:      "[]net.IP",
 		Description: "IPs contacted as part of requests made by the page",
 		Example:     "1.1.1.1",
 		Modifiers:   slices.Concat(StandardModifiers, IPModifiers),

@@ -17,10 +17,10 @@ func extractHTML(node *html.Node, input *Input, funcs ...func(node *html.Node, i
 
 func extractEmbeddedAssets(node *html.Node, input *Input) {
 	if node.Type == html.ElementNode && node.Data == "style" && node.FirstChild != nil {
-		input.CSS = append(input.CSS, node.FirstChild.Data)
+		input.AddCSS(node.FirstChild.Data)
 	}
 	if node.Type == html.ElementNode && node.Data == "script" && node.FirstChild != nil {
-		input.JS = append(input.JS, node.FirstChild.Data)
+		input.AddJS(node.FirstChild.Data)
 	}
 }
 
@@ -29,7 +29,7 @@ func extractTitle(node *html.Node, input *Input) {
 		node.Data == "title" && // this is a <title> tag
 		node.Namespace == "" && // we're not within an <svg> element
 		node.FirstChild != nil {
-		input.Title = append(input.Title, strings.TrimSpace(node.FirstChild.Data))
+		input.AddTitle(strings.TrimSpace(node.FirstChild.Data))
 	}
 }
 
@@ -60,7 +60,7 @@ func extractRequests(base *url.URL) func(node *html.Node, input *Input) {
 			if err != nil {
 				continue
 			}
-			input.Requests = append(input.Requests, base.ResolveReference(href).String())
+			input.AddRequest(base.ResolveReference(href))
 		}
 	}
 }

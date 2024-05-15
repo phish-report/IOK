@@ -7,10 +7,10 @@ import (
 	"golang.org/x/net/html"
 	"golang.org/x/sync/errgroup"
 	"io"
+	"net"
 	"net/http"
 	"net/url"
 	"phish.report/urlscanio-go"
-	"sort"
 	"sync"
 )
 
@@ -27,69 +27,62 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		return Input{}, err
 	}
 
-	input := Input{}
+	input := Input{
+		Supported: []string{ // even if these fields aren't set below, they're still supported
+			"html",
+			"js",
+			"css",
+		},
+	}
 	u, err := url.Parse(result.Page.Url)
 	if err != nil {
 		return Input{}, fmt.Errorf("failed to parse result URL: %w", err)
 	}
-	input.Hostname = u.Hostname()
+	input.SetURL(u)
 
 	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
 	// This fetches up to 5 resources in parallel
 	g, ctx := errgroup.WithContext(ctx)
 	g.SetLimit(5)
-	mu := sync.Mutex{}
+	mu := &sync.Mutex{}
 
 	g.Go(func() error {
-		domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
-		domResp, err := client.Do(domReq)
-		if err != nil || domResp.StatusCode != 200 {
-			if err == nil {
-				err = fmt.Errorf(domResp.Status)
-			}
-			return fmt.Errorf("failed to get result dom: %w", err)
-		}
-		defer domResp.Body.Close()
-
-		mu.Lock()
-		defer mu.Unlock()
-		resultHTML, _ := io.ReadAll(domResp.Body)
-		input.DOM = string(resultHTML)
-
-		// parse any JS/CSS from the dom
-		node, err := html.Parse(bytes.NewReader(resultHTML))
-		if err == nil {
-			extractHTML(node, &input, extractEmbeddedAssets, extractTitle)
-		}
-		return nil
+		return getDom(ctx, client, result, mu, &input)
 	})
 
 	for _, cookie := range result.Data.Cookies {
-		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
+		input.AddCookie(cookie.Name + "=" + cookie.Value)
 	}
-	foundHTML := false
 
 	for _, request := range result.Data.Requests {
 		request := request
 		g.Go(func() error {
 			mu.Lock()
-			input.Requests = append(input.Requests, request.Request.Request.Url)
+			reqURL, _ := url.Parse(request.Request.Request.Url)
+			input.AddRequest(reqURL)
 
 			// TODO: how does this check behave in the case of redirects?
 			if request.Request.PrimaryRequest {
 				// this is the "primary" page load, so we need to extract the response headers
+				input.AddIP(net.ParseIP(request.Response.Response.RemoteIPAddress))
 				for headerKey, headerValue := range request.Response.Response.Headers {
-					input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
+					input.AddHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
 				}
-				sort.Slice(input.Headers, func(i, j int) bool {
-					return input.Headers[i] < input.Headers[j]
-				})
+			} else {
+				input.AddRequestIP(net.ParseIP(request.Response.Response.RemoteIPAddress))
+				for headerKey, headerValue := range request.Request.Request.Headers {
+					input.AddRequestHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
+				}
 			}
 			mu.Unlock()
 
 			if request.Response.Hash == "" {
 				// this isn't a response we can fetch
 				return nil
+			}
+			input.AddResponseHash(request.Response.Hash)
+			for headerKey, headerValue := range request.Response.Response.Headers {
+				input.AddResponseHeader(http.CanonicalHeaderKey(headerKey) + ": " + headerValue)
 			}
 
 			switch request.Request.Type {
@@ -118,17 +111,13 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			defer mu.Unlock()
 			switch request.Request.Type {
 			case "Stylesheet":
-				input.CSS = append(input.CSS, string(resource))
+				input.AddCSS(string(resource))
 			case "Script":
-				input.JS = append(input.JS, string(resource))
+				input.AddJS(string(resource))
 			case "Document":
 				if request.Request.PrimaryRequest {
-					foundHTML = true
-					if input.HTML != "" {
-						fmt.Println("oops already have response html")
-					}
 					// this is the initial page load
-					input.HTML = string(resource)
+					input.AddHTML(string(resource))
 
 					// parse any JS/CSS from the html
 					// This does result in duplicate values (for sites that don't have any dynamically inserted JS/CSS),
@@ -146,9 +135,31 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		return input, err
 	}
 
-	if !foundHTML {
-		return input, fmt.Errorf("failed to get response html")
-	}
-
 	return input, nil
+}
+
+func getDom(ctx context.Context, client httpClient, result urlscanio.ScanResult, mu *sync.Mutex, input *Input) error {
+	domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
+	domResp, err := client.Do(domReq)
+	if err != nil || domResp.StatusCode != 200 {
+		if err == nil {
+			err = fmt.Errorf(domResp.Status)
+		}
+		return fmt.Errorf("failed to get result dom: %w", err)
+	}
+	defer domResp.Body.Close()
+
+	mu.Lock()
+	defer mu.Unlock()
+	resultHTML, _ := io.ReadAll(domResp.Body)
+	input.HTML = append(input.HTML, string(resultHTML))
+	input.Supported = append(input.Supported, "html")
+
+	// parse any JS/CSS from the dom
+	node, err := html.Parse(bytes.NewReader(resultHTML))
+	if err == nil {
+		extractEmbeddedAssets(node, input)
+		extractTitle(node, input)
+	}
+	return nil
 }

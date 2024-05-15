@@ -5,6 +5,8 @@ go 1.18
 require (
 	github.com/bradleyjkemp/cupaloy/v2 v2.8.0
 	github.com/bradleyjkemp/sigma-go v0.6.5
+	github.com/dave/jennifer v1.7.0
+	github.com/mitchellh/mapstructure v1.5.0
 	golang.org/x/net v0.24.0
 	golang.org/x/sync v0.7.0
 	golang.org/x/text v0.14.0

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	. "github.com/dave/jennifer/jen"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"os"
@@ -16,11 +17,10 @@ func main() {
 	}
 	defer l.Close()
 
-	i, err := os.Create("input.go")
-	if err != nil {
-		panic(err)
-	}
-	defer i.Close()
+	input := NewFile("iok")
+	input.Comment("//go:generate go run ./internal/genlogsource")
+	input.Comment("//go:generate go fmt input.go")
+	input.Comment("//go:generate go run ./internal/gendocs")
 
 	l.WriteString(`title: Sigma config for use with the phish.report/IOK library
 
@@ -30,25 +30,26 @@ backends:
 fieldmappings:
 `)
 
-	i.WriteString(`package iok
+	mappings := map[string]string{}
 
-import "net/url"
-
-//go:generate go run ./internal/genlogsource
-//go:generate go fmt input.go
-//go:generate go run ./internal/gendocs
-
-type Input struct {
-`)
-
+	structFields := []Code{}
+	setters := []Code{}
 	for _, field := range schema.Fields {
-		goIdentifier := toGoIdentifier(field.SigmaName, field.Derived)
+		goIdentifier := toGoIdentifier(field.SigmaName, field.Derived != "" || field.Deprecated)
 		jsonPath := "$." + goIdentifier
 		if field.Type == schema.StringList {
 			jsonPath += "[*]"
 		}
+		mappings[field.SigmaName] = jsonPath
+
+		if field.Alias != "" {
+			jsonPath = mappings[field.Alias]
+		}
 		fmt.Fprintf(l, "  %s: %s\n", field.SigmaName, jsonPath)
 
+		if field.Alias != "" {
+			continue // don't add this field to the go struct
+		}
 		gotype := field.GoType
 		if field.GoType == "" {
 			switch field.Type {
@@ -65,12 +66,48 @@ type Input struct {
 				panic("unknown field type: " + field.Type)
 			}
 		}
-		fmt.Fprintf(i, "  %s %s // %s\n", goIdentifier, gotype, field.Description)
+		structFields = append(structFields, Id(goIdentifier).Id(gotype))
+
+		if field.Derived != "" || field.Alias != "" {
+			// don't generate a setter
+			continue
+		}
+		setters = append(setters,
+			Func().Params(Id("i").Id("*Input")).Do(func(s *Statement) {
+				if strings.HasPrefix(gotype, "[]") {
+					s.Id("Add" + goIdentifier).Params(Id("v").Id("..." + strings.TrimPrefix(gotype, "[]")))
+				} else {
+					s.Id("Set" + goIdentifier).Params(Id("v").Id(gotype))
+				}
+			}).
+				Block(
+					Id("i").Dot(goIdentifier).Op("=").Do(func(s *Statement) {
+						if strings.HasPrefix(gotype, "[]") {
+							s.Append(Id("i").Dot(goIdentifier), Id("v").Op("..."))
+						} else {
+							s.Id("v")
+						}
+					}),
+
+					// This field is now set in the input, ensure we mark it as supported
+					Id("i").Dot("Supported").Op("=").Append(Id("i").Dot("Supported"), Lit(field.SigmaName)),
+					Qual("slices", "Sort").Call(Id("i").Dot("Supported")),
+					Id("i").Dot("Supported").Op("=").Qual("slices", "Compact").Call(Id("i").Dot("Supported")),
+				))
 	}
-	i.WriteString("}\n")
+
+	input.Type().Id("Input").Struct(structFields...)
+	for _, setter := range setters {
+		input.Add(setter)
+	}
+
+	err = input.Save("input.go")
+	if err != nil {
+		panic(err)
+	}
 }
 
-func toGoIdentifier(s, derived string) string {
+func toGoIdentifier(s string, private bool) string {
 	parts := strings.Split(s, ".")
 	for i, part := range parts {
 		if len(part) <= 3 || part == "cname" || part == "html" {
@@ -79,7 +116,7 @@ func toGoIdentifier(s, derived string) string {
 			parts[i] = cases.Title(language.English, cases.Compact).String(part)
 		}
 	}
-	if derived != "" {
+	if private {
 		// lowercasing makes this unexported
 		parts[0] = strings.ToLower(parts[0])
 	}

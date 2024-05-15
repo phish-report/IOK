@@ -6,6 +6,7 @@ backends:
 fieldmappings:
   url: $.URL
   url.hostname: $.urlHostname
+  hostname: $.urlHostname
   url.path: $.urlPath
   url.query: $.urlQuery[*]
   ip: $.IP[*]
@@ -14,16 +15,21 @@ fieldmappings:
   registrar: $.Registrar
   status: $.Status
   header: $.Header[*]
+  headers: $.Header[*]
   title: $.Title[*]
+  titles: $.titles
   html: $.HTML[*]
+  dom: $.HTML[*]
   js: $.JS[*]
   css: $.CSS[*]
   cookie: $.Cookie[*]
+  cookies: $.Cookie[*]
   referrer: $.Referrer
   redirect: $.Redirect
   redirect.kind: $.RedirectKind
   favicon.hash: $.FaviconHash[*]
   request: $.Request[*]
+  requests: $.Request[*]
   request.hostname: $.requestHostname[*]
   request.ip: $.RequestIP[*]
   request.asn: $.requestASN
