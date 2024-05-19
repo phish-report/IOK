@@ -9,9 +9,18 @@ references:
 detection:
 
   warning:
-    html|contains: '<div id="NotLoggedInWarning" class="modal_frame">'
+    html|contains: 
+      - '<div id="NotLoggedInWarning" class="modal_frame">'
 
-  condition: warning
+  breadcrumbs:
+    js|contains|all:
+      - 'vgywykkm.uq'
+      - 'lppfocvr.fo'
+      - '.oxisae'
+      - '.zooms'
+      - '#groobly'
+      
+  condition: warning and breadcrumbs
 
 tags:
   - kit
