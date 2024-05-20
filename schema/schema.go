@@ -1,6 +1,9 @@
 package schema
 
-import "slices"
+import (
+	"github.com/dave/jennifer/jen"
+	"slices"
+)
 
 type Field struct {
 	SigmaName   string
@@ -12,6 +15,7 @@ type Field struct {
 	Example     string
 	Modifiers   []Modifier
 	Derived     string // If this field is automatically derived from another by the IOK library
+	PostSetter  func(g *jen.Group)
 	Deprecated  bool
 }
 
@@ -67,6 +71,11 @@ var Fields = []Field{
 		Description: "The full URL of the page",
 		Example:     "https://phish.domain/?foo=bar",
 		Modifiers:   StandardModifiers,
+		PostSetter: func(g *jen.Group) {
+			g.Id("i").Dot("setURLHostname").Call(jen.Id("v").Dot("Hostname").Call())
+			g.Id("i").Dot("setURLPath").Call(jen.Id("v").Dot("Path"))
+			// TODO: URLQuery
+		},
 	},
 	{
 		SigmaName:   "url.hostname",
@@ -114,14 +123,14 @@ var Fields = []Field{
 		SigmaName:   "cname",
 		Name:        "Page CNAMEs",
 		Type:        StringList,
-		Description: "Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on Github",
+		Description: "Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on GitHub",
 		Example:     "github.io",
 		Modifiers:   slices.Concat(StandardModifiers),
 	},
 	{
 		SigmaName:   "asn",
 		Name:        "Page ASN",
-		Type:        Number,
+		Type:        NumberList,
 		Description: "ASN from which the page was loaded",
 		Example:     "13335",
 		Modifiers:   slices.Concat(StandardModifiers, NumberModifiers),

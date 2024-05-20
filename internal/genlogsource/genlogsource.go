@@ -7,6 +7,7 @@ import (
 	"golang.org/x/text/language"
 	"os"
 	"phish.report/IOK/schema"
+	"slices"
 	"strings"
 )
 
@@ -35,7 +36,7 @@ fieldmappings:
 	structFields := []Code{}
 	setters := []Code{}
 	for _, field := range schema.Fields {
-		goIdentifier := toGoIdentifier(field.SigmaName, field.Derived != "" || field.Deprecated)
+		goIdentifier := toGoIdentifier(field.SigmaName, field.Deprecated)
 		jsonPath := "$." + goIdentifier
 		if field.Type == schema.StringList {
 			jsonPath += "[*]"
@@ -66,37 +67,61 @@ fieldmappings:
 				panic("unknown field type: " + field.Type)
 			}
 		}
-		structFields = append(structFields, Id(goIdentifier).Id(gotype))
 
-		if field.Derived != "" || field.Alias != "" {
+		comment := field.Description
+		if field.Derived != "" {
+			comment += fmt.Sprintf(" (derived from %s)", field.Derived)
+		}
+
+		structFields = append(structFields, Id(goIdentifier).Id(gotype).Comment(comment))
+
+		if field.Alias != "" {
 			// don't generate a setter
 			continue
 		}
+
+		setterName := ""
+		switch {
+		case field.Derived != "" && strings.HasPrefix(gotype, "[]"):
+			setterName = "add" + goIdentifier
+		case field.Derived == "" && strings.HasPrefix(gotype, "[]"):
+			setterName = "Add" + goIdentifier
+		case field.Derived != "" && !strings.HasPrefix(gotype, "[]"):
+			setterName = "set" + goIdentifier
+		case field.Derived == "" && !strings.HasPrefix(gotype, "[]"):
+			setterName = "Set" + goIdentifier
+		}
+
 		setters = append(setters,
-			Func().Params(Id("i").Id("*Input")).Do(func(s *Statement) {
+			Func().Params(Id("i").Id("*Input")).Id(setterName).Do(func(s *Statement) {
 				if strings.HasPrefix(gotype, "[]") {
-					s.Id("Add" + goIdentifier).Params(Id("v").Id("..." + strings.TrimPrefix(gotype, "[]")))
+					s.Params(Id("v").Id("..." + strings.TrimPrefix(gotype, "[]")))
 				} else {
-					s.Id("Set" + goIdentifier).Params(Id("v").Id(gotype))
+					s.Params(Id("v").Id(gotype))
 				}
 			}).
-				Block(
-					Id("i").Dot(goIdentifier).Op("=").Do(func(s *Statement) {
+				BlockFunc(func(g *Group) {
+					g.Id("i").Dot(goIdentifier).Op("=").Do(func(s *Statement) {
 						if strings.HasPrefix(gotype, "[]") {
 							s.Append(Id("i").Dot(goIdentifier), Id("v").Op("..."))
 						} else {
 							s.Id("v")
 						}
-					}),
-
+					})
 					// This field is now set in the input, ensure we mark it as supported
-					Id("i").Dot("Supported").Op("=").Append(Id("i").Dot("Supported"), Lit(field.SigmaName)),
-					Qual("slices", "Sort").Call(Id("i").Dot("Supported")),
-					Id("i").Dot("Supported").Op("=").Qual("slices", "Compact").Call(Id("i").Dot("Supported")),
-				))
+					g.Id("i").Dot("Supported").Op("=").Append(Id("i").Dot("Supported"), Lit(field.SigmaName))
+					g.Qual("slices", "Sort").Call(Id("i").Dot("Supported"))
+					g.Id("i").Dot("Supported").Op("=").Qual("slices", "Compact").Call(Id("i").Dot("Supported"))
+					if field.PostSetter != nil {
+						field.PostSetter(g)
+					}
+				}))
 	}
 
-	input.Type().Id("Input").Struct(structFields...)
+	input.Type().Id("Input").Struct(
+		slices.Concat([]Code{
+			Id("ipToASN").Func().Params(Qual("context", "Context"), Qual("net", "IP")).Id("int"),
+		}, structFields)...)
 	for _, setter := range setters {
 		input.Add(setter)
 	}

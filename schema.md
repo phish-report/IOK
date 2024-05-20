@@ -6,7 +6,7 @@
 |`url.path`|Path component of the full URL of the page|`/foo/bar`|
 |`url.query`|Query parameters extracted from the full URL of the page|`key=value`|
 |`ip`|IP addresses from which the page was loaded (resolved from url.hostname)|`1.1.1.1`|
-|`cname`|Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on Github|`github.io`|
+|`cname`|Any CNAME records for the primary page URL, allowing you to detect things like pages hosted on GitHub|`github.io`|
 |`asn`|ASN from which the page was loaded|`13335`|
 |`registrar`|IANA ID for the registrar of this domain|`1910`|
 |`status`|The HTTP status code of the primary page load|`200`|

@@ -5,13 +5,13 @@ backends:
 
 fieldmappings:
   url: $.URL
-  url.hostname: $.urlHostname
-  hostname: $.urlHostname
-  url.path: $.urlPath
-  url.query: $.urlQuery[*]
+  url.hostname: $.URLHostname
+  hostname: $.URLHostname
+  url.path: $.URLPath
+  url.query: $.URLQuery[*]
   ip: $.IP[*]
   cname: $.CNAME[*]
-  asn: $.asn
+  asn: $.ASN
   registrar: $.Registrar
   status: $.Status
   header: $.Header[*]
@@ -30,11 +30,11 @@ fieldmappings:
   favicon.hash: $.FaviconHash[*]
   request: $.Request[*]
   requests: $.Request[*]
-  request.hostname: $.requestHostname[*]
+  request.hostname: $.RequestHostname[*]
   request.ip: $.RequestIP[*]
-  request.asn: $.requestASN
+  request.asn: $.RequestASN
   request.header: $.RequestHeader[*]
   response.hash: $.ResponseHash[*]
   response.header: $.ResponseHeader[*]
   supported: $.Supported[*]
-  unsupported: $.unsupported[*]
+  unsupported: $.Unsupported[*]

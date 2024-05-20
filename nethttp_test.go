@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"github.com/bradleyjkemp/cupaloy/v2"
 	"net/http"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -21,7 +22,7 @@ func TestInputFromHTTPResponse(t *testing.T) {
 	}
 
 	// This is parsed by http.ParseResponse into a map so is randomly ordered
-	sortField(input.Headers)
+	slices.Sort(input.Header)
 
 	cupaloy.New(cupaloy.ShouldUpdate(func() bool {
 		return true
