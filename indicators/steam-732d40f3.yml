@@ -21,7 +21,7 @@ detection:
         
     footerMessage:
         dom|contains: '<div style="font-size: 1px; font-family: &quot;Support Assets&quot;; color: rgba(0, 0, 0, 0.01);">Hello</div>'
- 
+
   condition: siteConfiguration and loadedIFrame and footerMessage
 
 tags:
