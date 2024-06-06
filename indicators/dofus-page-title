@@ -1,0 +1,23 @@
+title: dofus-page-title
+description: |
+  Sites with the same title contained on Dofus phishing sites, but which are not from dofus.com.
+
+references:
+  - https://urlscan.io/result/449ea281-412a-4336-b0c1-1f6f9d7a65e3/
+  - https://urlscan.io/result/8b385b2a-c6a5-4b0e-9e10-96360e3019ef
+
+detection:
+  dofusTitle:
+    title|re:
+    - "DOFUS, le MMORPG stratégique"
+    - "DOFUS.com le MMORPG stratégique"
+
+  realDomain:
+    hostname:
+      - dofus.com
+
+  condition: dofusTitle and not realDomain
+
+tags:
+- kit
+- target.dofus
