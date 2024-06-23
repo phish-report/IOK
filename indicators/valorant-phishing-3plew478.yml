@@ -1,6 +1,7 @@
 title: Valorant Phishing Kit 3plew478
 description: |
-    Detects Valorant phishing sites.
+    Detects Valorant phishing sites using a DOM content.
+
     These sites use Promocodes most common are "Tenz" "Kyedae" "Mrbeast" "Beast".
     usually spread on social media. 
 
