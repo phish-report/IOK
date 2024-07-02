@@ -1,0 +1,24 @@
+title: Sledgehammer Bookmark Scam Kit
+description: |
+  Detects a phishing kit that impersonates a Discord bot called Sledgehammer. These sites have a bookmark scam that steals Discord accounts.
+
+references:
+    - https://urlscan.io/result/fda3fbfe-673b-4ce4-baff-086cc29f43ed/
+    - https://urlscan.io/result/001f4298-d4a8-475a-bf88-2caa820d2376/
+    - https://urlscan.io/search/#page.url%3A%22%2Fverify%2Fguild%2F%22
+    - https://urlscan.io/search/#page.title%3A%22Sledgehammer%20-%20Homepage%22
+
+detection:
+
+  pageTitle:
+    title: "Sledgehammer - Homepage"
+    
+  pageHTML:
+    html|contains|all:
+      - "Drag Me (Verify)"
+
+  condition: pageTitle and pageHTML
+
+tags:
+  - kit
+  - target.discord
