@@ -1,0 +1,43 @@
+title: Valorant Phishing Kit 3plew478
+description: |
+    Detects Valorant phishing sites using a DOM content.
+
+    These sites use Promocodes most common are "Tenz" "Kyedae" "Mrbeast" "Beast".
+    usually spread on social media. 
+
+references:
+    - https://www.youtube.com/watch?v=lUL2vgyhsw4
+    - https://www.tiktok.com/search/video?q=mrbeast%20valorant
+    - https://urlscan.io/result/35050e0b-f38d-4671-8728-489538351167/
+    - https://urlscan.io/result/fb92d735-7209-48dc-8c06-0c23f013f0ef/
+    - https://urlscan.io/result/9ced04ab-e67e-4ac5-9d9c-0993f69f3f55/
+    - https://urlscan.io/result/e6f5c3bc-85e6-4fda-a276-709c52ac403b/
+
+detection:
+
+    Spin:
+        dom|contains: '<button>Spin</button>'
+
+    Prize:
+        dom|contains: '<div class="prize" id="prize">'
+
+    Path:
+        dom|contains: 'static/riot'
+
+    Footer:
+        dom|contains|all: 
+            - 'Inc. Riot Games'
+            - '<p class="footer-text">'
+
+    RealDomain:
+        hostname|endswith:
+            - .riotgames.com
+            - .playvalorant.com
+            - .leagueoflegends.com
+
+    condition: Spin and Prize and not RealDomain or Path and Footer and not RealDomain
+
+tags:
+    - kit
+    - target.valorant
+    - target.riotgames
