@@ -1,4 +1,4 @@
-module phish.report/IOK
+module intercept.io/iok
 
 go 1.18
 
