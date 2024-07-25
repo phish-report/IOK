@@ -9,8 +9,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"phish.report/urlscanio-go"
-	"sort"
+	urlscan "phish.report/urlscanio-go"
 	"sync"
 )
 
@@ -20,19 +19,47 @@ type httpClient interface {
 
 // InputFromURLScan takes a urlscan.io result ID and returns an Input suitable for calling GetMatches with.
 // The provided http.Client should inject your API key if you have one.
+// Deprecated: use InputsFromURLScan
 func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient) (Input, error) {
-	urlscanClient := urlscanio.NewClient(urlscanio.HTTPClient(client))
-	result, err := urlscanClient.RetrieveResult(ctx, urlscanUUID)
-	if err != nil {
+	inputs, err := InputsFromURLScan(ctx, urlscanUUID, client)
+	if err != nil || len(inputs) == 0 {
 		return Input{}, err
 	}
+	return inputs[len(inputs)-1].Input, nil //
+}
 
-	input := Input{}
-	u, err := url.Parse(result.Page.Url)
+type URLScanInput struct {
+	LoaderID    string
+	DocumentURL string
+	Input
+}
+
+func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClient) ([]*URLScanInput, error) {
+	urlscanClient := urlscan.NewClient(urlscan.HTTPClient(client))
+	result, err := urlscanClient.RetrieveResult(ctx, urlscanUUID)
 	if err != nil {
-		return Input{}, fmt.Errorf("failed to parse result URL: %w", err)
+		return nil, err
 	}
-	input.Hostname = u.Hostname()
+
+	inputs := []*URLScanInput{}
+	inputsByLoader := map[string]*URLScanInput{}
+	for _, request := range result.Data.Requests {
+		loader := request.Request.LoaderId
+		if _, ok := inputsByLoader[loader]; ok {
+			continue
+		}
+
+		docURL, _ := url.Parse(request.Request.DocumentURL)
+		input := &URLScanInput{
+			LoaderID:    loader,
+			DocumentURL: request.Request.DocumentURL,
+			Input: Input{
+				Hostname: docURL.Hostname(),
+			},
+		}
+		inputs = append(inputs, input)
+		inputsByLoader[loader] = input
+	}
 
 	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
 	// This fetches up to 5 resources in parallel
@@ -54,37 +81,27 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 		mu.Lock()
 		defer mu.Unlock()
 		resultHTML, _ := io.ReadAll(domResp.Body)
-		input.DOM = string(resultHTML)
+		inputs[len(inputs)-1].DOM = string(resultHTML)
 
 		// parse any JS/CSS from the dom
 		node, err := html.Parse(bytes.NewReader(resultHTML))
 		if err == nil {
-			extractHTML(node, &input, extractEmbeddedAssets, extractTitle)
+			extractHTML(node, &inputs[len(inputs)-1].Input, extractEmbeddedAssets, extractTitle)
 		}
 		return nil
 	})
 
+	// we can't tell which request set the cookie, so we just set it on the last input
 	for _, cookie := range result.Data.Cookies {
-		input.Cookies = append(input.Cookies, cookie.Name+"="+cookie.Value)
+		inputs[len(inputs)-1].Cookies = append(inputs[len(inputs)-1].Cookies, cookie.Name+"="+cookie.Value)
 	}
-	foundHTML := false
 
 	for _, request := range result.Data.Requests {
 		request := request
+		input := &inputsByLoader[request.Request.LoaderId].Input
 		g.Go(func() error {
 			mu.Lock()
 			input.Requests = append(input.Requests, request.Request.Request.Url)
-
-			// TODO: how does this check behave in the case of redirects?
-			if request.Request.PrimaryRequest {
-				// this is the "primary" page load, so we need to extract the response headers
-				for headerKey, headerValue := range request.Response.Response.Headers {
-					input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
-				}
-				sort.Slice(input.Headers, func(i, j int) bool {
-					return input.Headers[i] < input.Headers[j]
-				})
-			}
 			mu.Unlock()
 
 			if request.Response.Hash == "" {
@@ -122,33 +139,32 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 			case "Script":
 				input.JS = append(input.JS, string(resource))
 			case "Document":
-				if request.Request.PrimaryRequest {
-					foundHTML = true
-					if input.HTML != "" {
-						fmt.Println("oops already have response html")
-					}
-					// this is the initial page load
-					input.HTML = string(resource)
+				if input.HTML != "" {
+					// already have initial HTML
+					break
+				}
 
-					// parse any JS/CSS from the html
-					// This does result in duplicate values (for sites that don't have any dynamically inserted JS/CSS),
-					// but that doesn't affect correctness
-					node, err := html.Parse(bytes.NewReader(resource))
-					if err == nil {
-						extractHTML(node, &input, extractEmbeddedAssets, extractTitle)
-					}
+				// this is the initial page load (for this loaderID)
+				input.HTML = string(resource)
+				// extract the response headers
+				for headerKey, headerValue := range request.Response.Response.Headers {
+					input.Headers = append(input.Headers, http.CanonicalHeaderKey(headerKey)+": "+headerValue)
+				}
+
+				// parse any JS/CSS from the html
+				// This does result in duplicate values (for sites that don't have any dynamically inserted JS/CSS),
+				// but that doesn't affect correctness
+				node, err := html.Parse(bytes.NewReader(resource))
+				if err == nil {
+					extractHTML(node, input, extractEmbeddedAssets, extractTitle)
 				}
 			}
 			return nil
 		})
 	}
 	if err := g.Wait(); err != nil {
-		return input, err
+		return inputs, err
 	}
 
-	if !foundHTML {
-		return input, fmt.Errorf("failed to get response html")
-	}
-
-	return input, nil
+	return inputs, nil
 }
