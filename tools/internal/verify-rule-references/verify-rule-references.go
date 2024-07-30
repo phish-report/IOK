@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	iok "phish.report/IOK"
+	iok "phish.report/IOK/v2"
 	"strings"
 	"syscall"
 	"time"

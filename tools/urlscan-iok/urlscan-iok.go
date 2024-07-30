@@ -10,7 +10,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	iok "phish.report/IOK"
+	iok "phish.report/IOK/v2"
 )
 
 var uuid = flag.String("uuid", "", "[required] the urlscan.io result ID to scan for IOKs")
