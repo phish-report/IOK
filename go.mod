@@ -1,4 +1,4 @@
-module github.com/phish-report/IOK/v2
+module phish.report/IOK/v2
 
 go 1.17
 
