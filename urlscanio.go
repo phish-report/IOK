@@ -7,6 +7,7 @@ import (
 	"golang.org/x/net/html"
 	"golang.org/x/sync/errgroup"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	urlscan "phish.report/urlscanio-go"
@@ -49,12 +50,19 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 			continue
 		}
 
-		docURL, _ := url.Parse(request.Request.DocumentURL)
+		docURL, err := url.Parse(request.Request.DocumentURL)
+		if err != nil {
+			log.Println("iok: failed to parse document url", urlscanUUID, request.Request.DocumentURL)
+		}
+		hostname := ""
+		if docURL != nil {
+			hostname = docURL.Hostname()
+		}
 		input := &URLScanInput{
 			LoaderID:    loader,
 			DocumentURL: request.Request.DocumentURL,
 			Input: Input{
-				Hostname: docURL.Hostname(),
+				Hostname: hostname,
 			},
 		}
 		inputs = append(inputs, input)
