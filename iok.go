@@ -5,12 +5,12 @@ import (
 	"embed"
 	"errors"
 	"fmt"
-	"io/fs"
-	"path/filepath"
-	"strings"
-
 	"github.com/bradleyjkemp/sigma-go"
 	"github.com/bradleyjkemp/sigma-go/evaluator"
+	"io/fs"
+	"path/filepath"
+	iok "phish.report/IOK"
+	"strings"
 )
 
 //go:embed indicators
@@ -21,17 +21,7 @@ var config []byte
 
 var evaluators []*evaluator.RuleEvaluator
 
-type Input struct {
-	Title    []string // Title is the title of the page as it would be shown in a browser. If multiple titles are set (e.g. by JavaScript), this contains each one.
-	Hostname string   // Hostname is the hostname that the page was served from
-	DOM      string   // DOM contains the HTML contents of the primary page *after* it has loaded
-	HTML     string   // HTML contains the HTML response of the primary page
-	JS       []string // JS contains all JavaScript on the page, whether an embedded script or loaded from a file
-	CSS      []string // CSS contains all CSS on the page, whether an embedded stylesheet or loaded from a file
-	Cookies  []string // Cookies contains all cookies set both by the initial page load and any subsequent requests
-	Headers  []string // Headers contains the headers of the initial page load
-	Requests []string // Requests contains a list of all URLs requested during the page load
-}
+type Input = iok.Input
 
 func GetMatches(input Input) ([]sigma.Rule, error) {
 	return GetMatchesForRules(input, evaluators)

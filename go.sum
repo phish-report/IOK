@@ -70,5 +70,7 @@ gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+phish.report/IOK v0.0.0-20240714122146-ed61f2c748b2 h1:aaq8hXdIcr68NTd0Jse+UAArd0Hzt8tyJ8oZZe2Sf08=
+phish.report/IOK v0.0.0-20240714122146-ed61f2c748b2/go.mod h1:ACgRhwTjd3dozGsenUsq9mP8yCVtrvOaiS+W4EUJ9jg=
 phish.report/urlscanio-go v0.0.0-20230915155435-2677d74fc8a2 h1:Pf9Z3H+o20DiHIB3n94vXQBttBzDclmujSbTI9Zj6TA=
 phish.report/urlscanio-go v0.0.0-20230915155435-2677d74fc8a2/go.mod h1:pJPFc89ctVOCv3nhtbb8cPOOjcVDJmCRz7R2O1Z8cQY=
