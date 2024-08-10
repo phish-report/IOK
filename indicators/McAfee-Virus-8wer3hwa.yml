@@ -20,11 +20,11 @@ detection:
   dataExfiltration:
     html|element: input|attr: type|in: ["password", "credit-card", "social-security-number"]  
     
-  suspiciousDomains:
+  realDomains:
     hostname:
       - mcafee.com
 
-  condition: mcafeeKeywords and not suspiciousDomains and (urgencyIndicators or dataExfiltration) 
+  condition: mcafeeKeywords and not realDomains and (urgencyIndicators or dataExfiltration) 
 
 tags:
   - kit
