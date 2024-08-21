@@ -1,0 +1,31 @@
+title: Roblox Phishing Kit 16d2es16
+description: |
+    Detects a free robux phishing kit by identifying common elements such as
+    the html page title and the images on the phishing site.
+
+level: potentially_malicious
+
+references:
+    - https://urlscan.io/result/9170a30d-f431-4645-9bf6-767e604ea175/
+    - https://urlscan.io/result/2bf52523-8c46-4dd2-9ac9-3f355bd1e8ee/
+    - https://urlscan.io/result/14628838-282f-4bdb-b727-42a996d654a4/
+    - https://urlscan.io/result/84856127-bba2-45e9-83bb-62a2bf8c5515/
+    - https://urlscan.io/result/24f989a8-4985-4ffd-93d7-4837236e5835/
+
+detection:
+
+    robuxImages:
+      html|contains:
+        - bp.jpg
+        - robux-remove-preview.png
+
+    robuxTitle:
+      title:
+        - "Get Robux"
+        - "Free Robux - Limited Time"
+
+    condition: robuxTitle or robuxImages
+
+tags:
+  - kit
+  - target.roblox
