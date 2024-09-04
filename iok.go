@@ -37,6 +37,19 @@ func GetMatches(input Input) ([]sigma.Rule, error) {
 	return GetMatchesForRules(input, evaluators)
 }
 
+func GetMatchesForRulesBundle(input Input, rules evaluator.RuleEvaluatorBundle) ([]sigma.Rule, error) {
+	matches := []sigma.Rule{}
+	ruleInput := convertInput(input)
+	results, err := rules.Matches(context.Background(), ruleInput)
+	for _, result := range results {
+		if result.Match {
+			matches = append(matches, result.Rule)
+		}
+	}
+
+	return matches, err
+}
+
 func GetMatchesForRules(input Input, rules []*evaluator.RuleEvaluator) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
 	ruleInput := convertInput(input)
@@ -94,6 +107,14 @@ func ParseRule(path string, contents []byte) (*evaluator.RuleEvaluator, error) {
 	}
 
 	return evaluator.ForRule(rule, evaluator.WithConfig(config), evaluator.CaseSensitive), nil
+}
+
+func RulesBundle(rules []sigma.Rule) (evaluator.RuleEvaluatorBundle, error) {
+	config, err := sigma.ParseConfig(config)
+	if err != nil {
+		return evaluator.RuleEvaluatorBundle{}, fmt.Errorf("failed to parse config: %w", err)
+	}
+	return evaluator.ForRules(rules, evaluator.WithConfig(config), evaluator.CaseSensitive), nil
 }
 
 func init() {
