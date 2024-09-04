@@ -37,10 +37,10 @@ func GetMatches(input Input) ([]sigma.Rule, error) {
 	return GetMatchesForRules(input, evaluators)
 }
 
-func GetMatchesForRulesBundle(input Input, rules evaluator.RuleEvaluatorBundle) ([]sigma.Rule, error) {
+func GetMatchesForRulesBundle(ctx context.Context, input Input, rules evaluator.RuleEvaluatorBundle) ([]sigma.Rule, error) {
 	matches := []sigma.Rule{}
 	ruleInput := convertInput(input)
-	results, err := rules.Matches(context.Background(), ruleInput)
+	results, err := rules.Matches(ctx, ruleInput)
 	for _, result := range results {
 		if result.Match {
 			matches = append(matches, result.Rule)
