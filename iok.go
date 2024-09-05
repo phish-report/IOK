@@ -109,12 +109,12 @@ func ParseRule(path string, contents []byte) (*evaluator.RuleEvaluator, error) {
 	return evaluator.ForRule(rule, evaluator.WithConfig(config), evaluator.CaseSensitive), nil
 }
 
-func RulesBundle(rules []sigma.Rule) (evaluator.RuleEvaluatorBundle, error) {
+func RulesBundle(rules []sigma.Rule, options ...evaluator.Option) (evaluator.RuleEvaluatorBundle, error) {
 	config, err := sigma.ParseConfig(config)
 	if err != nil {
 		return evaluator.RuleEvaluatorBundle{}, fmt.Errorf("failed to parse config: %w", err)
 	}
-	return evaluator.ForRules(rules, evaluator.WithConfig(config), evaluator.CaseSensitive), nil
+	return evaluator.ForRules(rules, append([]evaluator.Option{evaluator.WithConfig(config), evaluator.CaseSensitive}, options...)...), nil
 }
 
 func init() {
