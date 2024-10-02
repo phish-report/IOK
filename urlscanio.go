@@ -44,6 +44,7 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 
 	inputs := []*URLScanInput{}
 	inputsByLoader := map[string]*URLScanInput{}
+	var primaryRequest *URLScanInput
 	for _, request := range result.Data.Requests {
 		loader := request.Request.LoaderId
 		if _, ok := inputsByLoader[loader]; ok {
@@ -67,6 +68,12 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 		}
 		inputs = append(inputs, input)
 		inputsByLoader[loader] = input
+
+		// Keep track of the "primary" request (i.e. the loader ID of the final page shown in the browser)
+		// because this is the one that corresponds to urlscan's DOM response
+		if request.Request.PrimaryRequest {
+			primaryRequest = input
+		}
 	}
 
 	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
@@ -89,7 +96,7 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 		mu.Lock()
 		defer mu.Unlock()
 		resultHTML, _ := io.ReadAll(domResp.Body)
-		inputs[len(inputs)-1].DOM = string(resultHTML)
+		primaryRequest.DOM = string(resultHTML)
 
 		// parse any JS/CSS from the dom
 		node, err := html.Parse(bytes.NewReader(resultHTML))
