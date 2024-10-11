@@ -26,13 +26,20 @@ func InputFromURLScan(ctx context.Context, urlscanUUID string, client httpClient
 	if err != nil || len(inputs) == 0 {
 		return Input{}, err
 	}
-	return inputs[len(inputs)-1].Input, nil //
+	for _, input := range inputs {
+		if input.primary {
+			return input.Input, nil
+		}
+	}
+
+	return inputs[len(inputs)-1].Input, nil
 }
 
 type URLScanInput struct {
 	LoaderID    string
 	DocumentURL string
 	Input
+	primary bool
 }
 
 func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClient) ([]*URLScanInput, error) {
@@ -73,6 +80,7 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 		// because this is the one that corresponds to urlscan's DOM response
 		if request.Request.PrimaryRequest {
 			primaryRequest = input
+			primaryRequest.primary = true
 		}
 	}
 
@@ -101,14 +109,14 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 		// parse any JS/CSS from the dom
 		node, err := html.Parse(bytes.NewReader(resultHTML))
 		if err == nil {
-			extractHTML(node, &inputs[len(inputs)-1].Input, extractEmbeddedAssets, extractTitle)
+			extractHTML(node, &primaryRequest.Input, extractEmbeddedAssets, extractTitle)
 		}
 		return nil
 	})
 
-	// we can't tell which request set the cookie, so we just set it on the last input
+	// we can't tell which request set the cookie, so we just set it on the primary input
 	for _, cookie := range result.Data.Cookies {
-		inputs[len(inputs)-1].Cookies = append(inputs[len(inputs)-1].Cookies, cookie.Name+"="+cookie.Value)
+		primaryRequest.Cookies = append(primaryRequest.Cookies, cookie.Name+"="+cookie.Value)
 	}
 
 	for _, request := range result.Data.Requests {
