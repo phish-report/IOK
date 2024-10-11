@@ -46,6 +46,7 @@
         (string) (len=69) "http://www.bdswissasias.com/cdn-cgi/images/cf-no-screenshot-error.png",
         (string) (len=56) "http://www.bdswissasias.com/cdn-cgi/styles/cf.errors.css"
       }
-    }
+    },
+    primary: (bool) true
   })
 }

@@ -31,7 +31,8 @@
         (string) (len=30) "https://takedown.phish.report/",
         (string) (len=41) "https://takedown.phish.report/favicon.ico"
       }
-    }
+    },
+    primary: (bool) false
   }),
   (*iok.URLScanInput)({
     LoaderID: (string) (len=32) "63170A4FE651AB1092E1EE6D5CEA8084",
@@ -85,6 +86,7 @@
         (string) (len=36) "https://phish.report/user/js-enabled",
         (string) (len=65) "https://phish.report/user/login?redirect=//takedown.phish.report/"
       }
-    }
+    },
+    primary: (bool) true
   })
 }
