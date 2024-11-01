@@ -51,6 +51,8 @@ func extractRequests(base *url.URL) func(node *html.Node, input *Input) {
 			case node.Data == "img" && attr.Key == "src":
 				fallthrough
 			case node.Data == "script" && attr.Key == "src":
+				fallthrough
+			case node.Data == "iframe" && attr.Key == "src":
 				u = attr.Val
 			}
 			if u == "" {
