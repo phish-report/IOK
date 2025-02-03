@@ -1,10 +1,10 @@
-title: Roblox Phishing Kit 16d2es16
+title: Roblox Survery Scam 9170a30d
 description: |
-    Detects a free robux phishing kit by identifying common elements such as
-    the html page title and the images on the phishing site.
-
-level: potentially_malicious
-
+  Detects websites that target Roblox players by 
+  pretending to offer free in-game currency, in reality 
+  these sites are designed to trick users into completing 
+  surveys.
+  
 references:
     - https://urlscan.io/result/9170a30d-f431-4645-9bf6-767e604ea175/
     - https://urlscan.io/result/2bf52523-8c46-4dd2-9ac9-3f355bd1e8ee/
@@ -14,22 +14,17 @@ references:
 
 detection:
 
-    robuxImages:
-      html|contains:
-        - bp.jpg
-        - robux-remove-preview.png
+    image:
+      requests|endswith: '/images/robux-removebg-preview.png'
 
-    robuxTitle:
-      title:
-        - "Get Robux"
-        - "Free Robux - Limited Time"
+    requests:
+      requests|contains: '/public/external/check.php'
+      requests|endswith|all: 
+        - '/public/clockers/PrimeApps/cssXF.css'
+        - '/public/external/css_frontXF.css'
 
-    robuxText:
-      html|contains:
-        - "robux"
-
-    condition: robuxText and (robuxTitle or robuxImages)
-
+    condition: image and requests
+    
 tags:
   - kit
   - target.roblox
