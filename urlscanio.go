@@ -4,14 +4,15 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"golang.org/x/net/html"
-	"golang.org/x/sync/errgroup"
 	"io"
 	"log"
 	"net/http"
 	"net/url"
-	urlscan "phish.report/urlscanio-go"
 	"sync"
+
+	"golang.org/x/net/html"
+	"golang.org/x/sync/errgroup"
+	urlscan "phish.report/urlscanio-go"
 )
 
 type httpClient interface {
@@ -83,6 +84,9 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 			primaryRequest.primary = true
 		}
 	}
+	if primaryRequest == nil {
+		return nil, fmt.Errorf("no primary request found")
+	}
 
 	// Some sites have many resources (100+) so fetching each one sequentially takes too long.
 	// This fetches up to 5 resources in parallel
@@ -90,7 +94,12 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 	g.SetLimit(5)
 	mu := sync.Mutex{}
 
-	g.Go(func() error {
+	g.Go(func() (err error) {
+		defer func() {
+			if r := recover(); r != nil {
+				err = fmt.Errorf("panic: %v", r)
+			}
+		}()
 		domReq, _ := http.NewRequestWithContext(ctx, http.MethodGet, "https://urlscan.io/dom/"+result.Task.Uuid, nil)
 		domResp, err := client.Do(domReq)
 		if err != nil || domResp.StatusCode != 200 {
@@ -122,7 +131,12 @@ func InputsFromURLScan(ctx context.Context, urlscanUUID string, client httpClien
 	for _, request := range result.Data.Requests {
 		request := request
 		input := &inputsByLoader[request.Request.LoaderId].Input
-		g.Go(func() error {
+		g.Go(func() (err error) {
+			defer func() {
+				if r := recover(); r != nil {
+					err = fmt.Errorf("panic: %v", r)
+				}
+			}()
 			mu.Lock()
 			input.Requests = append(input.Requests, request.Request.Request.Url)
 			mu.Unlock()
