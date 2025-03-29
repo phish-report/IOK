@@ -20,3 +20,8 @@ detection:
       - pagopa.gov.it
 
   condition: requestsContent and not realDomain
+
+tags:
+  - kit
+  - target_country.italy
+  - target.pagopa
