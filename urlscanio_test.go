@@ -3,6 +3,7 @@ package iok
 import (
 	"context"
 	"github.com/bradleyjkemp/cupaloy/v2"
+	"github.com/bradleyjkemp/sigma-go"
 	"net/http"
 	"sort"
 	"testing"
@@ -30,6 +31,25 @@ func TestInputFromURLScan(t *testing.T) {
 
 			cupaloy.SnapshotT(t, input)
 		})
+	}
+}
+
+func BenchmarkUrlscanGetMatches(b *testing.B) {
+	b.StopTimer()
+	input, err := InputFromURLScan(context.Background(), "67514436-4198-46c1-8e8b-5ddbc03098f2", http.DefaultClient)
+	if err != nil {
+		b.Fatal(err)
+	}
+	b.StartTimer()
+	var matches []sigma.Rule
+	for i := 0; i < b.N; i++ {
+		matches, err = GetMatches(input)
+		if err != nil {
+			b.Fatal(err)
+		}
+	}
+	if len(matches) == 0 {
+		b.Fatal(0)
 	}
 }
 
