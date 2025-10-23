@@ -15,7 +15,7 @@ detection:
     
   pageHTML:
     html|contains|all:
-      - "Drag Me (Verify)"
+      - "Community Verification)"
 
   condition: pageTitle and pageHTML
 
