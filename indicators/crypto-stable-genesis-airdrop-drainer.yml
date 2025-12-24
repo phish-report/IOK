@@ -1,0 +1,22 @@
+ title: Fake Stable Genesis Airdrop
+ description: |
+   Fake Stable Genesis Airdrop Site, cryptocurrency phishing
+   The Phishing site is behing Cloudflare Captcha
+ references: 
+   - "https://x.com/Malwarehunterr/status/2003517025071824925?s=20"
+ level: potentially_malicious
+
+ detection:
+    StableGenesisAirdrophtml:
+     html|contains|all:
+      - "airdrop.stablereward.claims"
+      - "Verify you are human by completing the action below"
+      - "airdrop.stablereward.claims needs to review the security of your connection before proceeding."
+    mySubdomain:
+      hostname|endswith: ".stablereward.claims"
+    hotlinkAsset:
+      requests|startswith: "https://airdrop.stablereward.claims/"
+ 
+    condition: StableGenesisAirdrophtml and mySubdomain and hotlinkAsset
+ tag: |
+  - "crypto wallet drainer", "test"
