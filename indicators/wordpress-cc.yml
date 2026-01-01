@@ -1,0 +1,27 @@
+title: Fake Wordpress domain renewal
+description: |
+  This site is fake Wordpress Credit Card harvester via domain renewal Phish theme. 
+level: likely_malicious   
+references:
+  - https://x.com/Malwarehunterr/status/2006354116902084687?s=20
+  - https://urlscan.io/result/019b7899-5075-739f-b954-20e28fabf08a/#summary
+
+detection: 
+  hotlinkedAsset:
+    requests|startswith: "https://soyfix.com/log/log/scrip.js"
+    requests|startswith: "https://soyfix.com/log/log/"
+  wordPressTitle:
+    title:
+      - "WordPress.com - Secure order validation"
+  wordpressHTMLFragments:
+    html|contains|all:
+      - '<h2 class="modal-title">3D Secure Verification</h2>'
+      - '<img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xlWvoZbQJ1CBihHjzIrotBPcGOPZfU.png" alt="WordPress.com" class="logo" width="130" height="70">'
+  realDomain:
+    hostname:
+      - wordpress.com
+          
+  condition: hotlinkedAsset and wordpressHTMLFragments and realDomain and wordPressTitle
+tag: |
+  - "Wordpress", "Wordpress domain renewal"
+
