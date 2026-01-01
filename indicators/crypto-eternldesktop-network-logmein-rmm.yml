@@ -1,0 +1,26 @@
+title: eternl desktop site drops LogMeIn RMM
+description: |
+  RMM Abuse in a Crypto Wallet Distribution Campaign. It drops RMM LogMeIn Resolve (Go To Resolve) from download.eternldesktop.network site
+level: potentially_malicious
+references:
+  - https://x.com/Malwarehunterr/status/2006107427868135804?s=20
+  - https://urlscan.io/result/019b7a53-82a5-75b5-a372-131336a7b408/#summary
+
+detection:
+   eternaldesktopTitle:
+     title:
+       - "Eternl Desktop - Secure Cardano Execution, Reimagined"
+   
+   etrnlHTMLFragments:
+     html|contains|all:
+       - '<h2 class="text-3xl md:text-4xl font-bold mb-4">Why Eternl Desktop</h2>'
+       - '<p class="text-sm text-muted-foreground">© 2025 Eternl. All rights reserved.</p>'
+       - '<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in glow-text leading-tight" style="animation-delay: 200ms"> Eternl Desktop Is Live </h1>'
+     html|endswith|all:
+       - 'Eternl-installer.msi'
+   mySubdomain:
+     hostname|endswith: ".eternldesktop.network"
+
+   condition: eternaldesktopTitle and etrnlHTMLFragments and mySubdomain
+tag: |
+  - "RMM LogMeIn Resolve", "Crypto Wallet Drainer", "RMM Go To Resolve"
