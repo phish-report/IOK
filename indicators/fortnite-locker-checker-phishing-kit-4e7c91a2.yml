@@ -1,0 +1,49 @@
+title: Fortnite Locker Checker Phishing Kit 4e7c91a2
+description: |
+    Detects an Epic Games / Fortnite phishing kit conducting an OAuth
+    authorization-code grab attack that bypasses 2FA. The kit directs victims
+    to authenticate on the legitimate epicgames.com OAuth endpoint, then
+    instructs them to paste the resulting authorization code back into the
+    phishing page where the kit exchanges it for a valid access_token via
+    Epic's API. The user's password never leaves Epic and 2FA is genuinely
+    passed, but the attacker captures a fully-authenticated session.
+
+    Identified by its proprietary `/.merc/captcha` anti-bot framework, the
+    `anubis_token` cookie (operator-rebranded fork of TecharoHQ/anubis), the
+    `/lupidrupigang/locker/` paths, and shared third-party asset hosting on
+    postimg.cc with Russian-transliteration filenames (`vhodebat` = login,
+    `shekeli` = money). Active across 65+ domains as of April 2026 spanning
+    V1, V2, V2 sub-variant, and V3 kit variants.
+references:
+    - https://urlscan.io/result/019dcad8-85fb-75e8-9a05-bb1e8c0b9110/
+    - https://urlscan.io/result/019dcad9-3b19-7052-a735-e93678117d7c/
+    - https://urlscan.io/result/019dcad9-af6b-7475-b75a-0df543b29fab/
+    - https://urlscan.io/result/019dcadc-ee18-724a-bc90-3e8c38ed79aa/
+    - https://urlscan.io/result/019dcadd-f5b5-70bb-8934-7dda9efc5e9d/
+detection:
+    mercCaptchaPath:
+        requests|contains: '/.merc/captcha'
+    anubisCookie:
+        cookies|contains: 'anubis_token='
+    challengeText:
+        html|contains: 'Click the shapes in order shown below'
+    oauthGrabFlow:
+        html|contains|all:
+            - 'Click on the Get Code button below to generate an authorization code'
+            - 'paste your authorization code to validate'
+    epicOAuthRedirect:
+        html|contains: 'epicgames.com/id/api/redirect?clientId=fortnitePCGameClient'
+    sharedAssets:
+        requests|contains:
+            - 'i.postimg.cc/DzGdT9Hg/vhodebat.png'
+            - 'i.postimg.cc/Z5B6PkbY/shekeli.png'
+            - 'i.postimg.cc/zBVNvkwF/locker1ver.png'
+            - 'raw.githubusercontent.com/sios-v/wolk/master/fonts/'
+    lupidrupigangPath:
+        requests|contains: '/lupidrupigang/locker/'
+    condition: mercCaptchaPath or (challengeText and anubisCookie) or (oauthGrabFlow and epicOAuthRedirect) or sharedAssets or lupidrupigangPath
+tags:
+    - kit
+    - target.epic-games
+    - target.fortnite
+    - oauth
