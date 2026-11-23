@@ -1,0 +1,53 @@
+title: Fake Storefront Card Harvesting Kit 127914c7
+description: |
+  Detects a card-harvesting kit deployed as a pair of bespoke WooCommerce payment
+  plugins named `npcard` and `nextpay`. The two are the same plugin renamed: their
+  `card.js` files differ by exactly 2 bytes.
+
+  The storefronts impersonate well-known retail brands (adidas, Nike/Jordan, UGG,
+  Pokémon Center, Sony, Bose, Dyson, Estée Lauder, Lacoste, Timberland, Uniqlo and
+  dozens more) using a systematic naming convention of brand plus country, or brand
+  plus a plural suffix (`uggs`, `garmins`, `swatchs`). They advertise PayPal and
+  Stripe but carry no legitimate payment processor.
+
+  On checkout the kit intercepts the order submission and POSTs to
+  `/wc-api/npcard_async/` or `/wc-api/card_async/`, then opens the attacker's card
+  form in an iframe with `referrerpolicy='no-referrer'`, hiding the originating
+  store from the collection endpoint. A redundant second trigger fires on
+  `checkout_error`, retrying whenever the normal checkout fails.
+
+  **Note:** these sites present as ordinary online shops — catalogue, privacy policy,
+  contact page, shipping terms — and automated verdicts rarely flag them. The payment
+  plugin is the only anomaly.
+
+references:
+  - https://urlscan.io/result/01a09264-9223-7129-b43e-40c0de0d906c
+  - https://urlscan.io/result/01a1381a-0844-7165-9938-f031f3e93273
+  - https://urlscan.io/result/01a1038b-ebd4-77b5-bf05-16aa2d4cc29a
+  - https://urlscan.io/result/01a13e65-f458-73b3-a735-056f91c4761f
+
+detection:
+
+  pluginAssets:
+    requests|contains:
+      - '/wp-content/plugins/npcard/assets/'
+      - '/wp-content/plugins/nextpay/assets/'
+
+  cardClient:
+    js|contains:
+      - 'npcardClient'
+      - 'npcard-popup-overlay'
+      - 'ppcard-popup-overlay'
+
+  collectionEndpoint:
+    js|contains:
+      - '/wc-api/npcard_async/'
+      - '/wc-api/card_async/'
+
+  condition: pluginAssets or cardClient or collectionEndpoint
+
+tags:
+  - kit
+  - card-harvesting
+  - fake-shop
+  - woocommerce
